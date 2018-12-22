@@ -1,0 +1,18 @@
+{
+  "name": "@emeralt/types",
+  "version": "0.0.0",
+  "author": "stackdumper <stackdumper@gmail.com>",
+  "license": "Creative Commons Attribution 4.0 International",
+  "scripts": {
+    "test": "npx ava test/**/*.test.ts",
+    "build": "node ../../cli build",
+    "build:prod": "node ../../cli build -m -s"
+  },
+  "devDependencies": {
+    "ava": "^1.0.1",
+    "tsconfig-paths": "^3.7.0"
+  },
+  "dependencies": {
+    "ts-node": "^7.0.1"
+  }
+}
