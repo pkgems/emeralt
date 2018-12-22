@@ -1,0 +1,22 @@
+image: node:10-alpine
+
+# Cache modules in between jobs
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+  - node_modules/
+  - .yarn/
+
+stages:
+  - install
+  - test
+
+install:
+  stage: install
+  script:
+    - yarn --pure-lockfile --cache-folder .yarn
+
+test:
+  stage: test
+  script:
+    - yarn test
