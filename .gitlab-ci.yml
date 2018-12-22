@@ -9,8 +9,8 @@ cache:
 
 stages:
   - install
-  - test
   - build
+  - test
   - publish
 
 install:
@@ -34,6 +34,6 @@ test:
 publish:
   stage: publish
   only:
-    - /^\d{1,3}\.\d{1,3}\.\d{1,3}.*/
+    - tags
   script:
     - npx lerna publish from-package
