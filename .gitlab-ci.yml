@@ -5,6 +5,7 @@ cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
   - node_modules/
+  - packages/*/node_modules
   - .yarn/
 
 stages:
@@ -24,7 +25,7 @@ build:
     - yarn build
   artifacts:
     paths:
-      - build/
+      - packages/*/build
 
 test:
   stage: test
