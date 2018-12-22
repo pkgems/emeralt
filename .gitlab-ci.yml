@@ -35,5 +35,7 @@ publish:
   stage: publish
   only:
     - tags
+  except:
+    - master
   script:
     - npx lerna publish from-package
