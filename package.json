@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "node ./cli",
+    "build": "yarn workspaces run build",
+    "format": "npx prettier --ignore-path .gitignore --write './!(node_modules|build)/**/*.{ts,tsx,js,jsx}'"
+  },
+  "dependencies": {
+    "@zeit/ncc": "^0.7.0",
+    "commander": "^2.19.0",
+    "fs-extra": "^7.0.1",
+    "prettier": "^1.15.3",
+    "replace-in-file": "^3.4.2",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/fs-extra": "^5.0.4",
+    "@types/node": "^10.12.18"
+  }
+}
