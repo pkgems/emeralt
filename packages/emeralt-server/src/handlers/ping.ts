@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { IHandler } from '@/types'
+import { IHandler } from '../types'
 
 const RegistryPingEndpoint = '/-/ping'
 

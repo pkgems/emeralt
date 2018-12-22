@@ -7,9 +7,9 @@
     "emeralt": "./build/index.js"
   },
   "scripts": {
-    "start": "node ./cli",
-    "clean": "node ./cli clean",
-    "build": "npx lerna run build --parallel",
+    "start": "node ./cli/index",
+    "clean": "node ./cli/index clean",
+    "build": "node ./cli/index build",
     "format": "npx prettier --ignore-path .gitignore --write './!(node_modules|build)/**/*.{ts,tsx,js,jsx}'"
   },
   "dependencies": {
@@ -24,6 +24,8 @@
   "devDependencies": {
     "@types/fs-extra": "^5.0.4",
     "@types/node": "^10.12.18",
+    "deepmerge": "^3.0.0",
+    "dts-generator": "^2.1.0",
     "fast-glob": "^2.2.4",
     "lerna": "^3.8.0"
   },

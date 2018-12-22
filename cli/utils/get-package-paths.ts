@@ -7,6 +7,7 @@ export const getPackagePaths = (cwd = process.cwd()) => ({
     dir: join(cwd, 'build'),
     code: join(cwd, 'build', 'index.js'),
     map: join(cwd, 'build', 'index.js.map'),
+    definitions: join(cwd, 'build', 'index.d.ts'),
   },
   cache: {
     root: join(cwd, '.cache'),

@@ -1,6 +1,5 @@
 import prog from 'commander'
 import { init, build, clean } from './actions'
-import { basename } from 'path'
 
 prog
   .command('init <name> [template]')
@@ -8,7 +7,7 @@ prog
   .action(init)
 
 prog
-  .command('build')
+  .command('build [pkg]')
   .description('Build package')
   .option('-m, --minify', 'Minify')
   .option('-s, --sourceMap', 'Enable sourcemap')

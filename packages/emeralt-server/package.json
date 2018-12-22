@@ -4,6 +4,7 @@
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
+  "types": "./build/index.d.ts",
   "scripts": {
     "test": "npx ava test/**/*.test.ts",
     "build": "node ../../cli build",

@@ -1,8 +1,10 @@
 import { remove } from 'fs-extra'
-import { getPackages, getPackagePaths } from '../utils'
+import { getPackagePaths, getPackagesByPath } from '../utils'
 
-export const clean = async (pkg: void | '.') => {
-  const pkgs = pkg ? [process.cwd()] : [...(await getPackages()), process.cwd()]
+export const clean = async (pkg: string | void) => {
+  const pkgs = await getPackagesByPath(pkg, {
+    includeCwd: true,
+  })
 
   for (const pkg of pkgs) {
     const { output, cache, node_modules } = getPackagePaths(pkg)

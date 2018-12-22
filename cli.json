@@ -1,0 +1,8 @@
+{
+  "exclude": ["emeralt-assets"],
+  "buildOrder": [
+    "emeralt-types",
+    "emeralt-server",
+    "emeralt-cli"
+  ]
+}
