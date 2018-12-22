@@ -1,9 +1,12 @@
 {
   "name": "@emeralt/cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
+  "bin": {
+    "emeralt": "./build/index.js"
+  },
   "scripts": {
     "test": "npx ava test/**/*.test.ts",
     "build": "node ../../cli build",

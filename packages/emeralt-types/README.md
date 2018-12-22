@@ -6,11 +6,11 @@
 Using npm:
 
 ```sh
-npm install --save-dev @emeralt/core
+npm install --save-dev @emeralt/types
 ```
 
 or using yarn:
 
 ```sh
-yarn add --dev @emeralt/core
+yarn add --dev @emeralt/types
 ```

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { createEmeraltServer } from '@emeralt/server'
 
 class Storage {}
