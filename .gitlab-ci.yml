@@ -39,4 +39,4 @@ publish:
   except:
     - master
   script:
-    - npx lerna publish from-package
+    - npx lerna publish from-package --no-git-tag-version --skip-git -y
