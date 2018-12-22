@@ -1,15 +1,20 @@
 import fs from 'fs-extra'
 import ncc from '@zeit/ncc'
-import { getPaths } from '../utils/get-paths'
-import { getExternals } from '../utils/get-externals'
+import { basename } from 'path'
+import { getPackagePaths, getExternals } from '../utils'
 
-export const build = async ({ minify = false, sourceMap = false } = {}) => {
-  const { input, output, cache } = getPaths()
-  const externals = getExternals()
+export const build = async ({
+  minify = false,
+  sourceMap = false,
+  includeDependencies = false,
+} = {}) => {
+  console.log(`[build] ${basename(process.cwd())}`)
+  const { input, output, cache } = getPackagePaths()
+  const externals = includeDependencies ? [] : getExternals()
 
   console.log('[build] building')
   const { code, map, assets } = await ncc(input, {
-    cache,
+    cache: cache.ncc,
     externals,
     minify,
     sourceMap,

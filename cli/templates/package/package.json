@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
-  "main": "./src/index.ts",
+  "main": "./build/index.js",
   "scripts": {
     "test": "npx ava test/**/*.test.ts",
     "build": "node ../../cli build",

@@ -1,6 +1,6 @@
 import { join } from 'path'
 
-export const getPaths = (cwd = process.cwd()) => ({
+export const getPackagePaths = (cwd = process.cwd()) => ({
   root: cwd,
   input: join(cwd, 'src', 'index.ts'),
   output: {
@@ -8,5 +8,9 @@ export const getPaths = (cwd = process.cwd()) => ({
     code: join(cwd, 'build', 'index.js'),
     map: join(cwd, 'build', 'index.js.map'),
   },
-  cache: join(cwd, '.cache/ncc'),
+  cache: {
+    root: join(cwd, '.cache'),
+    ncc: join(cwd, '.cache/ncc'),
+  },
+  node_modules: join(cwd, 'node_modules'),
 })
