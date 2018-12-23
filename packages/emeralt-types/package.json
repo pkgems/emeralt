@@ -15,7 +15,8 @@
       ".tsx"
     ],
     "exclude": [
-      "**/*.d.ts"
+      "**/*.d.ts",
+      "build"
     ],
     "reporters": [
       "text-lcov"
