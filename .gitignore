@@ -84,3 +84,5 @@ packages/*/build
 
 # APFS cache
 .DS_Store
+
+*.lcov

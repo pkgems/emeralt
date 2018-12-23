@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "nyc -s ava test/**/*.test.ts",
-    "coverage": "nyc report",
+    "coverage": "nyc report > coverage.lcov",
     "build": "node ../../cli/index build ."
   },
   "dependencies": {
