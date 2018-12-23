@@ -1,0 +1,15 @@
+git:
+  depth: 3
+
+language: node_js
+node_js:
+  - "6"
+  - "8"
+  - "10"
+  - "node"
+
+cache: yarn
+before_script:
+  - yarn build
+script:
+  - yarn test
