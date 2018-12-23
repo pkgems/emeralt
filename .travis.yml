@@ -4,6 +4,13 @@ git:
 os:
   - linux
 
+env:
+  - COVERALLS_PARALLEL=true
+
+notifications:
+  webhooks:
+    - https://coveralls.io/webhook
+
 language: node_js
 node_js:
   # - "6"
