@@ -5,8 +5,8 @@
   "license": "MIT",
   "main": "./src/index.ts",
   "scripts": {
-    "test": "nyc ava test/**/*.test.ts",
-    "posttest": "nyc report --reporter=json",
+    "test": "nyc -s ava test/**/*.test.ts",
+    "coverage": "nyc report --reporter=json",
     "build": "node ../../cli/index build ."
   }
 }

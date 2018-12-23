@@ -16,3 +16,5 @@ before_script:
   - yarn build
 script:
   - yarn test
+  - lerna run coverage
+  - codecov
