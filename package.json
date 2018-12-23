@@ -7,7 +7,7 @@
     "emeralt": "./build/index.js"
   },
   "scripts": {
-    "test": "npx lerna run test --parallel",
+    "test": "npx lerna run test --stream",
     "start": "node ./cli/index",
     "clean": "node ./cli/index clean",
     "build": "node ./cli/index build",
