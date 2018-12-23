@@ -25,10 +25,13 @@
   "devDependencies": {
     "@types/fs-extra": "^5.0.4",
     "@types/node": "^10.12.18",
+    "ava": "^1.0.1",
     "deepmerge": "^3.0.0",
     "dts-generator": "^2.1.0",
     "fast-glob": "^2.2.4",
-    "lerna": "^3.8.0"
+    "lerna": "^3.8.0",
+    "nyc": "^13.1.0",
+    "tsconfig-paths": "^3.7.0"
   },
   "name": "emeralt"
 }

@@ -5,20 +5,14 @@
   "license": "MIT",
   "main": "./build/index.js",
   "bin": {
-    "emeralt": "./build/index.js",
-    "build": "node ../../cli/index build ."
+    "emeralt": "./build/index.js"
   },
   "scripts": {
-    "test": "npx ava test/**/*.test.ts",
-    "build": "node ../../cli build",
-    "build:prod": "node ../../cli build -m -s"
-  },
-  "devDependencies": {
-    "ava": "^1.0.1",
-    "tsconfig-paths": "^3.7.0"
+    "test": "nyc ava test/**/*.test.ts",
+    "posttest": "nyc report --reporter=json",
+    "build": "node ../../cli/index build ."
   },
   "dependencies": {
-    "@emeralt/server": "^0.0.10",
-    "ts-node": "^7.0.1"
+    "@emeralt/server": "^0.0.10"
   }
 }

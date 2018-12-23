@@ -5,14 +5,8 @@
   "license": "MIT",
   "main": "./src/index.ts",
   "scripts": {
-    "test": "npx ava test/**/*.test.ts",
+    "test": "nyc ava test/**/*.test.ts",
+    "posttest": "nyc report --reporter=json",
     "build": "node ../../cli/index build ."
-  },
-  "devDependencies": {
-    "ava": "^1.0.1",
-    "tsconfig-paths": "^3.7.0"
-  },
-  "dependencies": {
-    "ts-node": "^7.0.1"
   }
 }
