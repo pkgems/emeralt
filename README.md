@@ -2,7 +2,9 @@
   <img src="./packages/emeralt-assets/png/full-logo-3-medium.png">
 </a>
 
-[![Build Status](https://travis-ci.com/euphemist/emeralt.svg?branch=master)](https://travis-ci.com/euphemist/emeralt) [![Greenkeeper badge](https://badges.greenkeeper.io/euphemist/emeralt.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.com/euphemist/emeralt.svg?branch=master)](https://travis-ci.com/euphemist/emeralt) 
+[![Coverage Status](https://coveralls.io/repos/github/euphemist/emeralt/badge.svg?branch=master)](https://coveralls.io/github/euphemist/emeralt?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/euphemist/emeralt.svg)](https://greenkeeper.io/)
 
 ## Install
 Install with npm:
