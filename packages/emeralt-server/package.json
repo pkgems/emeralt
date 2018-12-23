@@ -18,5 +18,15 @@
   },
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "all": true
   }
 }

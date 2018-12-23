@@ -14,5 +14,15 @@
   },
   "dependencies": {
     "@emeralt/server": "^0.0.10"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "all": true
   }
 }
