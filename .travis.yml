@@ -22,4 +22,4 @@ cache: yarn
 before_script:
   - yarn build
 script:
-  - yarn test:ci
+  - yarn test:coverage

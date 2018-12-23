@@ -7,5 +7,5 @@
   "scripts": {
     "test": "ava test/**/*.test.ts",
     "build": "node ../../cli/index build ."
-  },
+  }
 }
