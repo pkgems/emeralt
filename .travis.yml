@@ -1,5 +1,10 @@
 git:
   depth: 3
+  
+os:
+  - windows
+  - linux
+  - osx
 
 language: node_js
 node_js:
