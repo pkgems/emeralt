@@ -8,8 +8,8 @@
     "emeralt": "./build/index.js"
   },
   "scripts": {
-    "test": "nyc -s ava test/**/*.test.ts",
-    "coverage": "nyc report > coverage.lcov",
+    "test": "ava test/**/*.test.ts",
+    "test:ci": "nyc -s yarn test &&  nyc report --reporter=text-lcov | coveralls",
     "build": "node ../../cli/index build ."
   },
   "dependencies": {
