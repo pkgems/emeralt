@@ -7,7 +7,6 @@
   "types": "./build/index.d.ts",
   "scripts": {
     "test": "ava test/**/*.test.ts",
-    "test:ci": "nyc -s yarn test &&  nyc report --reporter=text-lcov | coveralls",
     "build": "node ../../cli/index build ."
   },
   "devDependencies": {
@@ -18,19 +17,5 @@
   },
   "dependencies": {
     "express": "^4.16.4"
-  },
-  "nyc": {
-    "extension": [
-      ".ts",
-      ".tsx"
-    ],
-    "exclude": [
-      "**/*.d.ts",
-      "build"
-    ],
-    "reporters": [
-      "text-lcov"
-    ],
-    "all": true
   }
 }

@@ -6,21 +6,6 @@
   "main": "./src/index.ts",
   "scripts": {
     "test": "ava test/**/*.test.ts",
-    "test:ci": "nyc -s yarn test &&  nyc report --reporter=text-lcov | coveralls",
     "build": "node ../../cli/index build ."
-  },
-  "nyc": {
-    "extension": [
-      ".ts",
-      ".tsx"
-    ],
-    "exclude": [
-      "**/*.d.ts",
-      "build"
-    ],
-    "reporters": [
-      "text-lcov"
-    ],
-    "all": true
   }
 }
