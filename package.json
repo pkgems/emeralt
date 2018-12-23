@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "npx lerna run test --parallel",
-    "test:coverage": "nyc -s yarn test && nyc report --reporter=text-lcov | coveralls",
+    "test:coverage": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test nyc lerna --ignore nyc exec npm test",
     "start": "node ./cli/index",
     "clean": "node ./cli/index clean",
     "build": "node ./cli/index build",
@@ -28,6 +28,7 @@
     "@types/node": "^10.12.18",
     "ava": "^1.0.1",
     "coveralls": "^3.0.2",
+    "cross-env": "^5.2.0",
     "deepmerge": "^3.0.0",
     "dts-generator": "^2.1.0",
     "fast-glob": "^2.2.4",
@@ -43,7 +44,10 @@
     ],
     "exclude": [
       "**/*.d.ts",
-      "build"
+      "**/*.test.ts",
+      "coverage",
+      "build",
+      "cli"
     ],
     "reporters": [
       "text-lcov"

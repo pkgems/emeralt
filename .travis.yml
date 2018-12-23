@@ -5,11 +5,8 @@ os:
   - linux
 
 env:
-  - COVERALLS_PARALLEL=true
-
-notifications:
-  webhooks:
-    - https://coveralls.io/webhook
+  global:
+    COVERALLS_PARALLEL=true
 
 language: node_js
 node_js:
@@ -23,3 +20,5 @@ before_script:
   - yarn build
 script:
   - yarn test:coverage
+  
+after_success: nyc report --reporter=text-lcov | coveralls
