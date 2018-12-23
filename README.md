@@ -2,6 +2,7 @@
   <img src="./packages/emeralt-assets/png/full-logo-widest.png">
 </a>
 
+[![Build Status](https://travis-ci.com/euphemist/emeralt.svg?branch=master)](https://travis-ci.com/euphemist/emeralt)
 
 ## Install
 Install with npm:
