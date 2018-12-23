@@ -6,8 +6,7 @@
   "main": "./src/index.ts",
   "scripts": {
     "test": "npx ava test/**/*.test.ts",
-    "build": "node ../../cli build",
-    "build:prod": "node ../../cli build -m -s"
+    "build": "node ../../cli/index build ."
   },
   "devDependencies": {
     "ava": "^1.0.1",

@@ -325,6 +325,21 @@
   dependencies:
     arrify "^1.0.1"
 
+"@emeralt/server@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@emeralt/server/-/server-0.0.5.tgz#6f78df0b869a67d37949d15b1ef40597461c7263"
+  integrity sha512-IgS3oxnfV6zdc0XebwgTNYFcOAWGLdMO4QFi8pf36QG4ad22kxd51xSqXpv112IzB5HNcblYbXyCvrMeUgON7g==
+  dependencies:
+    express "^4.16.4"
+    ts-node "^7.0.1"
+
+"@emeralt/types@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@emeralt/types/-/types-0.0.5.tgz#4c37f31131c11ff3ba658c826e0b49273756d5c6"
+  integrity sha512-3d3LunyD64El594vXu8quLyPCixnEv7SmG9kW4biuFQSWqWcGyXrbzCFR4wpIzK4q4w8k2veLSA8LoAQV8SOxQ==
+  dependencies:
+    ts-node "^7.0.1"
+
 "@lerna/add@^3.7.2":
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/@lerna/add/-/add-3.7.2.tgz#209c8d00e08baeae9c97e9b2e667ad92a39d3907"

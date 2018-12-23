@@ -18,14 +18,23 @@ yarn add --dev @emeralt/assets
 ## Logos
 
 ```sh
+.
 ├── png
-│   ├── full-logo.png
-│   ├── full-logo-wide.png
-│   ├── full-logo-widest.png
-│   └── small-logo.png
+│   ├── full-logo-1-large.png
+│   ├── full-logo-1-medium.png
+│   ├── full-logo-1-small.png
+│   ├── full-logo-2-large.png
+│   ├── full-logo-2-medium.png
+│   ├── full-logo-2-small.png
+│   ├── full-logo-3-large.png
+│   ├── full-logo-3-medium.png
+│   ├── full-logo-3-small.png
+│   └── small-logo-1-small.png
 └── svg
-    ├── full-logo.svg
-    ├── full-logo-wide.svg
-    ├── full-logo-widest.svg
-    └── small-logo.svg
+    ├── full-logo-1.svg
+    ├── full-logo-2.svg
+    ├── full-logo-3.svg
+    ├── logo.svg
+    └── small-logo-1.svg
+
 ```

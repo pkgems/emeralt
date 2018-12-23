@@ -5,7 +5,8 @@
   "license": "MIT",
   "main": "./build/index.js",
   "bin": {
-    "emeralt": "./build/index.js"
+    "emeralt": "./build/index.js",
+    "build": "node ../../cli/index build ."
   },
   "scripts": {
     "test": "npx ava test/**/*.test.ts",

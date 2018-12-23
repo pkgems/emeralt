@@ -4,6 +4,7 @@
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "CC-BY-4.0",
   "scripts": {
-    "build": "exit 0;"
+    "build": "exit 0;",
+    "test": "exit 0;"
   }
 }

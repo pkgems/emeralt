@@ -11,16 +11,14 @@ test('ping', async (t) => {
     storage: new MockStorage(),
     auth: new MockAuth(),
     plugins: [],
-  }).listen(8080)
+  }).listen(null)
 
-  await supertest(server)
-    .get('/-/ping')
-    .expect(200)
-    .expect({
-      name: 'emeralt',
-    })
+  const { status, body } = await supertest(server).get('/-/ping')
 
-  t.pass()
+  t.is(status, 200)
+  t.deepEqual(body, {
+    name: 'emeralt',
+  })
 })
 
 test('search', async (t) => {
@@ -29,16 +27,15 @@ test('search', async (t) => {
     storage: new MockStorage(),
     auth: new MockAuth(),
     plugins: [],
-  }).listen(8081)
+  }).listen(null)
 
-  await supertest(server)
+  const { body } = await supertest(server)
     .get('/-/v1/search')
     .expect(200)
-    .expect({
-      objects: [],
-      total: 0,
-      time: new Date().toString(),
-    })
 
-  t.pass()
+  t.deepEqual(body, {
+    objects: [],
+    total: 0,
+    time: body.time,
+  })
 })
