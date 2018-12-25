@@ -1,10 +1,16 @@
-<a>
-  <img src="./packages/emeralt-assets/png/full-logo-3-medium.png">
-</a>
+![logo](./packages/emeralt-assets/png/full-logo-3-medium.png)
 
 [![Build Status](https://travis-ci.com/euphemist/emeralt.svg?branch=master)](https://travis-ci.com/euphemist/emeralt) 
 [![Coverage Status](https://coveralls.io/repos/github/euphemist/emeralt/badge.svg?branch=master)](https://coveralls.io/github/euphemist/emeralt?branch=master)
 ![Open Issues](https://img.shields.io/github/issues-raw/euphemist/emeralt.svg)
+
+<br />
+<br />
+<div align="center">
+  <h3>⚠️ UNDER CONSTRUCTION ⚠️</h3>
+</div>
+<br />
+<br />
 
 ## Install
 Install with npm:
