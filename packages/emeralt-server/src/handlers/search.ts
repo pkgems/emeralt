@@ -1,5 +1,5 @@
-import { Router } from 'express'
 import { IHandler } from '../types'
+import { Router } from 'express'
 
 const RegistrySearchEndpoint = '/-/v1/search'
 
