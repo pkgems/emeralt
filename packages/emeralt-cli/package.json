@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/cli",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -12,6 +12,6 @@
     "build": "node ../../cli/index build ."
   },
   "dependencies": {
-    "@emeralt/server": "^0.0.10"
+    "@emeralt/server": "^0.0.11"
   }
 }
