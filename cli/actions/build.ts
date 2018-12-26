@@ -1,6 +1,5 @@
-import fs from 'fs-extra'
 import ncc from '@zeit/ncc'
-import dts from 'dts-generator'
+import fs from 'fs-extra'
 import { basename, join } from 'path'
 import {
   getPackagePaths,
@@ -45,12 +44,17 @@ export const build = async (
       await fs.writeFile(output.map, map)
     }
 
-    // TODO: emit declarations
-    // await dts({
-    //   name: require(join(pkg, 'package.json')).name,
-    //   project: pkg,
-    //   out: output.definitions,
-    // })
+    if (assets) {
+      for (const asset in assets) {
+        const loc = asset
+          .split('/')
+          .splice(1)
+          .join('/')
+
+        await fs.mkdirp(join(output.dir, loc, '../'))
+        await fs.writeFile(join(output.dir, loc), assets[asset])
+      }
+    }
 
     console.log('[build] done')
   }

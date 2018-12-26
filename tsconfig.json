@@ -6,7 +6,9 @@
 
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+
+    "declaration": true
   },
   "exclude": ["./cli/templates"]
 }
