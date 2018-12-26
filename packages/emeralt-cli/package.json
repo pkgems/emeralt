@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/cli",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -13,7 +13,7 @@
     "start": "nodemon build/index.js"
   },
   "dependencies": {
-    "@emeralt/server": "^0.0.12",
+    "@emeralt/server": "^0.0.13",
     "ts-node": "^7.0.1"
   }
 }
