@@ -81,6 +81,7 @@ typings/
 
 # builds
 packages/*/build/**/*
+packages/*/build
 
 # APFS cache
 .DS_Store

@@ -1,3 +1,5 @@
 export { ping } from './ping'
 export { search } from './search'
 export { packages } from './packages'
+export { login } from './login'
+export { authenticate } from './authenticate'

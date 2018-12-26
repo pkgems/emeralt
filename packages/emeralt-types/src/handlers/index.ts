@@ -7,3 +7,5 @@ export interface IHandler {
 
 export * from './ping'
 export * from './search'
+export * from './login'
+export * from './authenticate'

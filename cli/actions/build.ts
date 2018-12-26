@@ -24,38 +24,42 @@ export const build = async (
     const { input, output, cache } = getPackagePaths(pkg)
     const externals = includeDependencies ? [] : getExternals(pkg)
 
-    console.log('[build] building')
-    const { code, map, assets } = await ncc(input, {
-      cache: cache.ncc,
-      externals,
-      minify,
-      sourceMap,
-    })
+    try {
+      console.log('[build] building')
+      const { code, map, assets } = await ncc(input, {
+        cache: cache.ncc,
+        externals,
+        minify,
+        sourceMap,
+      })
 
-    console.log('[build] saving')
-    await fs.remove(output.dir)
-    await fs.mkdirp(output.dir)
+      console.log('[build] saving')
+      await fs.remove(output.dir)
+      await fs.mkdirp(output.dir)
 
-    if (code) {
-      await fs.writeFile(output.code, code)
-    }
-
-    if (map) {
-      await fs.writeFile(output.map, map)
-    }
-
-    if (assets) {
-      for (const asset in assets) {
-        const loc = asset
-          .split('/')
-          .splice(1)
-          .join('/')
-
-        await fs.mkdirp(join(output.dir, loc, '../'))
-        await fs.writeFile(join(output.dir, loc), assets[asset])
+      if (code) {
+        await fs.writeFile(output.code, code)
       }
-    }
 
-    console.log('[build] done')
+      if (map) {
+        await fs.writeFile(output.map, map)
+      }
+
+      if (assets) {
+        for (const asset in assets) {
+          const loc = asset
+            .split('/')
+            .splice(1)
+            .join('/')
+
+          await fs.mkdirp(join(output.dir, loc, '../'))
+          await fs.writeFile(join(output.dir, loc), assets[asset])
+        }
+      }
+
+      console.log('[build] done')
+    } catch (error) {
+      console.error(error)
+    }
   }
 }

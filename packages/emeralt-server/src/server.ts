@@ -1,11 +1,25 @@
-import { IEmeraltServer } from '@emeralt/types'
+import { IEmeraltServer, TEmeraltServerParams } from '@emeralt/types'
 import express from 'express'
 import http from 'http'
+import bodyParser from 'body-parser'
+import deepmerge from 'deepmerge'
 
-import { ping, search, packages } from './handlers'
+import { EmeraltAuthInMemory } from '@emeralt/auth-inmemory'
+import { ping, search, packages, login, authenticate } from './handlers'
 import { logger } from './middlewares/logger'
 
-export const createEmeraltServer: IEmeraltServer = (params) => {
+const defaultParams: TEmeraltServerParams = {
+  config: {
+    logLevel: null,
+  },
+  auth: new EmeraltAuthInMemory(),
+  storage: new class Storage {}(),
+  plugins: [],
+}
+
+export const createEmeraltServer: IEmeraltServer = (params = {}) => {
+  params = deepmerge(defaultParams, params)
+
   const server = express()
 
   // options
@@ -13,9 +27,12 @@ export const createEmeraltServer: IEmeraltServer = (params) => {
 
   // middlewares
   server.use(logger(params.config.logLevel))
+  server.use(bodyParser.json())
 
   // handlers
   server.use(ping(params))
+  server.use(login(params))
+  server.use(authenticate(params))
   server.use(search(params))
   server.use(packages(params))
 
