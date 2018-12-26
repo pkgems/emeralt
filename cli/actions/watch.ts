@@ -26,7 +26,11 @@ export const watch = async (pkg: string | void, options) => {
 
       if (!building) {
         building = true
-        await build(pkg, options)
+        try {
+          await build(pkg, options)
+        } catch (error) {
+          console.error(error)
+        }
         building = false
 
         if (buildQueued && !queued) {
