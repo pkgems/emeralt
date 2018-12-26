@@ -6,7 +6,9 @@ class Storage {}
 class Auth {}
 
 createEmeraltServer({
-  config: {},
+  config: {
+    logLevel: 'dev',
+  },
   storage: new Storage(),
   auth: new Auth(),
   plugins: [],
