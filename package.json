@@ -8,8 +8,8 @@
   },
   "scripts": {
     "build": "node ./cli/index build",
-    "test": "npx lerna run test --parallel",
-    "test:coverage": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test nyc lerna --ignore nyc exec npm test",
+    "test": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test lerna exec yarn test",
+    "test:coverage": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test nyc lerna exec yarn test",
     "clean": "git clean -dfX",
     "format": "npx prettier --ignore-path .gitignore --write './!(node_modules|build)/**/*.{ts,tsx,js,jsx}'"
   },
@@ -45,12 +45,8 @@
       ".ts",
       ".tsx"
     ],
-    "exclude": [
-      "**/*.d.ts",
-      "**/*.test.ts",
-      "coverage",
-      "build",
-      "cli"
+    "include": [
+      "packages/*/src"
     ],
     "reporters": [
       "text-lcov"

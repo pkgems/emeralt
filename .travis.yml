@@ -20,5 +20,4 @@ before_script:
   - yarn build
 script:
   - yarn test:coverage
-  
-after_success: nyc report --reporter=text-lcov | coveralls
+  - yarn nyc report --reporter=text-lcov | yarn coveralls
