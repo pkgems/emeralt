@@ -1,5 +1,5 @@
 import prog from 'commander'
-import { init, build, clean, watch } from './actions'
+import { init, build, watch } from './actions'
 
 prog
   .command('init <name> [template]')
@@ -21,10 +21,5 @@ prog
   .option('-s, --sourceMap', 'Enable sourcemap')
   .option('-i, --includeDependencies', 'Include dependencies')
   .action(watch)
-
-prog
-  .command('clean [pkg]')
-  .description('Clean a package')
-  .action(clean)
 
 prog.parse(process.argv)
