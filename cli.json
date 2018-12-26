@@ -2,6 +2,7 @@
   "exclude": ["emeralt-assets"],
   "buildOrder": [
     "emeralt-types",
+    "emeralt-auth-inmemory",
     "emeralt-server",
     "emeralt-cli"
   ]

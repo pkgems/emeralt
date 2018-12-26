@@ -17,7 +17,7 @@ const defaultParams: TEmeraltServerParams = {
   plugins: [],
 }
 
-export const createEmeraltServer: IEmeraltServer = (params = {}) => {
+export const createEmeraltServer: IEmeraltServer = (params = defaultParams) => {
   params = deepmerge(defaultParams, params)
 
   const server = express()
