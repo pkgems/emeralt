@@ -1,5 +1,5 @@
 import prog from 'commander'
-import { init, build, clean } from './actions'
+import { init, build, clean, watch } from './actions'
 
 prog
   .command('init <name> [template]')
@@ -13,6 +13,14 @@ prog
   .option('-s, --sourceMap', 'Enable sourcemap')
   .option('-i, --includeDependencies', 'Include dependencies')
   .action(build)
+
+prog
+  .command('watch [pkg]')
+  .description('Watch package')
+  .option('-m, --minify', 'Minify')
+  .option('-s, --sourceMap', 'Enable sourcemap')
+  .option('-i, --includeDependencies', 'Include dependencies')
+  .action(watch)
 
 prog
   .command('clean [pkg]')

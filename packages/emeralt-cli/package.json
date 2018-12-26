@@ -10,7 +10,7 @@
   "scripts": {
     "test": "ava test/**/*.test.ts",
     "build": "node ../../cli/index build .",
-    "start": "yarn ts-node src/index.ts"
+    "start": "nodemon build/index.js"
   },
   "dependencies": {
     "@emeralt/server": "^0.0.11",
