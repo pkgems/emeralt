@@ -1,9 +1,13 @@
-import { IHandler } from '../types'
+import {
+  IHandler,
+  RegistryPingEndpoint,
+  TRegistryPingResponseBody,
+} from '@emeralt/types'
 import { Router } from 'express'
-
-const RegistryPingEndpoint = '/-/ping'
 
 export const ping: IHandler = () =>
   Router().get(RegistryPingEndpoint, (req, res) => {
-    res.status(200).json({})
+    const response: TRegistryPingResponseBody = {}
+
+    res.status(200).json(response)
   })

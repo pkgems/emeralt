@@ -1,4 +1,4 @@
-import { IHandler } from '@/types'
+import { IHandler } from '@emeralt/types'
 import { Router } from 'express'
 
 export const getPackage: IHandler = () =>
