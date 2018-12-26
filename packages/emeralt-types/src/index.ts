@@ -4,7 +4,9 @@ export class EmeraltStorage {}
 export class EmeraltAuth {}
 export class EmeraltPlugin {}
 
-export type TEmeraltServerConfig = {}
+export type TEmeraltServerConfig = {
+  logLevel?: 'combined' | 'common' | 'dev' | 'short' | 'tiny' | 'silent'
+}
 
 export type TEmeraltServerParams = {
   config: TEmeraltServerConfig
