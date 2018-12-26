@@ -15,7 +15,7 @@
     "format": "npx prettier --ignore-path .gitignore --write './!(node_modules|build)/**/*.{ts,tsx,js,jsx}'"
   },
   "dependencies": {
-    "@zeit/ncc": "^0.7.0",
+    "@zeit/ncc": "^0.8.1",
     "commander": "^2.19.0",
     "fs-extra": "^7.0.1",
     "prettier": "^1.15.3",
