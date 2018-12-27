@@ -37,10 +37,7 @@ export class EmeraltAuthInMemory implements IEmeraltAuth {
     if (this.encrypt) {
       await Promise.all(
         Array.from(this.users).map(async ([username, password]) => {
-          this.users.set(
-            username,
-            await this.crypto.encrypt(password),
-          )
+          this.users.set(username, await this.crypto.hash(password))
         }),
       )
     }
@@ -54,7 +51,7 @@ export class EmeraltAuthInMemory implements IEmeraltAuth {
     if (
       userPassword &&
       (this.encrypt
-        ? await this.crypto.compare(userPassword, password)
+        ? await this.crypto.compare(password, userPassword)
         : userPassword === password)
     ) {
       return jwt.sign({ username }, this.secret)
@@ -67,7 +64,7 @@ export class EmeraltAuthInMemory implements IEmeraltAuth {
     if (!this.users.get(username)) {
       this.users.set(
         username,
-        this.encrypt ? await this.crypto.encrypt(password) : password,
+        this.encrypt ? await this.crypto.hash(password) : password,
       )
 
       return true

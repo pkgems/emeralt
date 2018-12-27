@@ -1,11 +1,11 @@
 import test from 'ava'
-import { encrypt, compare } from '../src/crypto'
+import { hash, compare } from '../src/crypto'
 
-test('encrypt and compare', async (t) => {
-  const testString = 'test-string'
+test('hash and compare', async (t) => {
+  const rawString = 'test-string'
 
-  const hash = await encrypt(testString)
+  const hashedString = await hash(rawString)
 
-  t.true(await compare(hash, testString))
-  t.false(await compare(hash, 'false-test-string'))
+  t.true(await compare(rawString, hashedString))
+  t.false(await compare('false-test-string', hashedString))
 })
