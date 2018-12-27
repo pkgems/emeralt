@@ -1,22 +1,25 @@
 import { Router } from 'express'
 import {
   IHandler,
-  RegistryAuthorizeEndpoint,
-  RegistryAuthorizeBody,
-  RegistryAuthorizeResponseBody,
+  RegistryAuthenticateEndpoint,
+  RegistryAuthenticateBody,
+  RegistryAuthenticateResponseBody,
 } from '@emeralt/types'
 
 export const authenticate: IHandler = ({ auth }) =>
-  Router().put(RegistryAuthorizeEndpoint, async (req, res, next) => {
-    const body: RegistryAuthorizeBody = req.body
+  Router().put(
+    RegistryAuthenticateEndpoint,
+    async (req, res, next) => {
+      const body: RegistryAuthenticateBody = req.body
 
-    const token = await auth.authenticate(body.name, body.password)
+      const token = await auth.authenticate(body.name, body.password)
 
-    const response: RegistryAuthorizeResponseBody = {
-      ok: !!token,
-      id: body.name,
-      token,
-    }
+      const response: RegistryAuthenticateResponseBody = {
+        ok: !!token,
+        id: body.name,
+        token: token,
+      }
 
-    res.status(response.ok ? 200 : 401).json(response)
-  })
+      res.status(response.ok ? 200 : 401).json(response)
+    },
+  )

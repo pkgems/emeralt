@@ -1,16 +1,10 @@
-export class EmeraltAuth {
-  async authenticate(
+export interface EmeraltAuth {
+  authenticate(
     username: string,
     password: string,
-  ): Promise<string | void> {
-    return null
-  }
+  ): Promise<string | void>
 
-  async addUser(username: string, password: string): Promise<boolean> {
-    return false
-  }
+  addUser(username: string, password: string): Promise<boolean>
 
-  async removeUser(username: string, password: string): Promise<boolean> {
-    return false
-  }
+  removeUser(username: string, password: string): Promise<boolean>
 }

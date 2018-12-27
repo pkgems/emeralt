@@ -5,7 +5,9 @@ export const getAddress = (server: Server) => {
   const addr = server.address() as AddressInfo
 
   if (!addr) {
-    throw new Error('Unable to get server address. Did you call .listen()?')
+    throw new Error(
+      'Unable to get server address. Did you call .listen()?',
+    )
   }
 
   return `http://localhost:${addr.port}`

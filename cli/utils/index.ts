@@ -7,4 +7,6 @@ export { getRootDir } from './get-root-dir'
 export { getGitignore } from './get-gitignore'
 export { getCliConfig } from './get-cli-config'
 
-export { sortPackagesByBuildOrder } from './sort-packages-by-build-order'
+export {
+  sortPackagesByBuildOrder,
+} from './sort-packages-by-build-order'

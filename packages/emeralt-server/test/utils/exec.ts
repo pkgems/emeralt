@@ -17,8 +17,14 @@ export const exec = (
       code: null,
     }
 
-    proc.stdout.on('data', (data) => (result.stdout += data.toString()))
-    proc.stderr.on('data', (data) => (result.stderr += data.toString()))
+    proc.stdout.on(
+      'data',
+      (data) => (result.stdout += data.toString()),
+    )
+    proc.stderr.on(
+      'data',
+      (data) => (result.stderr += data.toString()),
+    )
 
     proc.on('close', (code) =>
       resolve({

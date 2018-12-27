@@ -11,10 +11,13 @@ export const watch = async (pkg: string | void, options) => {
     persistent: true,
     atomic: true,
     ignored: [
-      ...(await readFile(`${getRootDir()}/.gitignore`, 'utf8')).split('\n'),
+      ...(await readFile(`${getRootDir()}/.gitignore`, 'utf8')).split(
+        '\n',
+      ),
       'cli',
+      'packages/*/test/**/*',
     ],
-    interval: 100,
+    interval: 500,
   })
 
   const createBuilder = () => {

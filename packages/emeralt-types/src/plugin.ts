@@ -1,1 +1,1 @@
-export class EmeraltPlugin {}
+export interface EmeraltPlugin {}

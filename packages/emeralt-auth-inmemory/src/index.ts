@@ -2,18 +2,19 @@ import { EmeraltAuth } from '@emeralt/types'
 import jwt from 'jsonwebtoken'
 
 // TODO: encrypt passwords
-export class EmeraltAuthInMemory extends EmeraltAuth {
+export class EmeraltAuthInMemory implements EmeraltAuth {
   public secret = 'secret'
   public users: Map<string, string>
 
   constructor() {
-    super()
-
     this.users = new Map()
   }
 
   async authenticate(username: string, password: string) {
-    if (this.users.has(username) && this.users.get(username) === password) {
+    if (
+      this.users.has(username) &&
+      this.users.get(username) === password
+    ) {
       return jwt.sign({ username }, this.secret)
     } else {
       return null

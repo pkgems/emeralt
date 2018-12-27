@@ -1,12 +1,12 @@
-export const RegistryAuthorizeEndpoint = '/-/user/:user'
+export const RegistryAuthenticateEndpoint = '/-/user/:user'
 
-export type RegistryAuthorizeQuery = {}
+export type RegistryAuthenticateQuery = {}
 
-export type RegistryAuthorizeParams = {
+export type RegistryAuthenticateParams = {
   user: string
 }
 
-export type RegistryAuthorizeBody = {
+export type RegistryAuthenticateBody = {
   _id: string
   name: string
   password: string
@@ -16,7 +16,7 @@ export type RegistryAuthorizeBody = {
   date: string
 }
 
-export type RegistryAuthorizeResponseBody = {
+export type RegistryAuthenticateResponseBody = {
   ok: boolean
   id: string
   rev?: string

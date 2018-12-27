@@ -1,1 +1,1 @@
-export class EmeraltStorage {}
+export interface EmeraltStorage {}

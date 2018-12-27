@@ -11,7 +11,11 @@ import {
 
 export const build = async (
   pkg: string | void,
-  { minify = false, sourceMap = false, includeDependencies = false } = {},
+  {
+    minify = false,
+    sourceMap = false,
+    includeDependencies = false,
+  } = {},
 ) => {
   const config = await getCliConfig()
   const pkgs = sortPackagesByBuildOrder(

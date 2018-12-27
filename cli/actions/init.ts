@@ -4,7 +4,10 @@ import { execSync } from 'child_process'
 import replace from 'replace-in-file'
 import { getRootDir } from '../utils'
 
-export const init = async (name: string, template: string = 'package') => {
+export const init = async (
+  name: string,
+  template: string = 'package',
+) => {
   const rootDir = getRootDir()
   const templatePath = join(rootDir, 'cli', 'templates', template)
   const packagePath = join(rootDir, 'packages', `emeralt-${name}`)

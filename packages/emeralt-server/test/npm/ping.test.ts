@@ -1,9 +1,9 @@
 import test from 'ava'
-import { createEmeraltServer } from '@/index'
 import { exec, getAddress } from '../utils'
+import { createEmeraltServerMock } from 'test/fixtures'
 
 test('ping', async (t) => {
-  const server = createEmeraltServer().listen()
+  const { server } = createEmeraltServerMock()
 
   const ping = await exec(`npm ping --registry ${getAddress(server)}`)
 

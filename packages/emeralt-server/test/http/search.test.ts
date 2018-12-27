@@ -1,14 +1,16 @@
 import test from 'ava'
 import supertest from 'supertest'
-import { createEmeraltServer } from '@/index'
+import { RegistrySearchEndpoint } from '@emeralt/types'
+import { createEmeraltServerMock } from 'test/fixtures'
 
 test('search', async (t) => {
-  const server = createEmeraltServer()
+  const { server } = createEmeraltServerMock()
 
-  const { body } = await supertest(server)
-    .get('/-/v1/search')
-    .expect(200)
+  const { status, body } = await supertest(server).get(
+    RegistrySearchEndpoint,
+  )
 
+  t.is(status, 200)
   t.deepEqual(body, {
     objects: [],
     total: 0,

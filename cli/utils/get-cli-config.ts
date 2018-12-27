@@ -18,7 +18,9 @@ const defaultConfig: TConfig = {
   },
 }
 
-export const getCliConfig = async (pkg = process.cwd()): Promise<TConfig> => {
+export const getCliConfig = async (
+  pkg = process.cwd(),
+): Promise<TConfig> => {
   const configPath = join(pkg, 'cli.json')
 
   const config = (await pathExists(configPath))
