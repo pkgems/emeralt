@@ -1,3 +1,3 @@
-import { EmeraltStorage } from '@emeralt/types'
+import { IEmeraltStorage } from '@emeralt/types'
 
-export class MockStorage implements EmeraltStorage {}
+export class MockStorage implements IEmeraltStorage {}

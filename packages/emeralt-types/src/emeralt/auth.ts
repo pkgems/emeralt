@@ -1,4 +1,4 @@
-export interface EmeraltAuth {
+export interface IEmeraltAuth {
   authenticate(
     username: string,
     password: string,

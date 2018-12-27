@@ -1,4 +1,4 @@
-import { EmeraltAuth } from '@emeralt/types'
+import { IEmeraltAuth } from '@emeralt/types'
 import jwt from 'jsonwebtoken'
 
 type TEmeraltAuthInMemoryParams = {
@@ -9,7 +9,7 @@ type TEmeraltAuthInMemoryParams = {
 
 // TODO: Refactor
 const mergeWithDefaultParams = (
-  params: TEmeraltAuthInMemoryParams,
+  params: TEmeraltAuthInMemoryParams = {},
 ) => ({
   users: new Map(params.users || []),
   secret: params.secret || 'secret',
@@ -18,7 +18,7 @@ const mergeWithDefaultParams = (
 })
 
 // TODO: encrypt passwords
-export class EmeraltAuthInMemory implements EmeraltAuth {
+export class EmeraltAuthInMemory implements IEmeraltAuth {
   private crypto?: any
 
   public secret: string

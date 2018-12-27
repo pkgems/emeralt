@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { TEmeraltServerParams } from '../server'
+import { TEmeraltServerParams } from '../../'
 
 export interface IHandler {
   (params: TEmeraltServerParams): Router

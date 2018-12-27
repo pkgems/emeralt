@@ -1,12 +1,12 @@
 import {
-  IHandler,
+  IEmeraltServerHandler,
   RegistrySearchEndpoint,
   TRegistrySearchQuery,
   TRegistrySearchResponseBody,
 } from '@emeralt/types'
 import { Router } from 'express'
 
-export const search: IHandler = () =>
+export const search: IEmeraltServerHandler = () =>
   Router().get(RegistrySearchEndpoint, (req, res) => {
     const query: TRegistrySearchQuery = req.query
 

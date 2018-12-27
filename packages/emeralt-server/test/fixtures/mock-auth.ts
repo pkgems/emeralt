@@ -1,7 +1,7 @@
-import { EmeraltAuth } from '@emeralt/types'
+import { IEmeraltAuth } from '@emeralt/types'
 import sinon from 'sinon'
 
-export class MockAuth implements EmeraltAuth {
+export class MockAuth implements IEmeraltAuth {
   authenticate = sinon.fake(async (username, password) => {
     return null
   })

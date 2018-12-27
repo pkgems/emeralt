@@ -1,7 +1,6 @@
-import { EmeraltStorage } from './storage'
-import { EmeraltAuth } from './auth'
-import { EmeraltPlugin } from './plugin'
+import { IEmeraltAuth, IEmeraltStorage, IEmeraltPlugin } from '../'
 import { Server } from 'http'
+import { Router } from 'express'
 
 export type TEmeraltServerConfig = {
   logLevel?:
@@ -15,11 +14,15 @@ export type TEmeraltServerConfig = {
 
 export type TEmeraltServerParams = {
   config: TEmeraltServerConfig
-  storage: EmeraltStorage
-  auth: EmeraltAuth
-  plugins: EmeraltPlugin[]
+  storage: IEmeraltStorage
+  auth: IEmeraltAuth
+  plugins: IEmeraltPlugin[]
 }
 
 export interface IEmeraltServer {
   (params: TEmeraltServerParams): Server
+}
+
+export interface IEmeraltServerHandler {
+  (params: TEmeraltServerParams): Router
 }

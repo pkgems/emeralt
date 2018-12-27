@@ -1,6 +1,6 @@
 export const RegistryLoginEndpoint = '/-/v1/login'
 
-export type RegistryLoginBody = {
+export type TRegistryLoginRequestBody = {
   hostname: string
 }
 
