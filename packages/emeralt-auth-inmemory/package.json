@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emeralt/types": "^0.0.14",
+    "argon2": "^0.20.0",
     "jsonwebtoken": "^8.4.0"
   },
   "devDependencies": {
