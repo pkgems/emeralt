@@ -9,12 +9,10 @@
     "build": "node ../../cli/index build ."
   },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^8.4.0"
   },
   "devDependencies": {
     "@emeralt/types": "^0.0.14",
-    "@types/bcryptjs": "^2.4.2",
     "@types/jsonwebtoken": "^8.3.0"
   }
 }

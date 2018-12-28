@@ -1,59 +1,35 @@
 import { IEmeraltAuth } from '@emeralt/types'
 import jwt from 'jsonwebtoken'
 
-type TEmeraltAuthInMemoryParams = {
-  users?: Map<string, string>
-  secret?: string
-  encrypt?: boolean
+const base64 = {
+  encode: (str) => Buffer.from(str).toString('base64'),
+  decode: (str) => Buffer.from(str, 'base64').toString('ascii'),
 }
 
-// TODO: Refactor
-const mergeWithDefaultParams = (
-  params: TEmeraltAuthInMemoryParams = {},
-) => ({
-  users: new Map(params.users || []),
-  secret: params.secret || 'secret',
-  encrypt:
-    typeof params.encrypt === 'boolean' ? params.encrypt : true,
-})
+type TEmeraltAuthInMemoryParams = {
+  secret?: string
+  users?: {
+    [username: string]: string
+  }
+}
 
-// TODO: encrypt passwords
 export class EmeraltAuthInMemory implements IEmeraltAuth {
-  private crypto?: any
-
   public secret: string
   public users: Map<string, string>
-  public encrypt: boolean
 
-  constructor(params?: TEmeraltAuthInMemoryParams) {
-    Object.assign(this, mergeWithDefaultParams(params))
+  constructor({ secret, users }: TEmeraltAuthInMemoryParams = {}) {
+    this.secret = secret || 'secret'
+    this.users = new Map()
 
-    if (this.encrypt) {
-      this.crypto = require('./crypto')
+    for (const username in users) {
+      this.users.set(username, base64.encode(users[username]))
     }
-  }
-
-  async initialize() {
-    if (this.encrypt) {
-      await Promise.all(
-        Array.from(this.users).map(async ([username, password]) => {
-          this.users.set(username, await this.crypto.hash(password))
-        }),
-      )
-    }
-
-    return this
   }
 
   async authenticate(username: string, password: string) {
     const userPassword = this.users.get(username)
 
-    if (
-      userPassword &&
-      (this.encrypt
-        ? await this.crypto.compare(password, userPassword)
-        : userPassword === password)
-    ) {
+    if (userPassword && base64.decode(userPassword) === password) {
       return jwt.sign({ username }, this.secret)
     } else {
       return null
@@ -62,10 +38,7 @@ export class EmeraltAuthInMemory implements IEmeraltAuth {
 
   async addUser(username: string, password: string) {
     if (!this.users.get(username)) {
-      this.users.set(
-        username,
-        this.encrypt ? await this.crypto.hash(password) : password,
-      )
+      this.users.set(username, base64.encode(password))
 
       return true
     } else {
