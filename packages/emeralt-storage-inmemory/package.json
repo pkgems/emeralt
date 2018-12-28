@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/storage-inmemory",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -12,6 +12,6 @@
     "build": "node ../../cli/index build ."
   },
   "devDependencies": {
-    "@emeralt/types": "^0.0.14"
+    "@emeralt/types": "^0.0.15"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/server",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -13,12 +13,12 @@
     "build": "node ../../cli/index build ."
   },
   "devDependencies": {
-    "@emeralt/types": "^0.0.14",
+    "@emeralt/types": "^0.0.15",
     "@types/body-parser": "^1.17.0",
     "@types/express": "^4.16.0"
   },
   "dependencies": {
-    "@emeralt/auth-inmemory": "^0.0.14",
+    "@emeralt/auth-inmemory": "^0.0.15",
     "body-parser": "^1.18.3",
     "deepmerge": "^3.0.0",
     "express": "^4.16.4",

@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/auth-inmemory",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -15,7 +15,7 @@
     "jsonwebtoken": "^8.4.0"
   },
   "devDependencies": {
-    "@emeralt/types": "^0.0.14",
+    "@emeralt/types": "^0.0.15",
     "@types/jsonwebtoken": "^8.3.0"
   }
 }
