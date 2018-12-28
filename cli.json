@@ -3,6 +3,7 @@
   "buildOrder": [
     "emeralt-types",
     "emeralt-auth-inmemory",
+    "emeralt-storage-inmemory",
     "emeralt-server",
     "emeralt-cli"
   ]

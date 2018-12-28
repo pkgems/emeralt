@@ -38,8 +38,11 @@ export const build = async (
       })
 
       console.log('[build] saving')
-      await fs.remove(output.dir)
-      await fs.mkdirp(output.dir)
+
+      // await fs.remove(output.dir)
+      if (!(await fs.pathExists(output.dir))) {
+        await fs.mkdirp(output.dir)
+      }
 
       if (code) {
         await fs.writeFile(output.code, code)
@@ -51,13 +54,13 @@ export const build = async (
 
       if (assets) {
         for (const asset in assets) {
-          const loc = asset
-            .split('/')
-            .splice(1)
-            .join('/')
+          const dir = join(output.dir, asset, '../')
+          const file = join(output.dir, asset)
 
-          await fs.mkdirp(join(output.dir, loc, '../'))
-          await fs.writeFile(join(output.dir, loc), assets[asset])
+          if (!(await fs.pathExists(dir))) {
+            await fs.mkdirp(dir)
+          }
+          await fs.writeFile(file, assets[asset])
         }
       }
 

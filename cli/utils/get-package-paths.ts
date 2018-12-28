@@ -12,7 +12,7 @@ export const getPackagePaths = (cwd = process.cwd()) => ({
   },
   cache: {
     root: join(cwd, '.cache'),
-    ncc: false && join(cwd, '.cache/ncc'),
+    ncc: join(cwd, '.cache/ncc'),
   },
   node_modules: join(cwd, 'node_modules'),
 })
