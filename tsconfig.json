@@ -10,5 +10,5 @@
 
     "declaration": true
   },
-  "exclude": ["./cli/templates"]
+  "exclude": ["./cli/templates", "test/**/*", "packages/*/test/**/*"]
 }
