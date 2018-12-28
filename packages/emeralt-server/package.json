@@ -5,6 +5,9 @@
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "ava test/**/*.test.ts",
     "build": "node ../../cli/index build ."

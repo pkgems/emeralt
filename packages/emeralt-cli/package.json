@@ -4,6 +4,9 @@
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "emeralt": "./build/index.js"
   },
