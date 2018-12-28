@@ -17,7 +17,7 @@ export const watch = async (pkg: string | void, options) => {
       'cli',
       'packages/*/test/**/*',
     ],
-    interval: 500,
+    interval: 100,
   })
 
   const createBuilder = () => {
