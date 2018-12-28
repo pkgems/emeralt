@@ -13,25 +13,33 @@ notifications:
     - https://coveralls.io/webhook
 
 language: node_js
-node_js:
-  # - "6"
-  - "8"
-  - "10"
-  - "node"
-
 cache: yarn
 
-before_script:
-  - yarn build
-script:
-  - yarn test:coverage
-  - yarn nyc report --reporter=text-lcov | yarn coveralls
+jobs:
+  include:
+    - stage: build
+      node_js: "10"
+      script: yarn build
 
-before_deploy:
-  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
-deploy:
-  provider: script
-  script: "lerna publish -y from-package"
-  skip_cleanup: true
-  on:
-    tags: true
+    - stage: test
+      node_js:
+        - "6"
+        - "8"
+        - "10"
+        - "node"
+      script:
+        - yarn test:coverage
+        - yarn nyc report --reporter=text-lcov | yarn coveralls
+
+    - stage: npm release
+      node_js: "10"
+      script: echo "Deploying to npm ..."
+      before_deploy:
+        - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
+      deploy:
+        provider: script
+        script: "lerna publish -y from-package"
+        skip_cleanup: true
+        on:
+          tags: true
+
