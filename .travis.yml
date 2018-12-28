@@ -22,14 +22,12 @@ jobs:
       script: yarn build
 
     - stage: test
-      node_js:
-        # - "6"
-        - "8"
-        - "10"
-        - "node"
+      node_js: "8"
       script:
         - yarn test:coverage
         - yarn nyc report --reporter=text-lcov | yarn coveralls
+    - node_js: "10"
+    - node_js: "node"
 
     - stage: npm release
       node_js: "10"
