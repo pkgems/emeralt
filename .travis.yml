@@ -23,7 +23,7 @@ jobs:
 
     - stage: test
       node_js:
-        - "6"
+        # - "6"
         - "8"
         - "10"
         - "node"
