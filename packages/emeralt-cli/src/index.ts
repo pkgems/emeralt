@@ -3,12 +3,13 @@
 import chalk from 'chalk'
 import { createEmeraltServer } from '@emeralt/server'
 import { EmeraltAuthInMemory } from '@emeralt/auth-inmemory'
+import { EmeraltStorageInMemory } from '@emeralt/storage-inmemory'
 
 createEmeraltServer({
   config: {
     logLevel: 'dev',
   },
-  storage: new class Storage {}(),
+  storage: new EmeraltStorageInMemory(),
   auth: new EmeraltAuthInMemory({
     users: {
       emeralt: 'emeralt',
