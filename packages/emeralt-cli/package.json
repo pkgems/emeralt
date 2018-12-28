@@ -15,6 +15,7 @@
   "dependencies": {
     "@emeralt/auth-inmemory": "^0.0.14",
     "@emeralt/server": "^0.0.14",
+    "chalk": "^2.4.1",
     "ts-node": "^7.0.1"
   }
 }
