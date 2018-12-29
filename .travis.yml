@@ -26,12 +26,3 @@ before_script:
 script:
   - yarn test:coverage
   - yarn nyc report --reporter=text-lcov | yarn coveralls
-
-before_deploy:
-  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
-deploy:
-  provider: script
-  script: "lerna publish -y from-package"
-  skip_cleanup: true
-  on:
-    tags: true
