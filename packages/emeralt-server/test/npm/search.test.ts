@@ -1,9 +1,9 @@
 import test from 'ava'
-import { exec, getAddress } from '../utils'
-import { createEmeraltServerMock } from 'test/fixtures'
+import { exec, getAddress } from '@test/utils'
+import { createMockServer } from '@test/mocks'
 
 test('search', async (t) => {
-  const { server } = createEmeraltServerMock()
+  const { server } = createMockServer()
 
   const search = await exec(
     `npm search react --registry ${getAddress(server)}`,

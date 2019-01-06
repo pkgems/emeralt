@@ -1,12 +1,10 @@
 import test from 'ava'
 import supertest from 'supertest'
-import {
-  authenticateFixtures,
-  createEmeraltServerMock,
-} from '../fixtures'
+import { authenticateFixtures } from '@test/fixtures'
+import { createMockServer } from '@test/mocks'
 
 test('authenticate', async (t) => {
-  const { server, auth } = createEmeraltServerMock()
+  const { server, auth } = createMockServer()
 
   for (const { request, response } of authenticateFixtures) {
     const { status, body } = await supertest(server)
@@ -15,13 +13,5 @@ test('authenticate', async (t) => {
 
     t.is(status, response.status)
     t.deepEqual(body, response.body)
-
-    t.true(auth.authenticate.calledOnce)
-    t.true(
-      auth.authenticate.calledWith(
-        request.body.name,
-        request.body.password,
-      ),
-    )
   }
 })

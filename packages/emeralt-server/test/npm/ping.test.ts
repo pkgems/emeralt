@@ -1,9 +1,9 @@
 import test from 'ava'
-import { exec, getAddress } from '../utils'
-import { createEmeraltServerMock } from 'test/fixtures'
+import { exec, getAddress } from '@test/utils'
+import { createMockServer } from '@test/mocks'
 
 test('ping', async (t) => {
-  const { server } = createEmeraltServerMock()
+  const { server } = createMockServer()
 
   const ping = await exec(`npm ping --registry ${getAddress(server)}`)
 

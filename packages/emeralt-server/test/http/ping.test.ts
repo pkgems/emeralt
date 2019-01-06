@@ -1,10 +1,10 @@
 import test from 'ava'
 import supertest from 'supertest'
 import { RegistryPingEndpoint } from '@emeralt/types'
-import { createEmeraltServerMock } from 'test/fixtures'
+import { createMockServer } from '@test/mocks'
 
 test('ping', async (t) => {
-  const { server } = createEmeraltServerMock()
+  const { server } = createMockServer()
 
   const { status, body } = await supertest(server).get(
     RegistryPingEndpoint,

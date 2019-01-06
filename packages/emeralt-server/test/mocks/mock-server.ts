@@ -1,10 +1,10 @@
 import { createEmeraltServer } from '@/server'
-import { MockStorage } from './mock-storage'
-import { MockAuth } from './mock-auth'
+import { EmeraltAuthInMemory } from '@emeralt/auth-inmemory'
+import { EmeraltStorageInMemory } from '@emeralt/storage-inmemory'
 
-export const createEmeraltServerMock = () => {
-  const auth = new MockAuth()
-  const storage = new MockStorage()
+export const createMockServer = () => {
+  const auth = new EmeraltAuthInMemory()
+  const storage = new EmeraltStorageInMemory()
   const plugins = []
 
   return {
