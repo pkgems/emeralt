@@ -6,18 +6,15 @@ const base64 = {
 }
 
 type TEmeraltAuthInMemoryParams = {
-  secret?: string
   users?: {
     [username: string]: string
   }
 }
 
 export class EmeraltAuthInMemory implements IEmeraltAuth {
-  public secret: string
   public users: Map<string, string>
 
-  constructor({ secret, users }: TEmeraltAuthInMemoryParams = {}) {
-    this.secret = secret || 'secret'
+  constructor({ users }: TEmeraltAuthInMemoryParams = {}) {
     this.users = new Map()
 
     for (const username in users) {
