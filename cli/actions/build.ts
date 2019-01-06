@@ -13,7 +13,7 @@ export const build = async (
   pkg: string | void,
   {
     minify = false,
-    sourceMap = false,
+    sourceMap = true,
     includeDependencies = false,
   } = {},
 ) => {
@@ -54,13 +54,20 @@ export const build = async (
 
       if (assets) {
         for (const asset in assets) {
-          const dir = join(output.dir, asset, '../')
-          const file = join(output.dir, asset)
+          if (asset.split('/')[0] !== 'test') {
+            const loc = asset
+              .split('/')
+              .splice(1)
+              .join('/')
 
-          if (!(await fs.pathExists(dir))) {
-            await fs.mkdirp(dir)
+            const dir = join(output.dir, loc, '../')
+            const file = join(output.dir, loc)
+
+            if (!(await fs.pathExists(dir))) {
+              await fs.mkdirp(dir)
+            }
+            await fs.writeFile(file, assets[asset])
           }
-          await fs.writeFile(file, assets[asset])
         }
       }
 
