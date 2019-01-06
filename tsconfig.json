@@ -4,11 +4,13 @@
     "types": ["node"],
     "lib": ["esnext"],
 
+    "module": "commonjs",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
 
-    "declaration": true
+    "declaration": true,
+    "declarationMap": true
   },
-  "exclude": ["./cli/templates"]
+  "exclude": ["./cli/templates", "./packages/*/build", "./packages/*/test"]
 }

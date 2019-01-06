@@ -3,20 +3,15 @@
   "version": "0.0.15",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./build/server.js",
+  "module": "./build/server.mjs",
+  "source": "./src/index.ts",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "test": "ava test/**/*.test.ts",
-    "build": "node ../../cli/index build ."
-  },
-  "devDependencies": {
-    "@emeralt/types": "^0.0.15",
-    "@types/body-parser": "^1.17.0",
-    "@types/express": "^4.16.0",
-    "path-to-regexp": "^2.4.0"
+    "build": "bundler build"
   },
   "dependencies": {
     "@emeralt/auth-inmemory": "^0.0.15",
@@ -24,5 +19,12 @@
     "deepmerge": "^3.0.0",
     "express": "^4.16.4",
     "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "@emeralt/types": "^0.0.15",
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.16.0",
+    "path-to-regexp": "^2.4.0",
+    "@emeralt/bundler": "^0.0.15"
   }
 }

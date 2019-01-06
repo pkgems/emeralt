@@ -11,8 +11,8 @@ export const getPackagePaths = (cwd = process.cwd()) => ({
     coverage: join(cwd, '.nyc_output'),
   },
   cache: {
-    root: join(cwd, '.cache'),
-    ncc: false && join(cwd, '.cache/ncc'),
+    root: join(cwd, 'node_modules/.cache'),
+    ncc: join(cwd, 'node_modules/.cache/ncc'),
   },
   node_modules: join(cwd, 'node_modules'),
 })

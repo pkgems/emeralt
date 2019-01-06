@@ -1,0 +1,29 @@
+{
+  "name": "@emeralt/bundler",
+  "version": "0.0.15",
+  "author": "stackdumper <stackdumper@gmail.com>",
+  "license": "MIT",
+  "main": "./build/bundler.js",
+  "module": "./build/bundler.mjs",
+  "source": "./src/index.ts",
+  "preferGlobal": true,
+  "bin": {
+    "bundler": "./src/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "exit 0;",
+    "build": "bundler build"
+  },
+  "dependencies": {
+    "@zeit/ncc": "^0.8.1",
+    "commander": "^2.19.0",
+    "fs-extra": "^7.0.1",
+    "microbundle": "^0.9.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.4"
+  }
+}

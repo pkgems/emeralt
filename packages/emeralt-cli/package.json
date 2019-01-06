@@ -3,7 +3,9 @@
   "version": "0.0.15",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
-  "main": "./build/index.js",
+  "main": "./build/cli.js",
+  "module": "./build/cli.mjs",
+  "source": "./src/cli.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -12,8 +14,7 @@
   },
   "scripts": {
     "test": "ava test/**/*.test.ts",
-    "build": "node ../../cli/index build .",
-    "start": "nodemon build/index.js"
+    "build": "bundler build"
   },
   "dependencies": {
     "@emeralt/auth-inmemory": "^0.0.15",
@@ -21,5 +22,8 @@
     "@emeralt/storage-inmemory": "^0.0.15",
     "chalk": "^2.4.1",
     "ts-node": "^7.0.1"
+  },
+  "devDependencies": {
+    "@emeralt/bundler": "^0.0.15"
   }
 }

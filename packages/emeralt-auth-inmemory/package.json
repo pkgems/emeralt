@@ -3,19 +3,22 @@
   "version": "0.0.15",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
-  "main": "./build/index.js",
+  "main": "./build/auth-inmemory.js",
+  "module": "./build/auth-inmemory.mjs",
+  "source": "./src/index.ts",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "test": "ava test/**/*.test.ts",
-    "build": "node ../../cli/index build ."
+    "build": "bundler build"
   },
   "dependencies": {
     "jsonwebtoken": "^8.4.0"
   },
   "devDependencies": {
     "@emeralt/types": "^0.0.15",
-    "@types/jsonwebtoken": "^8.3.0"
+    "@types/jsonwebtoken": "^8.3.0",
+    "@emeralt/bundler": "^0.0.15"
   }
 }

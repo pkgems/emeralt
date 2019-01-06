@@ -7,8 +7,8 @@
     "emeralt": "./build/index.js"
   },
   "scripts": {
-    "build": "node ./cli/index build",
-    "watch": "node ./cli/index watch",
+    "build": "lerna run build",
+    "watch": "exit 0",
     "start": "lerna run start --stream --parallel",
     "test": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test lerna exec yarn test",
     "test:coverage": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test nyc lerna exec yarn test",
@@ -16,11 +16,7 @@
     "format": "npx prettier --ignore-path .gitignore --write './!(node_modules|build)/**/*.{ts,tsx,js,jsx}'"
   },
   "dependencies": {
-    "@zeit/ncc": "^0.8.1",
-    "commander": "^2.19.0",
-    "fs-extra": "^7.0.1",
     "prettier": "^1.15.3",
-    "replace-in-file": "^3.4.2",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2"
   },
@@ -41,7 +37,7 @@
     "dts-generator": "^2.1.0",
     "fast-glob": "^2.2.4",
     "husky": "^1.2.1",
-    "lerna": "^3.8.0",
+    "lerna": "^3.8.5",
     "nodemon": "^1.18.9",
     "nyc": "^13.1.0",
     "sinon": "^7.2.2",

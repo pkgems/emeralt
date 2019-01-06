@@ -3,15 +3,18 @@
   "version": "0.0.15",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
-  "main": "./build/index.js",
+  "main": "./build/storage-inmemory.js",
+  "module": "./build/storage-inmemory.mjs",
+  "source": "./src/index.ts",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "test": "ava test/**/*.test.ts",
-    "build": "node ../../cli/index build ."
+    "build": "bundler build"
   },
   "devDependencies": {
-    "@emeralt/types": "^0.0.15"
+    "@emeralt/types": "^0.0.15",
+    "@emeralt/bundler": "^0.0.15"
   }
 }
