@@ -54,7 +54,8 @@
       "packages/*/src"
     ],
     "exclude": [
-      "packages/emeralt-types"
+      "packages/emeralt-types",
+      "packages/emeralt-bundler"
     ],
     "reporters": [
       "text-lcov"
