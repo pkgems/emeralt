@@ -33,19 +33,19 @@ yarn global add @emeralt/cli
 ## Monorepo
 
 #### Core
-- **[`@emeralt/cli`](./packages/emeralt-cli)**
-- **[`@emeralt/server`](./packages/emeralt-server)**
-- **[`@emeralt/types`](./packages/emeralt-types)**
+- [`@emeralt/cli`](./packages/emeralt-cli)
+- [`@emeralt/server`](./packages/emeralt-server)
+- [`@emeralt/types`](./packages/emeralt-types)
 
 #### Auth Plugins
-- **[`@emeralt/auth-inmemory`](./packages/emeralt-auth-inmemory)**
+- [`@emeralt/auth-inmemory`](./packages/emeralt-auth-inmemory)
 
 #### Storage Plugins
-- **[`@emeralt/storage-inmemory`](./packages/emeralt-storage-inmemory)**
+- [`@emeralt/storage-inmemory`](./packages/emeralt-storage-inmemory)
   
 #### Other
-- **[`@emeralt/bundler`](./packages/emeralt-bundler)**
-- **[`@emeralt/assets`](./packages/emeralt-assets)**
+- [`@emeralt/bundler`](./packages/emeralt-bundler)
+- [`@emeralt/assets`](./packages/emeralt-assets)
 
 ## License
 
