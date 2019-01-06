@@ -1,15 +1,10 @@
-import {
-  IEmeraltServerHandler,
-  RegistryLoginEndpoint,
-  TRegistryLoginResponseBody,
-} from '@emeralt/types'
+import { IEmeraltServerHandler } from '@emeralt/types'
+import { endpoints } from '@/constants'
 import { Router } from 'express'
 
 export const login: IEmeraltServerHandler = () =>
-  Router().post(RegistryLoginEndpoint, (req, res) => {
-    const response: TRegistryLoginResponseBody = {
+  Router().post(endpoints.login, (req, res) => {
+    res.status(401).json({
       error: '',
-    }
-
-    res.status(401).json(response)
+    })
   })

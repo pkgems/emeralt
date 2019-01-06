@@ -1,13 +1,8 @@
-import {
-  IEmeraltServerHandler,
-  RegistryPingEndpoint,
-  TRegistryPingResponseBody,
-} from '@emeralt/types'
+import { IEmeraltServerHandler } from '@emeralt/types'
+import { endpoints } from '@/constants'
 import { Router } from 'express'
 
 export const ping: IEmeraltServerHandler = () =>
-  Router().get(RegistryPingEndpoint, (req, res) => {
-    const response: TRegistryPingResponseBody = {}
-
-    res.status(200).json(response)
+  Router().get(endpoints.ping, (req, res) => {
+    res.status(200).json({})
   })

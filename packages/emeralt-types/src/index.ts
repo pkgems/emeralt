@@ -15,24 +15,4 @@ export {
   TPackage,
   TDist,
   TVersion,
-} from './npm/entities'
-
-export {
-  // ping
-  RegistryPingEndpoint,
-  TRegistryPingResponseBody,
-  // search
-  RegistrySearchEndpoint,
-  TRegistrySearchQuery,
-  TRegistrySearchResponseBody,
-  // login
-  RegistryLoginEndpoint,
-  TRegistryLoginRequestBody,
-  TRegistryLoginResponseBody,
-  // authenticate
-  RegistryAuthenticateEndpoint,
-  TRegistryAuthenticateParams,
-  TRegistryAuthenticateQuery,
-  TRegistryAuthenticateRequestBody,
-  TRegistryAuthenticateResponseBody,
-} from './npm/endpoints'
+} from './npm'

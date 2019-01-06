@@ -1,7 +1,6 @@
 {
-  "exclude": ["emeralt-assets"],
+  "exclude": ["emeralt-assets", "emeralt-types"],
   "buildOrder": [
-    "emeralt-types",
     "emeralt-auth-inmemory",
     "emeralt-storage-inmemory",
     "emeralt-server",

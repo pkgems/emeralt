@@ -1,9 +1,6 @@
-import { RegistryAuthenticateEndpoint } from '@emeralt/types'
-
 export const authenticateFixtures = [
   {
     request: {
-      url: RegistryAuthenticateEndpoint,
       body: {
         _id: 'org.couchdb.user:tester',
         name: 'tester',
