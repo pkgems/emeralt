@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/bundler",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/bundler.js",

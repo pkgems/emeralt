@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/cli",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/cli.js",
@@ -17,12 +17,12 @@
     "build": "bundler build"
   },
   "dependencies": {
-    "@emeralt/auth-inmemory": "^0.0.16",
-    "@emeralt/server": "^0.0.16",
-    "@emeralt/storage-inmemory": "^0.0.16",
+    "@emeralt/auth-inmemory": "^0.0.17",
+    "@emeralt/server": "^0.0.17",
+    "@emeralt/storage-inmemory": "^0.0.17",
     "chalk": "^2.4.1"
   },
   "devDependencies": {
-    "@emeralt/bundler": "^0.0.16"
+    "@emeralt/bundler": "^0.0.17"
   }
 }
