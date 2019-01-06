@@ -1,6 +1,7 @@
 import { IEmeraltServerHandler } from '@emeralt/types'
 import { endpoints } from '@/constants'
 import { Router } from 'express'
+import jwt from 'jsonwebtoken'
 
 export const authenticate: IEmeraltServerHandler = ({ auth }) =>
   Router().put(endpoints.authenticate, async (req, res, next) => {
@@ -9,12 +10,12 @@ export const authenticate: IEmeraltServerHandler = ({ auth }) =>
       password,
     }: TRegistryAuthenticateRequestBody = req.body
 
-    const token = await auth.authenticate(name, password)
+    const valid = await auth.comparePassword(name, password)
 
-    res.status(token ? 200 : 401).json({
-      ok: !!token,
+    return res.status(valid ? 200 : 401).json({
+      ok: valid,
       id: name,
-      token: token,
+      token: valid ? jwt.sign({ name }, 'secret') : null,
     })
   })
 

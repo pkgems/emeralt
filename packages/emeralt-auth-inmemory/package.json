@@ -13,12 +13,8 @@
     "test": "ava test/**/*.test.ts",
     "build": "bundler build"
   },
-  "dependencies": {
-    "jsonwebtoken": "^8.4.0"
-  },
   "devDependencies": {
     "@emeralt/bundler": "^0.0.18",
-    "@emeralt/types": "^0.0.18",
-    "@types/jsonwebtoken": "^8.3.0"
+    "@emeralt/types": "^0.0.18"
   }
 }

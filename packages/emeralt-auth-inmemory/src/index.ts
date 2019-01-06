@@ -1,5 +1,4 @@
 import { IEmeraltAuth } from '@emeralt/types'
-import jwt from 'jsonwebtoken'
 
 const base64 = {
   encode: (str) => Buffer.from(str).toString('base64'),
@@ -26,13 +25,13 @@ export class EmeraltAuthInMemory implements IEmeraltAuth {
     }
   }
 
-  async authenticate(username: string, password: string) {
+  async comparePassword(username: string, password: string) {
     const userPassword = this.users.get(username)
 
     if (userPassword && base64.decode(userPassword) === password) {
-      return jwt.sign({ username }, this.secret)
+      return true
     } else {
-      return null
+      return false
     }
   }
 

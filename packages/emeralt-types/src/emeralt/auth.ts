@@ -1,10 +1,10 @@
 export interface IEmeraltAuth {
-  authenticate(
-    username: string,
-    password: string,
-  ): Promise<string | void>
-
   addUser(username: string, password: string): Promise<boolean>
 
   removeUser(username: string, password: string): Promise<boolean>
+
+  comparePassword(
+    username: string,
+    password: string,
+  ): Promise<boolean>
 }

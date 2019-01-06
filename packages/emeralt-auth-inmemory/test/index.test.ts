@@ -1,5 +1,4 @@
 import test from 'ava'
-import jwt from 'jsonwebtoken'
 import { EmeraltAuthInMemory } from '../src'
 
 const usersMock = {
@@ -65,21 +64,13 @@ test('[authenticate]', async (t) => {
     users: usersMock,
   })
 
-  t.is(
-    await auth.authenticate('username', 'password'),
-    jwt.sign(
-      {
-        username: 'username',
-      },
-      auth.secret,
-    ),
-  )
+  t.true(await auth.comparePassword('username', 'password'))
 })
 
 test('[authenticate] unexistend user', async (t) => {
   const auth = await new EmeraltAuthInMemory()
 
-  t.falsy(await auth.authenticate('username', 'password'))
+  t.false(await auth.comparePassword('username', 'password'))
 })
 
 test('[authenticate] wrong password', async (t) => {
@@ -87,5 +78,5 @@ test('[authenticate] wrong password', async (t) => {
     users: usersMock,
   })
 
-  t.falsy(await auth.authenticate('username', 'wrong-password'))
+  t.false(await auth.comparePassword('username', 'wrong-password'))
 })
