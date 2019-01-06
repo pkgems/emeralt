@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/storage-inmemory",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/storage-inmemory.js",
@@ -14,7 +14,7 @@
     "build": "bundler build"
   },
   "devDependencies": {
-    "@emeralt/bundler": "^0.0.17",
-    "@emeralt/types": "^0.0.17"
+    "@emeralt/bundler": "^0.0.18",
+    "@emeralt/types": "^0.0.18"
   }
 }
