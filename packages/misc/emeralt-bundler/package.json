@@ -14,7 +14,7 @@
     "access": "public"
   },
   "scripts": {
-    "test": "exit 0;",
+    "test": "exit 0",
     "build": "bundler build"
   },
   "dependencies": {

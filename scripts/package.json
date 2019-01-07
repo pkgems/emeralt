@@ -9,7 +9,7 @@
     "replace-in-file": "^3.4.2"
   },
   "scripts": {
-    "build": "exit 0;",
-    "test": "exit 0;"
+    "build": "exit 0",
+    "test": "exit 0"
   }
 }
