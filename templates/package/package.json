@@ -14,7 +14,7 @@
     "build": "bundler build"
   },
   "devDependencies": {
-    "@emeralt/bundler": "^0.0.18",
-    "@emeralt/types": "^0.0.18"
+    "@emeralt/bundler": "0.0.18",
+    "@emeralt/types": "0.0.18"
   }
 }
