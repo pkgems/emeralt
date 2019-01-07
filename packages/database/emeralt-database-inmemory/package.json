@@ -3,8 +3,8 @@
   "version": "0.0.18",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
-  "main": "./build/database-inmemory.js",
-  "module": "./build/database-inmemory.mjs",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
   "source": "./src/index.ts",
   "publishConfig": {
     "access": "public"

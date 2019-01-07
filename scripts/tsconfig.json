@@ -1,12 +1,3 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "types": ["node"],
-    "lib": ["esnext"],
-
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
-  }
+  "extends": "../packages/tsconfig.json"
 }

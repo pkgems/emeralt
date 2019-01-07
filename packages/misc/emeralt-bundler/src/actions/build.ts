@@ -1,8 +1,8 @@
 import { resolve } from 'path'
-import { getPackagePaths, getExternals } from '../utils'
+import { execSync } from 'child_process'
 import microbundle from 'microbundle'
-import { exec, execSync } from 'child_process'
 import chalk from 'chalk'
+import { getPackageJson } from '../utils'
 
 export const build = async ({
   cwd = process.cwd(),
@@ -11,12 +11,22 @@ export const build = async ({
   includeDependencies = false,
 } = {}) => {
   cwd = resolve(process.cwd(), cwd)
-
   process.chdir(cwd)
 
-  const { input, output, cache } = getPackagePaths(cwd)
+  const {
+    dependencies,
+    devDependencies,
+    peerDependencies,
+  } = await getPackageJson(cwd)
+
+  const modules = Object.keys({
+    ...(dependencies || {}),
+    ...(devDependencies || {}),
+    ...(peerDependencies || {}),
+  })
+
   const externals = [
-    ...[includeDependencies ? [] : await getExternals(cwd)],
+    ...[includeDependencies ? [] : modules],
     ...[
       require('module').builtinModules ||
         // @ts-ignore
@@ -33,7 +43,7 @@ export const build = async ({
 
   const stats = await microbundle({
     entry: resolve(cwd, 'src/index.ts'),
-    output: resolve(cwd, 'build'),
+    output: resolve(cwd, 'build', 'index.js'),
     format: 'es,cjs',
     strict: true,
     compress: minify,

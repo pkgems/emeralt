@@ -6,14 +6,20 @@
 
     "module": "commonjs",
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
 
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+
+    // "baseUrl": "",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@test/*": ["./test/*"]
+    }
   },
   "exclude": [
-    "./*/*/build/**/*",
+    // "./*/*/build/**/*",
     "./*/*/test/**/*"
   ]
 }

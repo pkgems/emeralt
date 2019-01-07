@@ -3,8 +3,8 @@
   "version": "0.0.18",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
-  "main": "./build/bundler.js",
-  "module": "./build/bundler.mjs",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
   "source": "./src/index.ts",
   "preferGlobal": true,
   "bin": {

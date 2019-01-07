@@ -13,9 +13,6 @@ const splicePath = (p: string, c: number, delimiter = '/') =>
 const getPackageName = (packagePath: string) =>
   '@emeralt/' + splicePath(basename(packagePath), 1, '-')
 
-const getPackageShortName = (packagePath: string) =>
-  splicePath(basename(packagePath), 1, '-')
-
 const panic = (message) => {
   console.error(chalk.red(message))
 
@@ -41,12 +38,6 @@ const init = async (packagePath: string, templatePath: string) => {
     files: join(packagePath, '**/*'),
     from: /%NAME%/g,
     to: getPackageName(packagePath),
-  })
-
-  await replace({
-    files: join(packagePath, '**/*'),
-    from: /%SHORT_NAME%/g,
-    to: getPackageShortName(packagePath),
   })
 
   info('Installing dependencies')

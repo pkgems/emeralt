@@ -3,8 +3,8 @@
   "version": "0.0.18",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
-  "main": "./build/auth-inmemory.js",
-  "module": "./build/auth-inmemory.mjs",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
   "source": "./src/index.ts",
   "publishConfig": {
     "access": "public"
