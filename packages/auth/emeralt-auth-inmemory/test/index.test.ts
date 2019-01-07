@@ -1,5 +1,5 @@
 import test from 'ava'
-import { EmeraltAuthInMemory } from '../src'
+import { EmeraltAuthInMemory } from '@/index'
 
 const usersMock = {
   username: 'password',
