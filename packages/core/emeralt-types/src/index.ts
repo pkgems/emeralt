@@ -1,9 +1,11 @@
 export {
   // server
-  IEmeraltServer,
-  IEmeraltServerHandler,
-  TEmeraltServerParams,
   TEmeraltServerConfig,
+  TEmeraltServerParams,
+  TEmeraltServiceParams,
+  TEmeraltMiddlewareParams,
+  TEmeraltHandlerParams,
+  TDecodedToken,
   // addons
   IEmeraltAuth,
   IEmeraltDatabase,

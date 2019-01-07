@@ -14,7 +14,8 @@
   },
   "scripts": {
     "test": "ava test/**/*.test.ts",
-    "build": "bundler build"
+    "build": "bundler build",
+    "start": "ts-node -r tsconfig-paths/register src/index.ts"
   },
   "dependencies": {
     "@emeralt/server": "^0.0.18",

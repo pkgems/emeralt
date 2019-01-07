@@ -6,5 +6,6 @@ export const endpoints = {
 
   package: {
     get: '/:package_name',
+    publish: '/:package_name',
   },
 }

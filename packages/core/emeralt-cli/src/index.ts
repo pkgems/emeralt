@@ -9,6 +9,9 @@ import { EmeraltStorageInMemory } from '@emeralt/storage-inmemory'
 createEmeraltServer({
   config: {
     logLevel: 'dev',
+    jwt: {
+      secret: 'secret',
+    },
   },
   auth: new EmeraltAuthInMemory({
     users: {

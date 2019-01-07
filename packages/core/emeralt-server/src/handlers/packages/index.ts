@@ -1,13 +1,11 @@
-import { IEmeraltServerHandler } from '@emeralt/types'
+import { TEmeraltHandlerParams } from '@emeralt/types'
 import { Router } from 'express'
 
 // routes
 import { getPackage } from './get-package'
+import { publishpackage } from './publish-package'
 
-export const packages: IEmeraltServerHandler = () => {
-  const router = Router()
-
-  router.use(getPackage)
-
-  return router
-}
+export const packages = (params: TEmeraltHandlerParams) =>
+  Router()
+    .use(getPackage(params))
+    .use(publishpackage(params))

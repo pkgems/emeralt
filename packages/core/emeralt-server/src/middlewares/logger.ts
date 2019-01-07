@@ -1,7 +1,7 @@
+import { TEmeraltMiddlewareParams } from '@emeralt/types'
 import morgan from 'morgan'
-import { TEmeraltServerConfig } from '@emeralt/types'
 
-export const logger = (logLevel: TEmeraltServerConfig['logLevel']) =>
-  logLevel && logLevel !== 'silent'
-    ? morgan(logLevel)
+export const loggerMiddleware = (params: TEmeraltMiddlewareParams) =>
+  params.config.logLevel !== 'silent'
+    ? morgan(params.config.logLevel)
     : (req, res, next) => next()

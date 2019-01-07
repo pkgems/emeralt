@@ -3,6 +3,7 @@ import { execSync } from 'child_process'
 import microbundle from 'microbundle'
 import chalk from 'chalk'
 import { getPackageJson } from '../utils'
+import { remove } from 'fs-extra'
 
 export const build = async ({
   cwd = process.cwd(),
@@ -12,6 +13,8 @@ export const build = async ({
 } = {}) => {
   cwd = resolve(process.cwd(), cwd)
   process.chdir(cwd)
+
+  await remove(resolve(cwd, 'build'))
 
   const {
     dependencies,
