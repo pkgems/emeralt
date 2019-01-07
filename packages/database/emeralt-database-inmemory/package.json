@@ -1,10 +1,10 @@
 {
-  "name": "%NAME%",
+  "name": "@emeralt/database-inmemory",
   "version": "0.0.18",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
-  "main": "./build/%SHORT_NAME%.js",
-  "module": "./build/%SHORT_NAME%.mjs",
+  "main": "./build/database-inmemory.js",
+  "module": "./build/database-inmemory.mjs",
   "source": "./src/index.ts",
   "publishConfig": {
     "access": "public"

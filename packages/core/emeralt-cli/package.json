@@ -17,8 +17,9 @@
     "build": "bundler build"
   },
   "dependencies": {
-    "@emeralt/auth-inmemory": "^0.0.18",
     "@emeralt/server": "^0.0.18",
+    "@emeralt/auth-inmemory": "^0.0.18",
+    "@emeralt/database-inmemory": "^0.0.18",
     "@emeralt/storage-inmemory": "^0.0.18",
     "chalk": "^2.4.1"
   },

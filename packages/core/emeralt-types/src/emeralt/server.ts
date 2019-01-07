@@ -1,4 +1,9 @@
-import { IEmeraltAuth, IEmeraltStorage, IEmeraltPlugin } from '../'
+import {
+  IEmeraltAuth,
+  IEmeraltDatabase,
+  IEmeraltStorage,
+  IEmeraltPlugin,
+} from '../'
 import { Server } from 'http'
 import { Router } from 'express'
 
@@ -8,8 +13,9 @@ export type TEmeraltServerConfig = {
 
 export type TEmeraltServerParams = {
   config: TEmeraltServerConfig
-  storage: IEmeraltStorage
   auth: IEmeraltAuth
+  database: IEmeraltDatabase
+  storage: IEmeraltStorage
   plugins: IEmeraltPlugin[]
 }
 

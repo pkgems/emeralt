@@ -6,6 +6,7 @@ export {
   TEmeraltServerConfig,
   // addons
   IEmeraltAuth,
+  IEmeraltDatabase,
   IEmeraltStorage,
   IEmeraltPlugin,
 } from './emeralt'

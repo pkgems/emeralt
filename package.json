@@ -6,12 +6,12 @@
     "scripts"
   ],
   "scripts": {
-    "build": "lerna run build",
-    "test": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test lerna exec yarn test",
-    "test:coverage": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test nyc lerna exec yarn test",
+    "build": "lerna exec yarn build --sort",
+    "test": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test lerna exec yarn test --sort",
+    "test:coverage": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test nyc lerna exec yarn test --sort",
     "clean": "git clean -dfX",
     "format": "npx prettier --ignore-path .gitignore --write './!(node_modules|build)/**/*.{ts,tsx,js,jsx}'",
-    "init-package": "ts-node scripts/init.ts"
+    "init-package": "ts-node -P ./scripts/tsconfig.json scripts/init.ts"
   },
   "dependencies": {
     "cross-env": "^5.2.0",

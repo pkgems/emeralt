@@ -5,6 +5,8 @@
     "lib": ["esnext"],
 
     "module": "commonjs",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   }
 }
