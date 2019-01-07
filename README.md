@@ -1,4 +1,4 @@
-![logo](./packages/emeralt-assets/png/full-logo-3-medium.png)
+![logo](./packages/misc/emeralt-assets/png/full-logo-3-medium.png)
 
 [![Build Status](https://travis-ci.com/euphemist/emeralt.svg?branch=master)](https://travis-ci.com/euphemist/emeralt) 
 [![Coverage Status](https://coveralls.io/repos/github/euphemist/emeralt/badge.svg?branch=master)](https://coveralls.io/github/euphemist/emeralt?branch=master)
@@ -25,27 +25,25 @@ Install with yarn:
 yarn global add @emeralt/cli
 ```
 
-<!-- </div> -->
-
 ## Introduction
 ...
 
 ## Monorepo
 
 #### Core
-- [`@emeralt/cli`](./packages/emeralt-cli)
-- [`@emeralt/server`](./packages/emeralt-server)
+- [`@emeralt/cli`](./packages/core/emeralt-cli)
+- [`@emeralt/server`](./packages/core/emeralt-server)
 - [`@emeralt/types`](./packages/emeralt-types)
 
 #### Auth Plugins
-- [`@emeralt/auth-inmemory`](./packages/emeralt-auth-inmemory)
+- [`@emeralt/auth-inmemory`](./packages/auth/emeralt-auth-inmemory)
 
 #### Storage Plugins
-- [`@emeralt/storage-inmemory`](./packages/emeralt-storage-inmemory)
+- [`@emeralt/storage-inmemory`](./packages/storage/emeralt-storage-inmemory)
   
 #### Misc
-- [`@emeralt/bundler`](./packages/emeralt-bundler)
-- [`@emeralt/assets`](./packages/emeralt-assets)
+- [`@emeralt/bundler`](./packages/misc/emeralt-bundler)
+- [`@emeralt/assets`](./packages/misc/emeralt-assets)
 
 ## License
 
