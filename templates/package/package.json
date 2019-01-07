@@ -1,0 +1,20 @@
+{
+  "name": "%NAME%",
+  "version": "0.0.18",
+  "author": "stackdumper <stackdumper@gmail.com>",
+  "license": "MIT",
+  "main": "./build/package.js",
+  "module": "./build/package.mjs",
+  "source": "./src/index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "ava test/**/*.test.ts",
+    "build": "bundler build"
+  },
+  "devDependencies": {
+    "@emeralt/bundler": "^0.0.18",
+    "@emeralt/types": "^0.0.18"
+  }
+}

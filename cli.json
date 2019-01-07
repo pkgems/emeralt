@@ -1,9 +1,0 @@
-{
-  "exclude": ["emeralt-assets", "emeralt-types"],
-  "buildOrder": [
-    "emeralt-auth-inmemory",
-    "emeralt-storage-inmemory",
-    "emeralt-server",
-    "emeralt-cli"
-  ]
-}

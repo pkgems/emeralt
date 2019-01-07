@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "types": ["node"],
+    "lib": ["esnext"],
+
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    "declaration": true,
+    "declarationMap": true
+  },
+  "exclude": [
+    "./*/*/build/**/*",
+    "./*/*/test/**/*"
+  ]
+}

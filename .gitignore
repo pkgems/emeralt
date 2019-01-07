@@ -33,8 +33,8 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules
-jspm_packages
+node_modules/
+jspm_packages/
 
 # TypeScript v1 declaration files
 typings/
@@ -59,7 +59,7 @@ typings/
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
-.cache/
+.cache
 
 # next.js build output
 .next
@@ -79,12 +79,6 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-# builds
-packages/*/build/**/*
-packages/*/build
-
-# APFS cache
+# APFS
 .DS_Store
 
-*.lcov
-.rts2_cache*

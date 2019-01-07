@@ -43,7 +43,7 @@ yarn global add @emeralt/cli
 #### Storage Plugins
 - [`@emeralt/storage-inmemory`](./packages/emeralt-storage-inmemory)
   
-#### Other
+#### Misc
 - [`@emeralt/bundler`](./packages/emeralt-bundler)
 - [`@emeralt/assets`](./packages/emeralt-assets)
 
