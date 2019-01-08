@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/cli",
-  "version": "0.0.19-alpha.0",
+  "version": "0.0.19-alpha.1",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -19,14 +19,14 @@
     "start": "node build/index.js"
   },
   "dependencies": {
-    "@emeralt/auth-inmemory": "^0.0.19-alpha.0",
-    "@emeralt/database-inmemory": "^0.0.19-alpha.0",
-    "@emeralt/server": "^0.0.19-alpha.0",
-    "@emeralt/storage-inmemory": "^0.0.19-alpha.0",
+    "@emeralt/auth-inmemory": "^0.0.19-alpha.1",
+    "@emeralt/database-inmemory": "^0.0.19-alpha.1",
+    "@emeralt/server": "^0.0.19-alpha.1",
+    "@emeralt/storage-inmemory": "^0.0.19-alpha.1",
     "chalk": "^2.4.1"
   },
   "devDependencies": {
-    "@emeralt/bundler": "^0.0.19-alpha.0",
+    "@emeralt/bundler": "^0.0.19-alpha.1",
     "nodemon": "^1.18.9"
   }
 }
