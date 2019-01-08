@@ -10,7 +10,7 @@
     "access": "public"
   },
   "bin": {
-    "emeralt": "./build/cli.js"
+    "emeralt": "./build/index.js"
   },
   "scripts": {
     "test": "ava test/**/*.test.ts",
