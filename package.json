@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "build": "lerna exec yarn build --sort",
+    "watch": "lerna exec yarn watch --parallel --stream",
     "test": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test lerna exec yarn test --sort",
     "test:coverage": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test nyc lerna exec yarn test --sort",
     "clean": "git clean -dfX",

@@ -14,8 +14,8 @@ export const createMockServer = () => {
       config: {
         logLevel: 'silent',
         jwt: {
-          secret: 'secret'
-        }
+          secret: 'secret',
+        },
       },
       auth,
       database,

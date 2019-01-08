@@ -15,7 +15,8 @@
   },
   "scripts": {
     "test": "exit 0",
-    "build": "bundler build"
+    "build": "bundler build",
+    "watch": "bundler watch"
   },
   "dependencies": {
     "@zeit/ncc": "^0.8.1",

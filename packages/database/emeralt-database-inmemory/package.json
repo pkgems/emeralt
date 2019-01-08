@@ -11,10 +11,16 @@
   },
   "scripts": {
     "test": "ava test/**/*.test.ts",
-    "build": "bundler build"
+    "build": "bundler build",
+    "watch": "bundler watch"
   },
   "devDependencies": {
     "@emeralt/bundler": "^0.0.18",
-    "@emeralt/types": "^0.0.18"
+    "@emeralt/types": "^0.0.18",
+    "@types/ramda": "^0.25.46"
+  },
+  "dependencies": {
+    "ramda": "^0.26.1",
+    "test": "^1.0.0"
   }
 }

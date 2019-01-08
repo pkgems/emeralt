@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "ava test/**/*.test.ts",
-    "build": "bundler build"
+    "build": "bundler build",
+    "watch": "bundler watch"
   },
   "devDependencies": {
     "@emeralt/bundler": "^0.0.18",

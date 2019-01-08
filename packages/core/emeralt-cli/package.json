@@ -15,16 +15,18 @@
   "scripts": {
     "test": "ava test/**/*.test.ts",
     "build": "bundler build",
-    "start": "ts-node -r tsconfig-paths/register src/index.ts"
+    "watch": "bundler watch",
+    "start": "node build/index.js"
   },
   "dependencies": {
-    "@emeralt/server": "^0.0.18",
     "@emeralt/auth-inmemory": "^0.0.18",
     "@emeralt/database-inmemory": "^0.0.18",
+    "@emeralt/server": "^0.0.18",
     "@emeralt/storage-inmemory": "^0.0.18",
     "chalk": "^2.4.1"
   },
   "devDependencies": {
-    "@emeralt/bundler": "^0.0.18"
+    "@emeralt/bundler": "^0.0.18",
+    "nodemon": "^1.18.9"
   }
 }

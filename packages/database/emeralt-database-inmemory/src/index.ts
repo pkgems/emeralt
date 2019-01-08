@@ -1,41 +1,22 @@
-import { IEmeraltDatabase, TVersion } from '@emeralt/types'
+import { IEmeraltDatabase } from '@emeralt/types'
+import { path, assocPath } from 'ramda'
 
 export class EmeraltDatabaseInMemory implements IEmeraltDatabase {
-  private storage = new Map<string, Map<string, TVersion>>()
+  private storage = {}
 
-  private set(name, version, data) {
-    if (!this.storage.get(name)) this.storage.set(name, new Map())
-    this.storage.get(name).set(version, data)
-
-    return true
+  getMetadata(name: string) {
+    return path(['metadata', name], this.storage)
   }
 
-  private get(name, version) {
-    if (!this.storage.get(name)) return null
-    return this.storage.get(name).get(version)
+  putMetadata(name: string, data: any) {
+    this.storage = assocPath(['metadata', name], data, this.storage)
   }
 
-  getPackage(name: string): Promise<any> {
-    throw new Error('Method not implemented.')
+  getVersion(name: string, version: string) {
+    return path(['versions', name, version], this.storage)
   }
 
-  packageExists(name: string): Promise<boolean> {
-    throw new Error('Method not implemented.')
-  }
-
-  versionExists(name: string, version: string): Promise<boolean> {
-    throw new Error('Method not implemented.')
-  }
-
-  async getVersion(name: string, version: string): Promise<TVersion | null> {
-    return this.get(name, version)
-  }
-
-  async putVersion(
-    name: string,
-    version: string,
-    data: TVersion,
-  ): Promise<any> {
-    return this.set(name, version, data)
+  putVersion(name: string, version: string, data: any) {
+    this.storage = assocPath(['versions', name, version], data, this.storage)
   }
 }

@@ -26,6 +26,14 @@ export type TPackage = {
     [tag: string]: string
   }
 
+  dist: {
+    [name: string]: {
+      integrity: string
+      shasum: string
+      tarball: string
+    }
+  }
+
   _attachments?: {
     [name: string]: {
       content_type: string

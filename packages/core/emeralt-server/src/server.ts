@@ -17,8 +17,8 @@ export const createEmeraltServer = (params: TEmeraltServerParams) => {
 
     // middlewares
     .use(middlewares.logger)
-    .use(middlewares.dataProvider)
     .use(middlewares.json)
+    .use(middlewares.dataProvider)
 
     // handlers
     .use(handlers.ping)
