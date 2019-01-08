@@ -20,7 +20,8 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "morgan": "^1.9.1",
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "ssri": "^6.0.1"
   },
   "devDependencies": {
     "@emeralt/auth-inmemory": "^0.0.19-alpha.1",
