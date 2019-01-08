@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/database-inmemory",
-  "version": "0.0.18",
+  "version": "0.0.19-alpha.0",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -15,8 +15,8 @@
     "watch": "bundler watch"
   },
   "devDependencies": {
-    "@emeralt/bundler": "^0.0.18",
-    "@emeralt/types": "^0.0.18",
+    "@emeralt/bundler": "^0.0.19-alpha.0",
+    "@emeralt/types": "^0.0.19-alpha.0",
     "@types/ramda": "^0.25.46"
   },
   "dependencies": {
