@@ -37,7 +37,7 @@ export type TPackage = {
   _attachments?: {
     [name: string]: {
       content_type: string
-      data: string
+      data: Buffer
     }
   }
 }
