@@ -26,6 +26,8 @@ export const publishpackage = ({
         })
       }
 
+      console.log(metadata)
+
       await database.putMetadata(metadata.name, metadata)
       await database.putVersion(metadata.name, version.version, version)
       await storage.putTarball(metadata.name, version.version, tarball.data)

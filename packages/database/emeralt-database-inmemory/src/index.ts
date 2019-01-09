@@ -1,15 +1,29 @@
 import { IEmeraltDatabase } from '@emeralt/types'
-import { path, assocPath } from 'ramda'
+import { path, assocPath, mergeDeepLeft } from 'ramda'
 
 export class EmeraltDatabaseInMemory implements IEmeraltDatabase {
   private storage = {}
+
+  listMetadata() {
+    return path(['metadata'], this.storage)
+  }
 
   getMetadata(name: string) {
     return path(['metadata', name], this.storage)
   }
 
   putMetadata(name: string, data: any) {
-    this.storage = assocPath(['metadata', name], data, this.storage)
+    const current = this.getMetadata(name) || {}
+
+    this.storage = assocPath(
+      ['metadata', name],
+      mergeDeepLeft(data, current),
+      this.storage,
+    )
+  }
+
+  listVersions(name: string) {
+    return path(['versions', name], this.storage)
   }
 
   getVersion(name: string, version: string) {

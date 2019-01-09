@@ -13,14 +13,10 @@ export const getPackage = ({ database }: TEmeraltHandlerParams) =>
       return res.redirect(`http://registry.npmjs.org/${package_name}`)
     }
 
-    const version = await database.getVersion(package_name, Object.values(
-      metadata['dist-tags'],
-    )[0] as string)
+    const versions = await database.listVersions(package_name)
 
     res.status(200).json({
       ...metadata,
-      versions: {
-        [version.version]: version,
-      },
+      versions,
     })
   })
