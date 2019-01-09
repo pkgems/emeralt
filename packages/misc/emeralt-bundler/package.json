@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/bundler",
-  "version": "0.0.19-alpha.1",
+  "version": "0.0.19-alpha.2",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
