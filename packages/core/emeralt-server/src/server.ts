@@ -1,27 +1,32 @@
 import express from 'express'
 import http from 'http'
-import bodyParser from 'body-parser'
 
-import { IEmeraltServer } from '@emeralt/types'
-import { ping, search, packages, login, authenticate } from './handlers'
-import { logger } from './middlewares/logger'
+import { TEmeraltServerParams } from '@emeralt/types'
+import { createServices } from '@/services'
+import { createMiddlewares } from '@/middlewares'
+import { createHandlers } from '@/handlers'
 
-export const createEmeraltServer: IEmeraltServer = (params) => {
+export const createEmeraltServer = (params: TEmeraltServerParams) => {
+  const services = createServices(params)
+  const middlewares = createMiddlewares({ ...params, services })
+  const handlers = createHandlers({ ...params, services, middlewares })
+
   const server = express()
+    // options
+    .set('etag', false)
 
-  // options
-  server.set('etag', false)
+    // middlewares
+    .use(middlewares.logger)
+    .use(middlewares.json)
+    .use(middlewares.compression)
+    .use(middlewares.dataProvider)
 
-  // middlewares
-  server.use(logger(params.config.logLevel))
-  server.use(bodyParser.json())
-
-  // handlers
-  server.use(ping(params))
-  server.use(login(params))
-  server.use(authenticate(params))
-  server.use(search(params))
-  server.use(packages(params))
+    // handlers
+    .use(handlers.ping)
+    .use(handlers.login)
+    .use(handlers.authenticate)
+    .use(handlers.search)
+    .use(handlers.packages)
 
   return http.createServer(server)
 }

@@ -1,9 +1,9 @@
-import { IEmeraltServerHandler } from '@emeralt/types'
+import { TEmeraltHandlerParams } from '@emeralt/types'
 import { endpoints } from '@/constants'
 import { Router } from 'express'
 import jwt from 'jsonwebtoken'
 
-export const authenticate: IEmeraltServerHandler = ({ auth }) =>
+export const authenticate = ({ auth }: TEmeraltHandlerParams) =>
   Router().put(endpoints.authenticate, async (req, res, next) => {
     const { name, password }: TRegistryAuthenticateRequestBody = req.body
 

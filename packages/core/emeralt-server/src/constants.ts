@@ -6,5 +6,7 @@ export const endpoints = {
 
   package: {
     get: '/:package_name',
+    getTarball: '/-/tarball/:name/:version',
+    publish: '/:package_name',
   },
 }

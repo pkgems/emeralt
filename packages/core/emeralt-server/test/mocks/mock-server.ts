@@ -13,6 +13,9 @@ export const createMockServer = () => {
     server: createEmeraltServer({
       config: {
         logLevel: 'silent',
+        jwt: {
+          secret: 'secret',
+        },
       },
       auth,
       database,

@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/assets",
-  "version": "0.0.18",
+  "version": "0.0.19-alpha.2",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "CC-BY-4.0",
   "publishConfig": {
@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "exit 0",
-    "test": "exit 0"
+    "test": "exit 0",
+    "watch": "exit 0"
   }
 }

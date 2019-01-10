@@ -38,6 +38,9 @@ yarn global add @emeralt/cli
 #### Auth Plugins
 - [`@emeralt/auth-inmemory`](./packages/auth/emeralt-auth-inmemory)
 
+#### Database Plugins
+- [`@emeralt/database-inmemory`](./packages/database/emeralt-database-inmemory)
+  
 #### Storage Plugins
 - [`@emeralt/storage-inmemory`](./packages/storage/emeralt-storage-inmemory)
   

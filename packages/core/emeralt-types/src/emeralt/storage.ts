@@ -1,11 +1,9 @@
+import { Readable } from 'stream'
+
 export interface IEmeraltStorage {
   /* get raw data */
-  getTarball(name: string, version: string): Promise<string>
+  getTarball(name: string, version: string): Promise<Readable>
 
-  /* get download URL */
-  getTarballURL(name: string, version: string): Promise<string>
-
-  putTarball(name: string, version: string, tarball: string): Promise<boolean>
-
-  deleteTarball(name: string, version: string): Promise<boolean>
+  /* put raw data */
+  putTarball(name: string, version: string, tarball: Buffer): Promise<any>
 }

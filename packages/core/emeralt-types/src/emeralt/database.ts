@@ -1,9 +1,9 @@
 export interface IEmeraltDatabase {
-  getPackage(name: string): Promise<any>
+  listMetadata()
+  getMetadata(name: string)
+  putMetadata(name: string, data: any)
 
-  packageExists(name: string): Promise<boolean>
-  versionExists(name: string, version: string): Promise<boolean>
-
-  getVersion(name: string, version: string): Promise<any>
-  putVersion(name: string, version: string, data: string): Promise<any>
+  listVersions(name: string)
+  getVersion(name: string, version: string)
+  putVersion(name: string, version: string, data: any)
 }

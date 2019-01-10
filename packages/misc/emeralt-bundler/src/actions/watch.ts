@@ -5,7 +5,7 @@ import chalk from 'chalk'
 import { remove } from 'fs-extra'
 import { getExternals } from '../utils'
 
-export const build = async ({
+export const watch = async ({
   cwd = process.cwd(),
   minify = false,
   sourceMap = true,
@@ -13,8 +13,6 @@ export const build = async ({
 } = {}) => {
   cwd = resolve(process.cwd(), cwd)
   process.chdir(cwd)
-
-  await remove(resolve(cwd, 'build'))
 
   try {
     execSync('tsc --noEmit')
@@ -33,7 +31,7 @@ export const build = async ({
     target: 'node',
     external: (await getExternals(cwd, includeDependencies)).join(','),
     cwd: cwd,
-    // watch: true,
+    watch: true,
   })
 
   console.log(stats)

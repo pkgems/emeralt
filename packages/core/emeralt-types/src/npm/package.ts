@@ -4,6 +4,7 @@ import { TVersion } from './version'
 export type TPackage = {
   name: string
   author: Person
+  version: string
 
   main: string
 
@@ -23,5 +24,20 @@ export type TPackage = {
   'dist-tags': {
     // "latest": "0.0.14"
     [tag: string]: string
+  }
+
+  dist: {
+    [name: string]: {
+      integrity: string
+      shasum: string
+      tarball: string
+    }
+  }
+
+  _attachments?: {
+    [name: string]: {
+      content_type: string
+      data: Buffer
+    }
   }
 }

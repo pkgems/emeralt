@@ -1,8 +1,8 @@
-import { IEmeraltServerHandler } from '@emeralt/types'
+import { TEmeraltHandlerParams } from '@emeralt/types'
 import { endpoints } from '@/constants'
 import { Router } from 'express'
 
-export const search: IEmeraltServerHandler = () =>
+export const search = (params: TEmeraltHandlerParams) =>
   Router().get(endpoints.search, (req, res) => {
     res.status(200).json({
       objects: [],

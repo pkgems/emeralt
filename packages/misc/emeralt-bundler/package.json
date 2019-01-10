@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/bundler",
-  "version": "0.0.18",
+  "version": "0.0.19-alpha.2",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -15,7 +15,8 @@
   },
   "scripts": {
     "test": "exit 0",
-    "build": "bundler build"
+    "build": "bundler build",
+    "watch": "bundler watch"
   },
   "dependencies": {
     "@zeit/ncc": "^0.8.1",
