@@ -31,7 +31,7 @@
     "@emeralt/types": "^0.0.19-alpha.2",
     "@types/body-parser": "1.17.0",
     "@types/express": "4.16.0",
-    "@types/jsonwebtoken": "^8.3.0",
+    "@types/jsonwebtoken": "8.3.0",
     "@types/supertest": "2.0.7",
     "path-to-regexp": "2.4.0",
     "supertest": "3.3.0"
