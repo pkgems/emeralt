@@ -8,11 +8,15 @@ export class EmeraltStorageInMemory implements IEmeraltStorage {
   async getTarball(name: string, version: string) {
     const buffer = path([name, version], this.storage)
 
-    const rs = new Readable()
-    rs.push(buffer)
-    rs.push(null)
+    if (buffer) {
+      const rs = new Readable()
+      rs.push(buffer)
+      rs.push(null)
 
-    return rs
+      return rs
+    } else {
+      return undefined
+    }
   }
 
   async putTarball(name: string, version: string, tarball: Buffer) {
