@@ -6,9 +6,9 @@ import { endpoints } from '@/constants'
 import { createMockServer } from '@test/mocks'
 
 test('login', async (t) => {
-  const { server } = createMockServer()
+  const { address } = createMockServer()
 
-  const { status, body } = await supertest(server).post(
+  const { status, body } = await supertest(address).post(
     interpolatePath(endpoints.login, { user: 'tester' }),
   )
 

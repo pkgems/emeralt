@@ -4,12 +4,12 @@ import { ping } from './ping'
 import { search } from './search'
 import { packages } from './packages'
 import { login } from './login'
-import { authenticate } from './authenticate'
+import { adduser } from './adduser'
 
 export const createHandlers = (params: TEmeraltHandlerParams) => ({
   ping: ping(params),
   search: search(params),
   packages: packages(params),
   login: login(params),
-  authenticate: authenticate(params),
+  adduser: adduser(params),
 })

@@ -2,7 +2,7 @@ import { TEmeraltHandlerParams } from '@emeralt/types'
 import { endpoints } from '@/constants'
 import { Router } from 'express'
 
-export const getPackage = ({ database }: TEmeraltHandlerParams) =>
+export const getHandler = ({ database }: TEmeraltHandlerParams) =>
   Router().get(endpoints.package.get, async (req, res, next) => {
     const { package_name } = req.params
 

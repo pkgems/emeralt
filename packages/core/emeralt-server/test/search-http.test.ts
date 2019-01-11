@@ -4,9 +4,9 @@ import { endpoints } from '@/constants'
 import { createMockServer } from '@test/mocks'
 
 test('search', async (t) => {
-  const { server } = createMockServer()
+  const { address } = createMockServer()
 
-  const { status, body } = await supertest(server).get(endpoints.search)
+  const { status, body } = await supertest(address).get(endpoints.search)
 
   t.is(status, 200)
   t.deepEqual(body, {

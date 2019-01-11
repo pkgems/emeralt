@@ -5,7 +5,11 @@ import { EmeraltStorageInMemory } from '@emeralt/storage-inmemory'
 import { getAddress } from '@emeralt/utils'
 
 export const createMockServer = () => {
-  const auth = new EmeraltAuthInMemory()
+  const auth = new EmeraltAuthInMemory({
+    users: {
+      emeralt: 'emeralt',
+    },
+  })
   const database = new EmeraltDatabaseInMemory()
   const storage = new EmeraltStorageInMemory()
   const plugins = []

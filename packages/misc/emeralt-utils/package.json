@@ -3,16 +3,19 @@
   "version": "0.0.19-alpha.2",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
-  "main": "./src/index.ts",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
   "source": "./src/index.ts",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "test": "ava test/**/*.test.ts",
-    "build": "exit 0"
+    "build": "bundler build",
+    "watch": "bundler watch"
   },
   "devDependencies": {
-    "@emeralt/types": "0.0.19-alpha.2"
+    "@emeralt/types": "0.0.19-alpha.2",
+    "@emeralt/bundler": "0.0.19-alpha.2"
   }
 }

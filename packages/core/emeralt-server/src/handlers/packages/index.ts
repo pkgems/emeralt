@@ -2,12 +2,12 @@ import { TEmeraltHandlerParams } from '@emeralt/types'
 import { Router } from 'express'
 
 // routes
-import { getPackage } from './get-package'
-import { publishpackage } from './publish-package'
-import { getTarball } from './get-tarball'
+import { getHandler } from './get'
+import { publishHandler } from './publish'
+import { tarballHandler } from './tarball'
 
 export const packages = (params: TEmeraltHandlerParams) =>
   Router()
-    .use(getPackage(params))
-    .use(getTarball(params))
-    .use(publishpackage(params))
+    .use(getHandler(params))
+    .use(publishHandler(params))
+    .use(tarballHandler(params))

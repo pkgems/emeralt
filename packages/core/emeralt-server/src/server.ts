@@ -19,12 +19,12 @@ export const createEmeraltServer = (params: TEmeraltServerParams) => {
     .use(middlewares.logger)
     .use(middlewares.json)
     .use(middlewares.compression)
-    .use(middlewares.dataProvider)
+    .use(middlewares.context)
 
     // handlers
     .use(handlers.ping)
     .use(handlers.login)
-    .use(handlers.authenticate)
+    .use(handlers.adduser)
     .use(handlers.search)
     .use(handlers.packages)
 

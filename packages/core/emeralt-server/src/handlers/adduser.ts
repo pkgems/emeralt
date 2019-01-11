@@ -3,8 +3,8 @@ import { endpoints } from '@/constants'
 import { Router } from 'express'
 import jwt from 'jsonwebtoken'
 
-export const authenticate = ({ auth }: TEmeraltHandlerParams) =>
-  Router().put(endpoints.authenticate, async (req, res, next) => {
+export const adduser = ({ auth }: TEmeraltHandlerParams) =>
+  Router().put(endpoints.adduser, async (req, res, next) => {
     const { name, password }: TRegistryAuthenticateRequestBody = req.body
 
     const valid = await auth.comparePassword(name, password)

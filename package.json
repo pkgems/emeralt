@@ -41,6 +41,7 @@
       "packages/*/*/src"
     ],
     "exclude": [
+      "packages/*/*/**/*.test.ts",
       "packages/core/emeralt-types",
       "packages/misc/emeralt-bundler"
     ],
