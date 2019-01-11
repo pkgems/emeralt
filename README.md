@@ -1,8 +1,8 @@
 ![logo](./packages/misc/emeralt-assets/png/full-logo-3-medium.png)
 
-[![Build Status](https://travis-ci.com/euphemist/emeralt.svg?branch=master)](https://travis-ci.com/euphemist/emeralt) 
-[![Coverage Status](https://coveralls.io/repos/github/euphemist/emeralt/badge.svg?branch=master)](https://coveralls.io/github/euphemist/emeralt?branch=master)
-![Open Issues](https://img.shields.io/github/issues-raw/euphemist/emeralt.svg)
+[![Build Status](https://travis-ci.com/emeralt/emeralt.svg?branch=master)](https://travis-ci.com/emeralt/emeralt) 
+[![Coverage Status](https://coveralls.io/repos/github/emeralt/emeralt/badge.svg?branch=master)](https://coveralls.io/github/emeralt/emeralt?branch=master)
+![Open Issues](https://img.shields.io/github/issues-raw/emeralt/emeralt.svg)
 
 <br />
 <br />
