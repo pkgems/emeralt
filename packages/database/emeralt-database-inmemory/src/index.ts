@@ -2,7 +2,10 @@ import { IEmeraltDatabase } from '@emeralt/types'
 import { path, assocPath, mergeDeepLeft } from 'ramda'
 
 export class EmeraltDatabaseInMemory implements IEmeraltDatabase {
-  private storage = {}
+  private storage = {
+    metadata: {},
+    versions: {},
+  }
 
   listMetadata() {
     return path(['metadata'], this.storage)
