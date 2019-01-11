@@ -2,6 +2,7 @@ import { createEmeraltServer } from '@/server'
 import { EmeraltDatabaseInMemory } from '@emeralt/database-inmemory'
 import { EmeraltAuthInMemory } from '@emeralt/auth-inmemory'
 import { EmeraltStorageInMemory } from '@emeralt/storage-inmemory'
+import { getAddress } from '@emeralt/utils';
 
 export const createMockServer = () => {
   const auth = new EmeraltAuthInMemory()
@@ -9,21 +10,26 @@ export const createMockServer = () => {
   const storage = new EmeraltStorageInMemory()
   const plugins = []
 
-  return {
-    server: createEmeraltServer({
-      config: {
-        logLevel: 'silent',
-        jwt: {
-          secret: 'secret',
-        },
+  const server = createEmeraltServer({
+    config: {
+      logLevel: 'silent',
+      jwt: {
+        secret: 'secret',
       },
-      auth,
-      database,
-      storage,
-      plugins,
-    }).listen(),
+    },
+    auth,
+    database,
+    storage,
+    plugins,
+  }).listen()
+
+  const address = getAddress(server)
+
+  return {
+    server,
     storage,
     auth,
     plugins,
+    address,
   }
 }

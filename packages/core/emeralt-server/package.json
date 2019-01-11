@@ -24,6 +24,7 @@
     "ssri": "^6.0.1"
   },
   "devDependencies": {
+    "@emeralt/utils": "^0.0.19-alpha.2",
     "@emeralt/auth-inmemory": "^0.0.19-alpha.2",
     "@emeralt/bundler": "^0.0.19-alpha.2",
     "@emeralt/database-inmemory": "^0.0.19-alpha.2",

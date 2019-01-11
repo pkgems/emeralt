@@ -1,5 +1,5 @@
-import { TEmeraltHandlerParams, TPackage, TVersion } from '@emeralt/types'
-import { extractPackageData } from '@/utils/extract-package-data'
+import { TEmeraltHandlerParams, TPackage } from '@emeralt/types'
+import { extractPackageData } from '@emeralt/utils'
 import { endpoints } from '@/constants'
 
 import { Router } from 'express'
@@ -25,8 +25,6 @@ export const publishpackage = ({
           message: 'Integrity verification failed',
         })
       }
-
-      console.log(metadata)
 
       await database.putMetadata(metadata.name, metadata)
       await database.putVersion(metadata.name, version.version, version)

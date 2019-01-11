@@ -1,7 +1,8 @@
-import test from 'ava'
+import { interpolatePath } from '@emeralt/utils'
 import supertest from 'supertest'
+import test from 'ava'
+
 import { endpoints } from '@/constants'
-import { interpolatePath } from '@test/utils'
 import { createMockServer } from '@test/mocks'
 
 test('login', async (t) => {

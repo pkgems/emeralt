@@ -1,11 +1,11 @@
 import test from 'ava'
-import { exec, getAddress } from '@test/utils'
+import { execCmd } from '@emeralt/utils'
 import { createMockServer } from '@test/mocks'
 
 test('ping', async (t) => {
-  const { server } = createMockServer()
+  const { address } = createMockServer()
 
-  const ping = await exec(`npm ping --registry ${getAddress(server)}`)
+  const ping = await execCmd(`npm ping --registry ${address}`)
 
   t.is(ping.code, 0)
   t.is(ping.stdout, 'Ping success: {}\n')

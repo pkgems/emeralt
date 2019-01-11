@@ -1,6 +1,6 @@
 import { spawn } from 'child_process'
 
-export const exec = (
+export const execCmd = (
   cmd: string,
 ): Promise<{
   stdout: string

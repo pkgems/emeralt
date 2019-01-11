@@ -10,6 +10,7 @@ export class EmeraltStorageInMemory implements IEmeraltStorage {
 
     if (buffer) {
       const rs = new Readable()
+      
       rs.push(buffer)
       rs.push(null)
 
