@@ -9,3 +9,9 @@ test('getAddress', (t) => {
 
   server.close()
 })
+
+test('getAddress error', (t) => {
+  const server = createServer()
+
+  t.throws(() => getAddress(server))
+})

@@ -2,7 +2,7 @@ import { createEmeraltServer } from '@/server'
 import { EmeraltDatabaseInMemory } from '@emeralt/database-inmemory'
 import { EmeraltAuthInMemory } from '@emeralt/auth-inmemory'
 import { EmeraltStorageInMemory } from '@emeralt/storage-inmemory'
-import { getAddress } from '@emeralt/utils';
+import { getAddress } from '@emeralt/utils'
 
 export const createMockServer = () => {
   const auth = new EmeraltAuthInMemory()
