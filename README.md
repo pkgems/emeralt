@@ -46,7 +46,6 @@ yarn global add @emeralt/cli
   
 #### Misc
 - [`@emeralt/bundler`](./packages/misc/emeralt-bundler)
-- [`@emeralt/utils`](./packages/misc/emeralt-utils)
 - [`@emeralt/assets`](./packages/misc/emeralt-assets)
 
 ## License
