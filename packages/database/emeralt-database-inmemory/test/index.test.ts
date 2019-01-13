@@ -1,9 +1,9 @@
 import test from 'ava'
 import { EmeraltDatabaseInMemory } from '@/index'
 
-test('init', (t) => {
+test('init', async (t) => {
   // @ts-ignore
-  const database = EmeraltDatabaseInMemory({})({})
+  const database = await EmeraltDatabaseInMemory({})({})
 
   t.truthy(database.listMetadata)
   t.truthy(database.getMetadata)
@@ -16,7 +16,7 @@ test('init', (t) => {
 
 test('metadata', async (t) => {
   // @ts-ignore
-  const database = EmeraltDatabaseInMemory({})({})
+  const database = await EmeraltDatabaseInMemory({})({})
 
   t.deepEqual(await database.listMetadata(), {})
 
@@ -35,7 +35,7 @@ test('metadata', async (t) => {
 
 test('versions', async (t) => {
   // @ts-ignore
-  const database = EmeraltDatabaseInMemory({})({})
+  const database = await EmeraltDatabaseInMemory({})({})
 
   t.deepEqual(await database.listVersions('name'), undefined)
 
