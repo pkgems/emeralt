@@ -19,8 +19,7 @@ export const build = async ({
   try {
     execSync('tsc --noEmit')
   } catch (error) {
-    console.error(chalk.red(error.stdout))
-    return process.exit(1)
+    console.warn(chalk.yellow(error.stdout))
   }
 
   const stats = await microbundle({
