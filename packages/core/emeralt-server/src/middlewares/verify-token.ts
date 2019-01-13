@@ -2,7 +2,8 @@ import { TEmeraltMiddlewareParams } from '@emeralt/types'
 
 export const verifyTokenMiddleware = ({
   services,
-}: TEmeraltMiddlewareParams) => (req, res, next) => {
+  auth,
+}: TEmeraltMiddlewareParams) => async (req, res, next) => {
   const authorization = req.get('authorization')
 
   if (!authorization) {
@@ -19,6 +20,22 @@ export const verifyTokenMiddleware = ({
       req.context.decodedToken = services.jwt.verify(token)
 
       return next()
+    } else if (type === 'Basic') {
+      const [username, password] = Buffer.from(token, 'base64')
+        .toString()
+        .split(':')
+
+      const valid = await auth.comparePassword(username, password)
+
+      if (valid) {
+        req.context.decodedToken = {
+          name: username,
+        }
+
+        return next()
+      } else {
+        throw new Error('Invalid username or password')
+      }
     }
 
     return res.status(401).json({

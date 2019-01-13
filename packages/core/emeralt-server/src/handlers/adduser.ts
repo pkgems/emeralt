@@ -9,7 +9,7 @@ export const adduser = ({ auth }: TEmeraltHandlerParams) =>
 
     const valid = await auth.comparePassword(name, password)
 
-    return res.status(valid ? 200 : 401).json({
+    return res.status(valid ? 201 : 401).json({
       ok: valid,
       id: name,
       token: valid ? jwt.sign({ name }, 'secret') : null,
