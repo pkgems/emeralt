@@ -9,6 +9,8 @@ export const createMockClient = () => {
     email: 'user1@user1.user1',
   }
 
+  npmlog.level = 'silent'
+
   const client = doasync(
     new RegClient({
       ssl: {

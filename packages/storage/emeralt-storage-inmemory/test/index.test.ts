@@ -3,13 +3,16 @@ import { EmeraltStorageInMemory } from '@/index'
 import { Readable } from 'stream'
 
 test('init', (t) => {
-  const storage = new EmeraltStorageInMemory()
+  // @ts-ignore
+  const storage = EmeraltStorageInMemory({})({})
 
-  t.true(storage instanceof EmeraltStorageInMemory)
+  t.truthy(storage.getTarball)
+  t.truthy(storage.putTarball)
 })
 
 test('tarball', async (t) => {
-  const storage = new EmeraltStorageInMemory()
+  // @ts-ignore
+  const storage = EmeraltStorageInMemory({})({})
 
   t.is(await storage.getTarball('name', '1.0.0'), undefined)
 

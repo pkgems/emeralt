@@ -6,10 +6,16 @@ export {
   TEmeraltMiddlewareParams,
   TEmeraltHandlerParams,
   TDecodedToken,
-  // addons
+  // auth
+  CEmeraltAuth,
   IEmeraltAuth,
+  // database
+  CEmeraltDatabase,
   IEmeraltDatabase,
+  // storage
+  CEmeraltStorage,
   IEmeraltStorage,
+  // plugins
   IEmeraltPlugin,
 } from './emeralt'
 

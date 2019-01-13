@@ -2,25 +2,27 @@ import { IEmeraltStorage } from '@emeralt/types'
 import { path, assocPath } from 'ramda'
 import { Readable } from 'stream'
 
-export class EmeraltStorageInMemory implements IEmeraltStorage {
-  private storage = {}
+export const EmeraltStorageInMemory: IEmeraltStorage = () => () => {
+  let storage = {}
 
-  async getTarball(name: string, version: string) {
-    const buffer = path([name, version], this.storage)
+  return {
+    getTarball: async (name, version) => {
+      const buffer = path([name, version], storage)
 
-    if (buffer) {
-      const rs = new Readable()
+      if (buffer) {
+        const rs = new Readable()
 
-      rs.push(buffer)
-      rs.push(null)
+        rs.push(buffer)
+        rs.push(null)
 
-      return rs
-    } else {
-      return undefined
-    }
-  }
+        return rs
+      } else {
+        return undefined
+      }
+    },
 
-  async putTarball(name: string, version: string, tarball: Buffer) {
-    this.storage = assocPath([name, version], tarball, this.storage)
+    putTarball: async (name, version, tarball) => {
+      storage = assocPath([name, version], tarball, storage)
+    },
   }
 }

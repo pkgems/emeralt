@@ -5,11 +5,23 @@ import { TEmeraltServerParams } from '@emeralt/types'
 import { createServices } from '@/services'
 import { createMiddlewares } from '@/middlewares'
 import { createHandlers } from '@/handlers'
+import { TEmeraltServerParamsInternal } from '@emeralt/types/src/emeralt'
+
+type EmeraltServer = http.Server & {
+  emeralt: TEmeraltServerParamsInternal
+}
 
 export const createEmeraltServer = (params: TEmeraltServerParams) => {
-  const services = createServices(params)
-  const middlewares = createMiddlewares({ ...params, services })
-  const handlers = createHandlers({ ...params, services, middlewares })
+  const internal: TEmeraltServerParamsInternal = {
+    config: params.config,
+    auth: params.auth(params.config),
+    database: params.database(params.config),
+    storage: params.storage(params.config),
+  }
+
+  const services = createServices(internal)
+  const middlewares = createMiddlewares({ ...internal, services })
+  const handlers = createHandlers({ ...internal, services, middlewares })
 
   const server = express()
     // options
@@ -20,6 +32,7 @@ export const createEmeraltServer = (params: TEmeraltServerParams) => {
     .use(middlewares.json)
     .use(middlewares.compression)
     .use(middlewares.context)
+    .use(middlewares.errorHandler)
 
     // handlers
     .use(handlers.ping)
@@ -28,5 +41,9 @@ export const createEmeraltServer = (params: TEmeraltServerParams) => {
     .use(handlers.search)
     .use(handlers.packages)
 
-  return http.createServer(server)
+  const httpServer = http.createServer(server) as EmeraltServer
+
+  httpServer.emeralt = internal
+
+  return httpServer
 }

@@ -6,6 +6,9 @@ import {
 } from '@emeralt/types'
 import { createServices } from '../../../emeralt-server/src/services'
 import { createMiddlewares } from '../../../emeralt-server/src/middlewares'
+import { CEmeraltAuth } from './auth'
+import { CEmeraltDatabase } from './database'
+import { CEmeraltStorage } from './storage'
 
 export type TEmeraltServerConfig = {
   logLevel: 'combined' | 'common' | 'dev' | 'short' | 'tiny' | 'silent'
@@ -16,19 +19,27 @@ export type TEmeraltServerConfig = {
 
 export type TEmeraltServerParams = {
   config: TEmeraltServerConfig
-  auth: IEmeraltAuth
-  database: IEmeraltDatabase
-  storage: IEmeraltStorage
-  plugins: IEmeraltPlugin[]
+  auth: ReturnType<IEmeraltAuth>
+  database: ReturnType<IEmeraltDatabase>
+  storage: ReturnType<IEmeraltStorage>
+  // plugins: IEmeraltPlugin[]
 }
 
-export type TEmeraltServiceParams = TEmeraltServerParams
+export type TEmeraltServerParamsInternal = {
+  config: TEmeraltServerConfig
+  auth: CEmeraltAuth
+  database: CEmeraltDatabase
+  storage: CEmeraltStorage
+  // plugins: IEmeraltPlugin[]
+}
 
-export type TEmeraltMiddlewareParams = TEmeraltServerParams & {
+export type TEmeraltServiceParams = TEmeraltServerParamsInternal
+
+export type TEmeraltMiddlewareParams = TEmeraltServerParamsInternal & {
   services: ReturnType<typeof createServices>
 }
 
-export type TEmeraltHandlerParams = TEmeraltServerParams & {
+export type TEmeraltHandlerParams = TEmeraltServerParamsInternal & {
   services: ReturnType<typeof createServices>
   middlewares: ReturnType<typeof createMiddlewares>
 }

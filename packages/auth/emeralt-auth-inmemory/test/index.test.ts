@@ -6,71 +6,72 @@ const usersMock = {
 }
 
 test('[init]', async (t) => {
-  const auth = await new EmeraltAuthInMemory()
+  // @ts-ignore
+  const auth = EmeraltAuthInMemory({})({})
 
-  t.deepEqual(auth.users, new Map())
+  t.truthy(auth.addUser)
+  t.truthy(auth.comparePassword)
+  t.truthy(auth.removeUser)
 })
 
 test('[init] with users', async (t) => {
-  const auth = new EmeraltAuthInMemory({
-    users: usersMock,
-  })
+  // @ts-ignore
+  const auth = EmeraltAuthInMemory({ users: usersMock })({})
 
-  t.is([...auth.users].length, 1)
-  t.is(auth.users.get('username'), Buffer.from('password').toString('base64'))
+  t.true(await auth.comparePassword('username', 'password'))
 })
 
 test('[addUser]', async (t) => {
-  const auth = await new EmeraltAuthInMemory()
+  // @ts-ignore
+  const auth = EmeraltAuthInMemory({})({})
 
   t.true(await auth.addUser('username', 'password'))
-
-  t.is([...auth.users].length, 1)
-  t.is(auth.users.get('username'), Buffer.from('password').toString('base64'))
+  t.true(await auth.comparePassword('username', 'password'))
 })
 
 test('[addUser] reject duplicate', async (t) => {
-  const auth = await new EmeraltAuthInMemory()
+  // @ts-ignore
+  const auth = EmeraltAuthInMemory({})({})
 
   t.true(await auth.addUser('username', 'password'))
   t.false(await auth.addUser('username', 'password'))
 })
 
 test('[removeUser]', async (t) => {
-  const auth = await new EmeraltAuthInMemory()
+  // @ts-ignore
+  const auth = EmeraltAuthInMemory({})({})
 
   t.true(await auth.addUser('username', 'password'))
   t.true(await auth.removeUser('username'))
 
-  t.deepEqual(auth.users, new Map([]))
+  t.false(await auth.removeUser('username'))
+  t.false(await auth.comparePassword('username', 'password'))
 })
 
 test('[removeUser] unexistent user', async (t) => {
-  const auth = await new EmeraltAuthInMemory()
+  // @ts-ignore
+  const auth = EmeraltAuthInMemory({})({})
 
   t.false(await auth.removeUser('tester'))
-
-  t.deepEqual(auth.users, new Map([]))
 })
 
-test('[authenticate]', async (t) => {
-  const auth = await new EmeraltAuthInMemory({
-    users: usersMock,
-  })
+test('[comparePassword]', async (t) => {
+  // @ts-ignore
+  const auth = EmeraltAuthInMemory({ users: usersMock })({})
 
   t.true(await auth.comparePassword('username', 'password'))
 })
 
-test('[authenticate] unexistend user', async (t) => {
-  const auth = await new EmeraltAuthInMemory()
+test('[comparePassword] unexistend user', async (t) => {
+  // @ts-ignore
+  const auth = EmeraltAuthInMemory({})({})
 
   t.false(await auth.comparePassword('username', 'password'))
 })
 
-test('[authenticate] wrong password', async (t) => {
-  const auth = await new EmeraltAuthInMemory({
-    users: usersMock,
-  })
+test('[comparePassword] wrong password', async (t) => {
+  // @ts-ignore
+  const auth = EmeraltAuthInMemory({ users: usersMock })({})
 
   t.false(await auth.comparePassword('username', 'wrong-password'))
 })

@@ -13,14 +13,13 @@ createEmeraltServer({
       secret: 'secret',
     },
   },
-  auth: new EmeraltAuthInMemory({
+  auth: EmeraltAuthInMemory({
     users: {
       emeralt: 'emeralt',
     },
   }),
-  database: new EmeraltDatabaseInMemory(),
-  storage: new EmeraltStorageInMemory(),
-  plugins: [],
+  database: EmeraltDatabaseInMemory({}),
+  storage: EmeraltStorageInMemory({}),
 }).listen(8080, () => {
   console.log(chalk.bold.greenBright('Emeralt is listening at 8080...'))
   console.log('Default user:')

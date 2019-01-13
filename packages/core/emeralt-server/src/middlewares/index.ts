@@ -4,6 +4,7 @@ import compression from 'compression'
 import { loggerMiddleware } from './logger'
 import { verifyTokenMiddleware } from './verify-token'
 import { contextMiddleware } from './context'
+import { errorHandlerMiddleware } from './error-handler'
 
 export const createMiddlewares = (params: TEmeraltMiddlewareParams) => ({
   json: json({
@@ -13,4 +14,5 @@ export const createMiddlewares = (params: TEmeraltMiddlewareParams) => ({
   context: contextMiddleware(params),
   logger: loggerMiddleware(params),
   verifyToken: verifyTokenMiddleware(params),
+  errorHandler: errorHandlerMiddleware(params),
 })

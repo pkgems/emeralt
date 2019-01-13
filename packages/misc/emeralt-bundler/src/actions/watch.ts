@@ -2,7 +2,6 @@ import { resolve } from 'path'
 import { execSync } from 'child_process'
 import microbundle from 'microbundle'
 import chalk from 'chalk'
-import { remove } from 'fs-extra'
 import { getExternals } from '../utils'
 
 export const watch = async ({
@@ -17,8 +16,7 @@ export const watch = async ({
   try {
     execSync('tsc --noEmit')
   } catch (error) {
-    console.error(chalk.red(error.stdout))
-    return process.exit(1)
+    console.warn(chalk.yellow(error.stdout))
   }
 
   const stats = await microbundle({
