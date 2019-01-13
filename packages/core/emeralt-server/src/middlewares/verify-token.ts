@@ -1,9 +1,11 @@
 import { TEmeraltMiddlewareParams } from '@emeralt/types'
+import { decodeAuthToken } from '@/utils'
 
-export const verifyTokenMiddleware = ({
-  services,
-  auth,
-}: TEmeraltMiddlewareParams) => async (req, res, next) => {
+export const verifyTokenMiddleware = (params: TEmeraltMiddlewareParams) => (
+  req,
+  res,
+  next,
+) => {
   const authorization = req.get('authorization')
 
   if (!authorization) {
@@ -13,39 +15,16 @@ export const verifyTokenMiddleware = ({
     })
   }
 
-  const [type, token] = authorization.split(' ')
+  decodeAuthToken(authorization, params)
+    .then((token) => {
+      req.context.decodedToken = token
 
-  try {
-    if (type === 'Bearer') {
-      req.context.decodedToken = services.jwt.verify(token)
-
-      return next()
-    } else if (type === 'Basic') {
-      const [username, password] = Buffer.from(token, 'base64')
-        .toString()
-        .split(':')
-
-      const valid = await auth.comparePassword(username, password)
-
-      if (valid) {
-        req.context.decodedToken = {
-          name: username,
-        }
-
-        return next()
-      } else {
-        throw new Error('Invalid username or password')
-      }
-    }
-
-    return res.status(401).json({
-      ok: false,
-      message: 'Unsupported auth type',
+      process.nextTick(next)
     })
-  } catch ({ message }) {
-    return res.status(401).json({
-      ok: false,
-      message,
+    .catch((err) => {
+      return res.status(401).json({
+        ok: false,
+        message: err.message,
+      })
     })
-  }
 }
