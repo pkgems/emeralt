@@ -3,8 +3,8 @@ import { EmeraltDatabaseInMemory } from '@emeralt/database-inmemory'
 import { EmeraltAuthInMemory } from '@emeralt/auth-inmemory'
 import { EmeraltStorageInMemory } from '@emeralt/storage-inmemory'
 
-export const createMockServer = () => {
-  const server = createEmeraltServer({
+export const createMockServer = async () => {
+  const server = await createEmeraltServer({
     config: {
       logLevel: 'silent',
       jwt: {
@@ -19,7 +19,7 @@ export const createMockServer = () => {
     }),
     database: EmeraltDatabaseInMemory({}),
     storage: EmeraltStorageInMemory({}),
-  }).listen()
+  }).then((s) => s.listen())
 
   // @ts-ignore
   const address = `http://localhost:${server.address().port}`

@@ -11,12 +11,13 @@ type EmeraltServer = http.Server & {
   emeralt: TEmeraltServerParamsInternal
 }
 
-export const createEmeraltServer = (params: TEmeraltServerParams) => {
+export const createEmeraltServer = async (params: TEmeraltServerParams) => {
+  // initialize plugins
   const internal: TEmeraltServerParamsInternal = {
     config: params.config,
-    auth: params.auth(params.config),
-    database: params.database(params.config),
-    storage: params.storage(params.config),
+    auth: await params.auth(params.config),
+    database: await params.database(params.config),
+    storage: await params.storage(params.config),
   }
 
   const services = createServices(internal)
