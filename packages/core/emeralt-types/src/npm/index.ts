@@ -1,4 +1,5 @@
-export * from './package'
+export * from './metadata'
 export * from './dist'
 export * from './person'
 export * from './version'
+export * from './user'

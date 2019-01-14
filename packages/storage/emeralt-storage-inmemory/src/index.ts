@@ -6,7 +6,7 @@ export const EmeraltStorageInMemory: IEmeraltStorage = () => () => {
   let storage = {}
 
   return {
-    getTarball: async (name, version) => {
+    getTarball: (name, version) => {
       const buffer = path([name, version], storage)
 
       if (buffer) {
@@ -21,7 +21,7 @@ export const EmeraltStorageInMemory: IEmeraltStorage = () => () => {
       }
     },
 
-    putTarball: async (name, version, tarball) => {
+    putTarball: (name, version, tarball) => {
       storage = assocPath([name, version], tarball, storage)
     },
   }

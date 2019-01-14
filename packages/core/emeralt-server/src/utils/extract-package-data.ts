@@ -1,7 +1,7 @@
-import { TPackage } from '@emeralt/types'
+import { TMetadata } from '@emeralt/types'
 
 /* remove version and attachments from package */
-const extractMetadata = (pkg: TPackage) => {
+const extractMetadata = (pkg: TMetadata) => {
   const copy = { ...pkg }
 
   delete copy.version
@@ -11,7 +11,7 @@ const extractMetadata = (pkg: TPackage) => {
 }
 
 /* remove first of versions array with modified tarball url */
-const extractVersion = (pkg: TPackage) => {
+const extractVersion = (pkg: TMetadata) => {
   const version = Object.values(pkg.versions).shift()
 
   const encodedName = encodeURIComponent(version.name)
@@ -23,7 +23,7 @@ const extractVersion = (pkg: TPackage) => {
   return version
 }
 
-const extractTarball = (pkg: TPackage) => {
+const extractTarball = (pkg: TMetadata) => {
   const tarball = Object.values(pkg._attachments)[0]
 
   tarball.data =
@@ -34,7 +34,7 @@ const extractTarball = (pkg: TPackage) => {
   return tarball
 }
 
-export const extractPackageData = (pkg: TPackage) => ({
+export const extractPackageData = (pkg: TMetadata) => ({
   metadata: extractMetadata(pkg),
   version: extractVersion(pkg),
   tarball: extractTarball(pkg),

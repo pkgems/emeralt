@@ -11,14 +11,24 @@ type EmeraltServer = http.Server & {
   emeralt: TEmeraltServerParamsInternal
 }
 
+const initializeInternal = async (
+  params: TEmeraltServerParams,
+): Promise<TEmeraltServerParamsInternal> => {
+  const database = await params.database(params.config)
+  const auth = await params.auth(params.config, database)
+  const storage = await params.storage(params.config, database)
+
+  return {
+    ...params,
+    database,
+    auth,
+    storage,
+  }
+}
+
 export const createEmeraltServer = async (params: TEmeraltServerParams) => {
   // initialize plugins
-  const internal: TEmeraltServerParamsInternal = {
-    config: params.config,
-    auth: await params.auth(params.config),
-    database: await params.database(params.config),
-    storage: await params.storage(params.config),
-  }
+  const internal = await initializeInternal(params)
 
   const services = createServices(internal)
   const middlewares = createMiddlewares({ ...internal, services })
@@ -33,7 +43,6 @@ export const createEmeraltServer = async (params: TEmeraltServerParams) => {
     .use(middlewares.json)
     .use(middlewares.compression)
     .use(middlewares.context)
-    .use(middlewares.errorHandler)
 
     // handlers
     .use(handlers.ping)

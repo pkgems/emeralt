@@ -1,4 +1,4 @@
-import { IEmeraltAuth, CEmeraltAuth } from '@emeralt/types'
+import { IEmeraltAuth, TMetadata } from '@emeralt/types'
 
 const base64 = {
   encode: (str) => Buffer.from(str).toString('base64'),
@@ -9,46 +9,58 @@ export const EmeraltAuthInMemory: IEmeraltAuth<{
   users?: {
     [username: string]: string
   }
-}> = ({ users }) => () => {
-  return new class Auth implements CEmeraltAuth {
-    public users: Map<string, string>
+}> = ({ users }) => (_, db) => {
+  for (const username in users) {
+    db.setKey(['users', username], {
+      username,
+      password: base64.encode(users[username]),
+      email: null,
+    })
+  }
 
-    constructor() {
-      this.users = new Map()
+  return {
+    createUser: (username, password) => {
+      const exists = db.hasKey(['users', username])
 
-      for (const username in users) {
-        this.users.set(username, base64.encode(users[username]))
-      }
-    }
-
-    async comparePassword(username: string, password: string) {
-      const userPassword = this.users.get(username)
-
-      if (userPassword && base64.decode(userPassword) === password) {
-        return true
-      } else {
-        return false
-      }
-    }
-
-    async addUser(username: string, password: string) {
-      if (!this.users.get(username)) {
-        this.users.set(username, base64.encode(password))
+      if (!exists) {
+        db.setKey(['users', username], {
+          username,
+          password: base64.encode(password),
+          email: null,
+        })
 
         return true
       } else {
         return false
       }
-    }
+    },
 
-    async removeUser(username: string) {
-      if (this.users.get(username)) {
-        this.users.delete(username)
+    deleteUser: (username) => {
+      const exists = db.hasKey(['users', username])
+
+      if (exists) {
+        db.deleteKey(['users', username])
 
         return true
       } else {
         return false
       }
-    }
-  }()
+    },
+
+    comparePassword: (username, password) => {
+      const user = db.getKey(['users', username])
+
+      return user ? password === base64.decode(user.password) : false
+    },
+
+    canUser: (username, action, packagename) => {
+      if (!db.hasKey(['users', username])) {
+        return false
+      }
+
+      const metadata = db.getKey(['metadata', packagename]) as TMetadata
+
+      return metadata ? metadata._owner === username : true
+    },
+  }
 }

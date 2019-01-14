@@ -1,41 +1,35 @@
-import { IEmeraltDatabase, CEmeraltDatabase } from '@emeralt/types'
-import { path, assocPath, mergeDeepLeft } from 'ramda'
+import { IEmeraltDatabase } from '@emeralt/types'
+import { path, keys, assocPath, dissocPath, mergeDeepLeft } from 'ramda'
 
 export const EmeraltDatabaseInMemory: IEmeraltDatabase = () => () => {
-  return new class Database implements CEmeraltDatabase {
-    private storage = {
-      metadata: {},
-      versions: {},
-    }
+  let storage = {}
 
-    listMetadata() {
-      return path(['metadata'], this.storage)
-    }
+  return {
+    getKey: (k) => path(k, storage),
 
-    getMetadata(name: string) {
-      return path(['metadata', name], this.storage)
-    }
+    hasKey: (k) => !!path(k, storage),
 
-    putMetadata(name: string, data: any) {
-      const current = this.getMetadata(name) || {}
+    listKeys: (k) => ((keys(path(k, storage)) as unknown) as string[]) || [],
 
-      this.storage = assocPath(
-        ['metadata', name],
-        mergeDeepLeft(data, current),
-        this.storage,
-      )
-    }
+    setKey: (k, v) => (storage = assocPath(k, v, storage)) && true,
 
-    listVersions(name: string) {
-      return path(['versions', name], this.storage)
-    }
+    createKey: (k, v) =>
+      path(k, storage) // check if exists
+        ? false // false if yes
+        : (storage = assocPath(k, v, storage)) && true, // create if not
 
-    getVersion(name: string, version: string) {
-      return path(['versions', name, version], this.storage)
-    }
+    updateKey: (k, v) =>
+      path(k, storage)
+        ? (storage = assocPath(
+            k,
+            mergeDeepLeft(v, path(k, storage)),
+            storage,
+          )) && true
+        : false,
 
-    putVersion(name: string, version: string, data: any) {
-      this.storage = assocPath(['versions', name, version], data, this.storage)
-    }
-  }()
+    deleteKey: (k) =>
+      path(k, storage) // check if exists
+        ? (storage = dissocPath(k, storage)) && true // delete if yes
+        : false, // false if not
+  }
 }

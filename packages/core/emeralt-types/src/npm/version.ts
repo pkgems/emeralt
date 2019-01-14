@@ -1,6 +1,8 @@
 import { TDist } from './dist'
-import { TPackage } from './package'
+import { TMetadata } from './metadata'
 
-export type TVersion = TPackage & {
+export type TVersion = TMetadata & {
   dist: TDist
+
+  [key: string]: any
 }

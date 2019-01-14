@@ -17,7 +17,7 @@
   "devDependencies": {
     "@emeralt/bundler": "^0.0.19",
     "@emeralt/types": "^0.0.19",
-    "@types/ramda": "0.25.46"
+    "@types/ramda": "^0.25.46"
   },
   "dependencies": {
     "ramda": "^0.26.1"

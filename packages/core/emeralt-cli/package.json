@@ -23,7 +23,7 @@
     "@emeralt/database-inmemory": "^0.0.19",
     "@emeralt/server": "^0.0.19",
     "@emeralt/storage-inmemory": "^0.0.19",
-    "chalk": "^2.4.1"
+    "chalk": "^2.4.2"
   },
   "devDependencies": {
     "@emeralt/bundler": "^0.0.19",

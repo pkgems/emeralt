@@ -5,51 +5,65 @@ test('init', async (t) => {
   // @ts-ignore
   const database = await EmeraltDatabaseInMemory({})({})
 
-  t.truthy(database.listMetadata)
-  t.truthy(database.getMetadata)
-  t.truthy(database.putMetadata)
-
-  t.truthy(database.listVersions)
-  t.truthy(database.getVersion)
-  t.truthy(database.putVersion)
+  t.truthy(database.listKeys)
+  t.truthy(database.getKey)
+  t.truthy(database.setKey)
+  t.truthy(database.updateKey)
+  t.truthy(database.deleteKey)
 })
 
-test('metadata', async (t) => {
+test('getKey [& setKey]', async (t) => {
   // @ts-ignore
   const database = await EmeraltDatabaseInMemory({})({})
 
-  t.deepEqual(await database.listMetadata(), {})
+  t.true(
+    database.setKey(['metadata', 'pkg-1'], {
+      a: 'a',
+    }),
+  )
 
-  await database.putMetadata('name', { a: 'b' })
-
-  t.deepEqual(await database.listMetadata(), {
-    name: {
-      a: 'b',
-    },
-  })
-
-  t.deepEqual(await database.getMetadata('name'), {
-    a: 'b',
-  })
+  t.deepEqual(database.getKey(['metadata', 'pkg-1']), { a: 'a' })
 })
 
-test('versions', async (t) => {
+test('hasKey [& setKey]', async (t) => {
   // @ts-ignore
   const database = await EmeraltDatabaseInMemory({})({})
 
-  t.deepEqual(await database.listVersions('name'), undefined)
+  t.false(database.hasKey(['metadata', 'pkg-1']))
+  t.true(database.setKey(['metadata', 'pkg-1'], {}))
+  t.true(database.hasKey(['metadata', 'pkg-1']))
+})
 
-  await database.putVersion('name', '1.0.0', {
-    a: 'b',
-  })
+test('listKeys [& setKey]', async (t) => {
+  // @ts-ignore
+  const database = await EmeraltDatabaseInMemory({})({})
 
-  t.deepEqual(await database.listVersions('name'), {
-    '1.0.0': {
-      a: 'b',
-    },
-  })
+  t.true(database.setKey(['metadata', 'pkg-1'], { a: 'a' }))
 
-  t.deepEqual(await database.getVersion('name', '1.0.0'), {
-    a: 'b',
-  })
+  t.deepEqual(database.listKeys(['metadata']), ['pkg-1'])
+})
+
+test('updateKey [& setKey, getKey]', async (t) => {
+  // @ts-ignore
+  const database = await EmeraltDatabaseInMemory({})({})
+
+  t.false(database.updateKey(['metadata', 'pkg-1'], { a: 'b', c: 'd' }))
+
+  database.setKey(['metadata', 'pkg-1'], { a: 'a' })
+
+  t.true(database.updateKey(['metadata', 'pkg-1'], { a: 'b', c: 'd' }))
+
+  t.deepEqual(database.getKey(['metadata', 'pkg-1']), { a: 'b', c: 'd' })
+
+  t.false(database.updateKey(['metadata', 'pkg-2'], { a: 'b' }))
+})
+
+test('deleteKey [& setKey, getKey]', async (t) => {
+  // @ts-ignore
+  const database = await EmeraltDatabaseInMemory({})({})
+
+  database.setKey(['metadata', 'pkg-1'], { a: 'a' })
+  t.true(database.deleteKey(['metadata', 'pkg-1']))
+
+  t.deepEqual(database.getKey(['metadata', 'pkg-1']), undefined)
 })

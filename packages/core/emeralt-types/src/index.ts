@@ -15,13 +15,12 @@ export {
   // storage
   CEmeraltStorage,
   IEmeraltStorage,
-  // plugins
-  IEmeraltPlugin,
 } from './emeralt'
 
 export {
   // entities
-  TPackage,
+  TUser,
+  TMetadata,
   TDist,
   TVersion,
 } from './npm'

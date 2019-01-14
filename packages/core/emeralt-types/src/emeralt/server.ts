@@ -1,9 +1,4 @@
-import {
-  IEmeraltAuth,
-  IEmeraltDatabase,
-  IEmeraltStorage,
-  IEmeraltPlugin,
-} from '@emeralt/types'
+import { IEmeraltAuth, IEmeraltDatabase, IEmeraltStorage } from '@emeralt/types'
 import { createServices } from '../../../emeralt-server/src/services'
 import { createMiddlewares } from '../../../emeralt-server/src/middlewares'
 import { CEmeraltAuth } from './auth'
@@ -22,7 +17,6 @@ export type TEmeraltServerParams = {
   auth: ReturnType<IEmeraltAuth>
   database: ReturnType<IEmeraltDatabase>
   storage: ReturnType<IEmeraltStorage>
-  // plugins: IEmeraltPlugin[]
 }
 
 export type TEmeraltServerParamsInternal = {
@@ -30,7 +24,6 @@ export type TEmeraltServerParamsInternal = {
   auth: CEmeraltAuth
   database: CEmeraltDatabase
   storage: CEmeraltStorage
-  // plugins: IEmeraltPlugin[]
 }
 
 export type TEmeraltServiceParams = TEmeraltServerParamsInternal

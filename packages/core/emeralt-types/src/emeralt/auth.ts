@@ -1,11 +1,23 @@
-import { IEmeraltPlugin } from './plugin'
+import { OptionalPromise } from '../helpers'
+import { TEmeraltServerConfig } from './server'
+import { CEmeraltDatabase } from './database'
 
 export interface CEmeraltAuth {
-  addUser(username: string, password: string): Promise<boolean>
+  createUser(username: string, password: string): OptionalPromise<boolean>
 
-  removeUser(username: string): Promise<boolean>
+  deleteUser(username: string): OptionalPromise<boolean>
 
-  comparePassword(username: string, password: string): Promise<boolean>
+  comparePassword(username: string, password: string): OptionalPromise<boolean>
+
+  canUser(
+    username: string,
+    action: 'publish' | 'get',
+    packagename: string,
+  ): OptionalPromise<boolean>
 }
-
-export interface IEmeraltAuth<C = {}> extends IEmeraltPlugin<CEmeraltAuth, C> {}
+export interface IEmeraltAuth<C = {}> {
+  (pluginConfig: C): (
+    serverConfig: TEmeraltServerConfig,
+    database: CEmeraltDatabase,
+  ) => OptionalPromise<CEmeraltAuth>
+}

@@ -1,7 +1,7 @@
 import { Person } from './person'
 import { TVersion } from './version'
 
-export type TPackage = {
+export type TMetadata = {
   name: string
   author: Person
   version: string
@@ -40,4 +40,8 @@ export type TPackage = {
       data: Buffer
     }
   }
+
+  _owner: string // username (emeralt)
+
+  [key: string]: any
 }
