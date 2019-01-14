@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/types",
-  "version": "0.0.19",
+  "version": "0.1.0",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./src/index.ts",

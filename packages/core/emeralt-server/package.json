@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/server",
-  "version": "0.0.19",
+  "version": "0.1.0",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -24,11 +24,11 @@
     "ssri": "^6.0.1"
   },
   "devDependencies": {
-    "@emeralt/auth-inmemory": "^0.0.19",
-    "@emeralt/bundler": "^0.0.19",
-    "@emeralt/database-inmemory": "^0.0.19",
-    "@emeralt/storage-inmemory": "^0.0.19",
-    "@emeralt/types": "^0.0.19",
+    "@emeralt/auth-inmemory": "^0.1.0",
+    "@emeralt/bundler": "^0.1.0",
+    "@emeralt/database-inmemory": "^0.1.0",
+    "@emeralt/storage-inmemory": "^0.1.0",
+    "@emeralt/types": "^0.1.0",
     "@types/body-parser": "1.17.0",
     "@types/express": "4.16.0",
     "@types/jsonwebtoken": "8.3.0",
