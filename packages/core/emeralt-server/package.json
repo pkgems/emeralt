@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
