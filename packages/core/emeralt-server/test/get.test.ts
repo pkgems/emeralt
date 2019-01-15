@@ -1,8 +1,8 @@
 import test from 'ava'
-import { createMocks } from './mocks'
 import { resolve } from 'url'
+import { createMocks } from './mocks'
 import { packagesFixtures } from './fixtures'
-import { createTarStream, readPackageJson } from './utils'
+import { readPackageJson, publishPackage } from './utils'
 
 test('get upstream', async (t) => {
   const { client, address } = await createMocks()
@@ -15,22 +15,18 @@ test('get upstream', async (t) => {
 test('get local', async (t) => {
   const { client, address } = await createMocks()
 
-  const [pkg] = packagesFixtures
-
-  const body = await createTarStream(pkg)
-  const metadata = await readPackageJson(pkg)
-
-  await client.publish(address, {
-    ...client.config,
-    access: 'public',
-    body,
-    metadata,
+  await publishPackage(client, address, packagesFixtures[0])
+  await publishPackage(client, address, packagesFixtures[0], {
+    metadata: { version: '2.0.0' },
   })
 
+  const metadata = await readPackageJson(packagesFixtures[0])
   const response = await client.get(
     resolve(address, metadata.name),
     client.config,
   )
 
   t.is(response._id, metadata.name)
+  t.is(response['dist-tags']['latest'], '2.0.0')
+  t.deepEqual(Object.keys(response.versions), ['1.0.0', '2.0.0'])
 })

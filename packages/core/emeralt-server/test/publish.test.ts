@@ -1,92 +1,80 @@
 import test from 'ava'
 import { createMocks } from './mocks'
-import { packagesFixtures } from '@test/fixtures'
-import { createTarStream, readPackageJson } from './utils'
+import { publishPackage } from './utils'
+import { packagesFixtures } from './fixtures'
 
 test('publish', async (t) => {
   const { client, address } = await createMocks()
 
-  const [pkg] = packagesFixtures
-
-  const res = await client.publish(address, {
-    ...client.config,
-    access: 'public',
-    body: await createTarStream(pkg),
-    metadata: await readPackageJson(pkg),
-  })
+  const res = await publishPackage(client, address, packagesFixtures[0])
 
   t.deepEqual(res, {})
+})
+
+test('publish with token', async (t) => {
+  const { client, address } = await createMocks()
+
+  const { token } = await client.adduser(address, client.config)
+
+  await t.throwsAsync(
+    publishPackage(client, address, packagesFixtures[0], {
+      auth: { token: 'abced' },
+    }),
+  )
+
+  t.deepEqual(
+    await publishPackage(client, address, packagesFixtures[0], {
+      auth: { token },
+    }),
+    {},
+  )
 })
 
 test('reject publish the same version', async (t) => {
   const { client, address } = await createMocks()
 
-  const [pkg] = packagesFixtures
+  await publishPackage(client, address, packagesFixtures[0])
 
-  await client.publish(address, {
-    ...client.config,
-    access: 'public',
-    body: await createTarStream(pkg),
-    metadata: await readPackageJson(pkg),
-  })
-
-  await t.throwsAsync(
-    client.publish(address, {
-      ...client.config,
-      access: 'public',
-      body: await createTarStream(pkg),
-      metadata: await readPackageJson(pkg),
-    }),
-  )
+  await t.throwsAsync(publishPackage(client, address, packagesFixtures[0]))
 })
 
 test('reject unauthorized publish', async (t) => {
   const { client, address } = await createMocks()
 
-  const [pkg] = packagesFixtures
-
-  await client.publish(address, {
-    ...client.config,
-    access: 'public',
+  await publishPackage(client, address, packagesFixtures[0], {
     auth: {
       username: 'user1',
       password: 'user1',
       email: 'user1@user1.user1',
     },
-    body: await createTarStream(pkg),
-    metadata: await readPackageJson(pkg),
   })
 
   await t.throwsAsync(
-    client.publish(address, {
-      ...client.config,
+    publishPackage(client, address, packagesFixtures[0], {
       auth: {
         username: 'user2',
         password: 'user2',
         email: 'user2@user2.user2',
       },
-      access: 'public',
-      body: await createTarStream(pkg),
       metadata: {
-        ...(await readPackageJson(pkg)),
         version: '2.0.0',
       },
     }),
   )
+})
+
+test('reject unauthenticated publish', async (t) => {
+  const { client, address } = await createMocks()
 
   await t.throwsAsync(
-    client.publish(address, {
-      ...client.config,
+    publishPackage(client, address, packagesFixtures[0], {
       auth: {
         username: 'a',
         password: 'b',
         email: 'a@b.c',
       },
-      access: 'public',
-      body: await createTarStream(pkg),
       metadata: {
-        ...(await readPackageJson(pkg)),
-        version: '2.0.0',
+        version: '3.0.0',
       },
     }),
   )

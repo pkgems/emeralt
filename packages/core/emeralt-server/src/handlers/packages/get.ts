@@ -21,8 +21,6 @@ export const getHandler = ({ database }: TEmeraltHandlerParams) =>
       Promise.resolve({}),
     )
 
-    console.log(versions)
-
     res.status(200).json({
       ...metadata,
       versions,
