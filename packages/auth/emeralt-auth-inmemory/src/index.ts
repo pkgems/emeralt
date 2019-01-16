@@ -9,9 +9,9 @@ export const EmeraltAuthInMemory: IEmeraltAuth<{
   users?: {
     [username: string]: string
   }
-}> = ({ users }) => (_, db) => {
+}> = ({ users }) => async (_, db) => {
   for (const username in users) {
-    db.setKey(['users', username], {
+    await db.setKey(['users', username], {
       username,
       password: base64.encode(users[username]),
       email: null,
@@ -19,11 +19,11 @@ export const EmeraltAuthInMemory: IEmeraltAuth<{
   }
 
   return {
-    createUser: (username, password) => {
-      const exists = db.hasKey(['users', username])
+    createUser: async (username, password) => {
+      const exists = await db.hasKey(['users', username])
 
       if (!exists) {
-        db.setKey(['users', username], {
+        await db.setKey(['users', username], {
           username,
           password: base64.encode(password),
           email: null,
@@ -35,11 +35,13 @@ export const EmeraltAuthInMemory: IEmeraltAuth<{
       }
     },
 
-    deleteUser: (username) => {
-      const exists = db.hasKey(['users', username])
+    deleteUser: async (username) => {
+      const exists = await db.hasKey(['users', username])
+
+      console.log(exists)
 
       if (exists) {
-        db.deleteKey(['users', username])
+        await db.deleteKey(['users', username])
 
         return true
       } else {
@@ -47,18 +49,18 @@ export const EmeraltAuthInMemory: IEmeraltAuth<{
       }
     },
 
-    comparePassword: (username, password) => {
-      const user = db.getKey(['users', username])
+    comparePassword: async (username, password) => {
+      const user = await db.getKey(['users', username])
 
       return user ? password === base64.decode(user.password) : false
     },
 
-    canUser: (username, action, packagename) => {
-      if (!db.hasKey(['users', username])) {
+    canUser: async (username, action, packagename) => {
+      if (!(await db.hasKey(['users', username]))) {
         return false
       }
 
-      const metadata = db.getKey(['metadata', packagename]) as TMetadata
+      const metadata = (await db.getKey(['metadata', packagename])) as TMetadata
 
       return metadata ? metadata._owner === username : true
     },

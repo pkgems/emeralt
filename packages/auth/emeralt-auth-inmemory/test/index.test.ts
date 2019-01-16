@@ -2,11 +2,11 @@ import test from 'ava'
 import { EmeraltAuthInMemory } from '@/index'
 import { EmeraltDatabaseInMemory } from '@emeralt/database-inmemory'
 
-const init = (mock = false) => {
+const init = async (mock = false) => {
   // @ts-ignore
   const database = EmeraltDatabaseInMemory({})({})
 
-  const auth = EmeraltAuthInMemory({
+  const auth = await EmeraltAuthInMemory({
     users: mock ? { username: 'password' } : {},
     // @ts-ignore
   })({}, database)
@@ -23,71 +23,71 @@ test('init', async (t) => {
   t.truthy(auth.canUser)
 })
 
-test('init (with users) [& comparePassword]', (t) => {
-  const { auth } = init(true)
+test('init (with users) [& comparePassword]', async (t) => {
+  const { auth } = await init(true)
 
-  t.true(auth.comparePassword('username', 'password'))
+  t.true(await auth.comparePassword('username', 'password'))
 })
 
-test('createUser [& comparePassword]', (t) => {
-  const { auth } = init()
+test('createUser [& comparePassword]', async (t) => {
+  const { auth } = await init()
 
-  t.true(auth.createUser('username', 'password'))
+  t.true(await auth.createUser('username', 'password'))
 
-  t.true(auth.comparePassword('username', 'password'))
+  t.true(await auth.comparePassword('username', 'password'))
 })
 
-test('createUser (reject duplicate) [& comparePassword]', (t) => {
-  const { auth } = init()
+test('createUser (reject duplicate) [& comparePassword]', async (t) => {
+  const { auth } = await init()
 
-  t.true(auth.createUser('username', 'password'))
+  t.true(await auth.createUser('username', 'password'))
 
-  t.false(auth.createUser('username', 'password-2'))
+  t.false(await auth.createUser('username', 'password-2'))
 
-  t.true(auth.comparePassword('username', 'password'))
+  t.true(await auth.comparePassword('username', 'password'))
 })
 
-test('[deleteUser]', async (t) => {
-  const { auth } = init()
+test('deleteUser', async (t) => {
+  const { auth } = await init()
 
-  auth.createUser('username', 'password')
+  await auth.createUser('username', 'password')
 
-  t.true(auth.deleteUser('username'))
-  t.true(auth.createUser('username', 'password'))
+  t.true(await auth.deleteUser('username'))
+  t.true(await auth.createUser('username', 'password'))
 })
 
-test('[deleteUser] nonexistent user', async (t) => {
-  const { auth } = init()
+test('deleteUser (nonexistent user)', async (t) => {
+  const { auth } = await init()
 
-  t.false(auth.deleteUser('tester'))
+  t.false(await auth.deleteUser('tester'))
 })
 
 test('comparePassword', async (t) => {
-  const { auth } = init(true)
+  const { auth } = await init(true)
 
   t.true(await auth.comparePassword('username', 'password'))
 })
 
 test('comparePassword (nonexistent user)', async (t) => {
-  const { auth } = init()
+  const { auth } = await init()
 
   t.false(await auth.comparePassword('username', 'password'))
 })
 
 test('comparePassword (wrong password)', async (t) => {
-  const { auth } = init(true)
+  const { auth } = await init(true)
 
   t.false(await auth.comparePassword('username', 'wrong-password'))
 })
 
 test('canUser (nonexistent user)', async (t) => {
-  const { auth } = init()
+  const { auth } = await init()
 
   t.false(await auth.canUser('username', 'publish', 'abcdef'))
 })
 
 test('canUser', async (t) => {
-  const { auth, database } = init(true)
+  const { auth, database } = await init(true)
 
   // @ts-ignore
   database.setKey(['metadata', 'abcdef'], { _owner: 'asd' })
@@ -96,7 +96,7 @@ test('canUser', async (t) => {
 })
 
 test('canUser (nonexistent package)', async (t) => {
-  const { auth } = init(true)
+  const { auth } = await init(true)
 
   t.true(await auth.canUser('username', 'publish', 'abcdef'))
 })

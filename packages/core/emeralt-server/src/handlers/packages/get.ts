@@ -13,7 +13,10 @@ export const getHandler = ({ database }: TEmeraltHandlerParams) =>
       return res.redirect(`http://registry.npmjs.org/${package_name}`)
     }
 
-    const versions = await database.listKeys(['versions', package_name]).reduce(
+    const versions = await (await database.listKeys([
+      'versions',
+      package_name,
+    ])).reduce(
       async (acc, cur) => ({
         ...(await acc),
         [cur]: await database.getKey(['versions', package_name, cur]),

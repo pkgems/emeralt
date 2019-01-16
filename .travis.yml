@@ -12,6 +12,9 @@ notifications:
   webhooks:
     - https://coveralls.io/webhook
 
+services:
+  - redis-server
+  
 language: node_js
 node_js:
   # - "6"
