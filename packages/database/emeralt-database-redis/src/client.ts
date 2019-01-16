@@ -27,7 +27,7 @@ export const createClient = (config: RedisOptions) => {
       case 1:
         return redis.set(key[0], JSON.stringify(value))
       case 2:
-        return await redis.hset(key[0], key[1], JSON.stringify(value))
+        return redis.hset(key[0], key[1], JSON.stringify(value))
       default: {
         let data = (await get([key[0], key[1]])) || {}
 
@@ -61,7 +61,7 @@ export const createClient = (config: RedisOptions) => {
   const del = async (key: Key) => {
     switch (key.length) {
       case 1:
-        return redis.del(key[0])
+        return !!(await redis.del(key[0]))
       case 2:
         return !!(await redis.hdel(key[0], key[1]))
       default: {
