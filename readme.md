@@ -40,6 +40,7 @@ yarn global add @emeralt/cli
 
 #### Database Plugins
 - [`@emeralt/database-inmemory`](./packages/database/emeralt-database-inmemory)
+- [`@emeralt/database-redis`](./packages/database/emeralt-database-redis)
   
 #### Storage Plugins
 - [`@emeralt/storage-inmemory`](./packages/storage/emeralt-storage-inmemory)

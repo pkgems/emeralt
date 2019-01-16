@@ -6,6 +6,8 @@ type Entities = {
   users: TUser
   metadata: TMetadata
   versions: TVersion
+
+  [key: string]: any
 }
 
 type Key = [keyof Entities, ...string[]]
@@ -31,6 +33,9 @@ export interface CEmeraltDatabase {
 
   /* delete key, return false if it does not exist */
   deleteKey(path: Key): OptionalPromise<boolean>
+
+  /* drop all data (primarily for test purposes) */
+  dropDatabase?(): OptionalPromise<any>
 }
 
 export interface IEmeraltDatabase<C = {}> {

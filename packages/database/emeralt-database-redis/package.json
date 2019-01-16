@@ -1,5 +1,5 @@
 {
-  "name": "@emeralt/database-inmemory",
+  "name": "@emeralt/database-redis",
   "version": "0.1.0",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
@@ -17,9 +17,11 @@
   "devDependencies": {
     "@emeralt/bundler": "^0.1.0",
     "@emeralt/types": "^0.1.0",
+    "@types/ioredis": "^4.0.4",
     "@types/ramda": "^0.25.46"
   },
   "dependencies": {
+    "ioredis": "^4.3.0",
     "ramda": "^0.26.1"
   }
 }

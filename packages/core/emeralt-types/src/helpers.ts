@@ -1,1 +1,1 @@
-export type OptionalPromise<T> = T
+export type OptionalPromise<T> = T | Promise<T>

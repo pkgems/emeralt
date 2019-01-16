@@ -11,9 +11,10 @@ export const publishHandler = ({
   storage,
   auth,
 }: TEmeraltHandlerParams) =>
-  Router()
-    .use(middlewares.verifyToken)
-    .put(endpoints.package.publish, async (req, res) => {
+  Router().put(
+    endpoints.package.publish,
+    middlewares.verifyToken,
+    async (req, res) => {
       const { name: username } = req.context.decodedToken
 
       const { metadata, version, tarball } = extractPackageData(
@@ -52,4 +53,5 @@ export const publishHandler = ({
           message: error.message,
         })
       }
-    })
+    },
+  )

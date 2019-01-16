@@ -1,5 +1,6 @@
 import { createEmeraltServer } from '@/server'
 import { EmeraltDatabaseInMemory } from '@emeralt/database-inmemory'
+// import { EmeraltDatabaseRedis } from '@emeralt/database-redis'
 import { EmeraltAuthInMemory } from '@emeralt/auth-inmemory'
 import { EmeraltStorageInMemory } from '@emeralt/storage-inmemory'
 
