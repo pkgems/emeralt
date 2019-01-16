@@ -1,0 +1,18 @@
+{
+  "extension": [
+    ".ts",
+    ".tsx"
+  ],
+  "include": [
+    "packages/*/*/src"
+  ],
+  "exclude": [
+    "packages/*/*/**/*.test.ts",
+    "packages/core/emeralt-types",
+    "packages/misc/emeralt-bundler"
+  ],
+  "reporters": [
+    "text-lcov"
+  ],
+  "all": true
+}

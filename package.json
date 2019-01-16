@@ -31,23 +31,5 @@
     "lerna": "3.10.5",
     "nyc": "13.1.0",
     "tsconfig-paths": "3.7.0"
-  },
-  "nyc": {
-    "extension": [
-      ".ts",
-      ".tsx"
-    ],
-    "include": [
-      "packages/*/*/src"
-    ],
-    "exclude": [
-      "packages/*/*/**/*.test.ts",
-      "packages/core/emeralt-types",
-      "packages/misc/emeralt-bundler"
-    ],
-    "reporters": [
-      "text-lcov"
-    ],
-    "all": true
   }
 }
