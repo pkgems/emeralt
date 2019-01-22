@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/cli",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@emeralt/auth-inmemory": "^0.2.0",
     "@emeralt/database-inmemory": "^0.2.0",
-    "@emeralt/server": "^0.2.1",
+    "@emeralt/server": "^0.2.2",
     "@emeralt/storage-inmemory": "^0.2.0",
     "chalk": "^2.4.2"
   },
