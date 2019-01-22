@@ -1,23 +1,30 @@
-import { path, assocPath, init, last, dissoc } from 'ramda'
-import Redis, { RedisOptions } from 'ioredis'
+import { path, assocPath, init, last, dissoc, remove } from 'ramda'
+import Redis from 'ioredis'
 
-export type ClientOptions = RedisOptions
+export type ClientOptions = {
+  host: string
+  port: number
+  prefix: string
+}
 
 // i'm sorry...
-export const createClient = (config: RedisOptions) => {
+export const createClient = ({
+  prefix = 'test-',
+  ...config
+}: ClientOptions) => {
   type Key = [string, ...string[]]
   const redis = new Redis(config)
 
   const get = async (key: Key) => {
     switch (key.length) {
       case 1:
-        return JSON.parse(await redis.get(key[0]))
+        return JSON.parse(await redis.get(prefix + key[0]))
       case 2:
-        return JSON.parse(await redis.hget(key[0], key[1]))
+        return JSON.parse(await redis.hget(prefix + key[0], key[1]))
       default: {
         const val = (await get([key[0], key[1]])) || {}
 
-        return path(key.splice(2), val)
+        return path(remove(0, 2, key), val)
       }
     }
   }
@@ -25,13 +32,13 @@ export const createClient = (config: RedisOptions) => {
   const set = async (key: Key, value: any) => {
     switch (key.length) {
       case 1:
-        return redis.set(key[0], JSON.stringify(value))
+        return redis.set(prefix + key[0], JSON.stringify(value))
       case 2:
-        return redis.hset(key[0], key[1], JSON.stringify(value))
+        return redis.hset(prefix + key[0], key[1], JSON.stringify(value))
       default: {
         let data = (await get([key[0], key[1]])) || {}
 
-        data = assocPath(key.splice(2), value, data)
+        data = assocPath(remove(0, 2, key), value, data)
 
         return set([key[0], key[1]], data)
       }
@@ -41,18 +48,18 @@ export const createClient = (config: RedisOptions) => {
   const list = async (key: Key) => {
     switch (key.length) {
       case 1:
-        return redis.hkeys(key[0])
+        return redis.hkeys(prefix + key[0])
       default:
-        return Object.keys(await get(key))
+        return Object.keys((await get(key)) || {})
     }
   }
 
   const exists = async (key: Key) => {
     switch (key.length) {
       case 1:
-        return !!(await redis.exists(key[0]))
+        return !!(await redis.exists(prefix + key[0]))
       case 2:
-        return !!(await redis.hexists(key[0], key[1]))
+        return !!(await redis.hexists(prefix + key[0], key[1]))
       default:
         return !!(await get(key))
     }
@@ -61,9 +68,9 @@ export const createClient = (config: RedisOptions) => {
   const del = async (key: Key) => {
     switch (key.length) {
       case 1:
-        return !!(await redis.del(key[0]))
+        return !!(await redis.del(prefix + key[0]))
       case 2:
-        return !!(await redis.hdel(key[0], key[1]))
+        return !!(await redis.hdel(prefix + key[0], key[1]))
       default: {
         const path = init(key) as Key
         const target = last(key)

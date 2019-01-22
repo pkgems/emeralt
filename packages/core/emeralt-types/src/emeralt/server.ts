@@ -9,6 +9,7 @@ export type TEmeraltServerConfig = {
   logLevel: 'combined' | 'common' | 'dev' | 'short' | 'tiny' | 'silent'
   jwt: {
     secret: string
+    append: Record<string, string>
   }
 }
 

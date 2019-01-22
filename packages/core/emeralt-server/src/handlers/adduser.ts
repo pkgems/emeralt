@@ -3,7 +3,7 @@ import { endpoints } from '@/constants'
 import { Router } from 'express'
 import jwt from 'jsonwebtoken'
 
-export const adduser = ({ auth }: TEmeraltHandlerParams) =>
+export const adduser = ({ auth, config }: TEmeraltHandlerParams) =>
   Router().put(endpoints.adduser, async (req, res, next) => {
     const { name, password }: TRegistryAuthenticateRequestBody = req.body
 
@@ -12,7 +12,7 @@ export const adduser = ({ auth }: TEmeraltHandlerParams) =>
     return res.status(valid ? 201 : 401).json({
       ok: valid,
       id: name,
-      token: valid ? jwt.sign({ name }, 'secret') : null,
+      token: valid ? jwt.sign({ name, ...config.jwt.append }, 'secret') : null,
     })
   })
 

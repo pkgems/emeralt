@@ -48,6 +48,7 @@ export const publishHandler = ({
 
         return res.status(200).json({})
       } catch (error) {
+        console.log(error.message)
         return res.status(400).json({
           ok: false,
           message: error.message,

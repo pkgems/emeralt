@@ -4,6 +4,8 @@ import { Router } from 'express'
 
 export const getHandler = ({ database }: TEmeraltHandlerParams) =>
   Router().get(endpoints.package.get, async (req, res, next) => {
+    console.log(req.get('host'))
+
     const { package_name } = req.params
 
     const metadata = await database.getKey(['metadata', package_name])

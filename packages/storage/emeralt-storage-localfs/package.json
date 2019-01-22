@@ -1,0 +1,27 @@
+{
+  "name": "@emeralt/storage-localfs",
+  "version": "0.2.0",
+  "author": "stackdumper <stackdumper@gmail.com>",
+  "license": "MIT",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
+  "source": "./src/index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "ava test/**/*.test.ts",
+    "build": "bundler build",
+    "watch": "bundler watch"
+  },
+  "devDependencies": {
+    "@emeralt/bundler": "^0.2.0",
+    "@emeralt/types": "^0.2.0",
+    "@types/fs-extra": "^5.0.4"
+  },
+  "dependencies": {
+    "@types/ramda": "^0.25.46",
+    "fs-extra": "^7.0.1",
+    "ramda": "^0.26.1"
+  }
+}

@@ -18,7 +18,7 @@ const extractVersion = (pkg: TMetadata) => {
   const encodedVersion = encodeURIComponent(version.version)
 
   // TODO: get address from config
-  version.dist.tarball = `http://localhost:8080/-/tarball/${encodedName}/${encodedVersion}`
+  // version.dist.tarball = `http://localhost:8080/-/tarball/${encodedName}/${encodedVersion}`
 
   return version
 }

@@ -1,0 +1,24 @@
+{
+  "name": "@emeralt/storage-gcs",
+  "version": "0.2.0",
+  "author": "stackdumper <stackdumper@gmail.com>",
+  "license": "MIT",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
+  "source": "./src/index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "ava test/**/*.test.ts",
+    "build": "bundler build",
+    "watch": "bundler watch"
+  },
+  "devDependencies": {
+    "@emeralt/bundler": "^0.2.0",
+    "@emeralt/types": "^0.2.0"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^2.3.4"
+  }
+}

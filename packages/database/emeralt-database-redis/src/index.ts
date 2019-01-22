@@ -2,10 +2,11 @@ import { IEmeraltDatabase } from '@emeralt/types'
 import { createClient, ClientOptions } from './client'
 import { mergeDeepRight } from 'ramda'
 
-export const EmeraltDatabaseRedis: IEmeraltDatabase = (
+export const EmeraltDatabaseRedis: IEmeraltDatabase<ClientOptions> = (
   config: ClientOptions = {
     host: 'localhost',
     port: 6379,
+    prefix: 'test-',
   },
 ) => {
   const client = createClient(config)
@@ -23,7 +24,7 @@ export const EmeraltDatabaseRedis: IEmeraltDatabase = (
       createKey: async (k, v) =>
         (await client.get(k)) // check if exists
           ? false // false if yes
-          : (await client.set(k, v)) && true, // create if not
+          : (await client.set(k, v)) || true,
 
       updateKey: async (k, v) => {
         const value = await client.get(k)
