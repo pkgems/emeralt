@@ -26,7 +26,7 @@ const initializeInternal = async (
   }
 }
 
-export const createEmeraltServer = async (params: TEmeraltServerParams) => {
+export const createEmeraltRouter = async (params: TEmeraltServerParams) => {
   // initialize plugins
   const internal = await initializeInternal(params)
 
@@ -34,7 +34,7 @@ export const createEmeraltServer = async (params: TEmeraltServerParams) => {
   const middlewares = createMiddlewares({ ...internal, services })
   const handlers = createHandlers({ ...internal, services, middlewares })
 
-  const server = express()
+  const router = express()
     // options
     .set('etag', false)
 
@@ -51,9 +51,13 @@ export const createEmeraltServer = async (params: TEmeraltServerParams) => {
     .use(handlers.search)
     .use(handlers.packages)
 
-  const httpServer = http.createServer(server) as EmeraltServer
+  return router
+}
 
-  httpServer.emeralt = internal
+export const createEmeraltServer = async (params: TEmeraltServerParams) => {
+  const router = await createEmeraltRouter(params)
+
+  const httpServer = http.createServer(router) as EmeraltServer
 
   return httpServer
 }

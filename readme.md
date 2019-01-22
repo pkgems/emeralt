@@ -4,52 +4,50 @@
 [![Coverage Status](https://coveralls.io/repos/github/emeralt/emeralt/badge.svg?branch=master)](https://coveralls.io/github/emeralt/emeralt?branch=master)
 ![Open Issues](https://img.shields.io/github/issues-raw/emeralt/emeralt.svg)
 
-<br />
-<br />
-<div align="center">
-  <h3>⚠️ UNDER CONSTRUCTION ⚠️</h3>
-</div>
-<br />
-<br />
+---
 
-## Install
-Install with npm:
+### Introduction
 
-```bash
-npm install --global @emeralt/cli
-```
+Emeralt is the NPM registry with focus on high extensibility, simplicity and clean codebase written fully in TypeScript. Highly inspired by Verdaccio. Why not Veridaccio? The idea is to write it from scratch, avoiding all architectural problems of old codebase. <sup style="color: gray">(To be honest, I just hate Flow)</sup>
 
-Install with yarn:
+### Status
+**Alpha**. Everything ~~might~~ **will** be changed.
 
-```bash
-yarn global add @emeralt/cli
-```
+### Goals
+- High extensibility
+- Reach plugins ecosystem
+- Clean, elegant and explicit codebase
+- Developer-frendly
 
-## Introduction
-...
+### Contributions
+Wanted! See Issues and Contribution Guidelines. Feel free to contact me at `stackdumper@gmail.com`
 
-## Monorepo
+---
 
-#### Core
+### Packages
+
+##### Core
 - [`@emeralt/cli`](./packages/core/emeralt-cli)
 - [`@emeralt/server`](./packages/core/emeralt-server)
 - [`@emeralt/types`](./packages/emeralt-types)
 
-#### Auth Plugins
+##### Auth Plugins
 - [`@emeralt/auth-inmemory`](./packages/auth/emeralt-auth-inmemory)
 
-#### Database Plugins
+##### Database Plugins
 - [`@emeralt/database-inmemory`](./packages/database/emeralt-database-inmemory)
 - [`@emeralt/database-redis`](./packages/database/emeralt-database-redis)
   
-#### Storage Plugins
+##### Storage Plugins
 - [`@emeralt/storage-inmemory`](./packages/storage/emeralt-storage-inmemory)
   
-#### Misc
+##### Misc
 - [`@emeralt/bundler`](./packages/misc/emeralt-bundler)
 - [`@emeralt/assets`](./packages/misc/emeralt-assets)
 
-## License
+---
+
+### License
 
 Emeralt is [MIT licensed](./LICENSE)
 
