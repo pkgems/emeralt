@@ -1,1 +1,1 @@
-export { createEmeraltServer } from './server'
+export { createEmeraltServer, createEmeraltRouter } from './server'
