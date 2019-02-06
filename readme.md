@@ -8,7 +8,7 @@
 
 ### Introduction
 
-Emeralt is the NPM registry with focus on high extensibility, simplicity and clean codebase written fully in TypeScript. Highly inspired by Verdaccio. Why not Veridaccio? The idea is to write it from scratch, avoiding all architectural problems of old codebase. <sup style="color: gray">(To be honest, I just hate Flow)</sup>
+Emeralt is the NPM registry with focus on high extensibility, simplicity and clean codebase written fully in TypeScript. Highly inspired by Verdaccio. Why not Verdaccio? The idea is to write it from scratch, avoiding all architectural problems of old codebase. <sup style="color: gray">(To be honest, I just hate Flow)</sup>
 
 ### Status
 **Alpha**. Everything ~~might~~ **will** be changed.
