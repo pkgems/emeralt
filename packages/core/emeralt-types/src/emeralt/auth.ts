@@ -2,16 +2,18 @@ import { OptionalPromise } from '../helpers'
 import { TEmeraltServerConfig } from './server'
 import { CEmeraltDatabase } from './database'
 
-export interface CEmeraltAuth {
-  createUser(username: string, password: string): OptionalPromise<boolean>
+export type TEmeraltAuthAction = 'publish' | 'get'
 
-  deleteUser(username: string): OptionalPromise<boolean>
+export interface CEmeraltAuth {
+  putUser(username: string, password: string): OptionalPromise<any>
+
+  hasUser(username: string): OptionalPromise<boolean>
 
   comparePassword(username: string, password: string): OptionalPromise<boolean>
 
   canUser(
     username: string,
-    action: 'publish' | 'get',
+    action: TEmeraltAuthAction,
     packagename: string,
   ): OptionalPromise<boolean>
 }

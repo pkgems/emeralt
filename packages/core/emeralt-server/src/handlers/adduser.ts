@@ -12,7 +12,7 @@ export const adduser = ({ auth, config }: TEmeraltHandlerParams) =>
     return res.status(valid ? 201 : 401).json({
       ok: valid,
       id: name,
-      token: valid ? jwt.sign({ name, ...config.jwt.append }, 'secret') : null,
+      token: valid ? jwt.sign({ name }, 'secret') : null,
     })
   })
 

@@ -22,6 +22,10 @@ export const publishHandler = ({
       )
 
       try {
+        if (!metadata || !version || !tarball) {
+          throw new Error('Missing package data')
+        }
+
         if (!(await ssri.checkData(tarball.data, version.dist.integrity))) {
           throw new Error('Integrity verification failed')
         }
@@ -30,25 +34,23 @@ export const publishHandler = ({
           throw new Error('User is not allowed to publish this package')
         }
 
-        metadata._owner = username
-        ;(await database.hasKey(['metadata', metadata.name]))
-          ? await database.updateKey(['metadata', metadata.name], metadata)
-          : await database.setKey(['metadata', metadata.name], metadata)
-
-        const versionCreated = await database.createKey(
-          ['versions', metadata.name, version.version],
-          version,
-        )
-
-        if (!versionCreated) {
-          throw new Error('Version already exists!')
+        if (await database.hasVersion(metadata.name, version.version)) {
+          throw new Error("Can't overwrite an existing version")
         }
 
+        metadata._owner = username
+
+        // update or create metadata
+        await database.putMetadata(metadata.name, metadata)
+
+        // create version
+        await database.putVersion(metadata.name, version.version, version)
+
+        // upload tarball
         await storage.putTarball(metadata.name, version.version, tarball.data)
 
         return res.status(200).json({})
       } catch (error) {
-        console.log(error.message)
         return res.status(400).json({
           ok: false,
           message: error.message,

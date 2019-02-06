@@ -10,7 +10,7 @@
     "access": "public"
   },
   "scripts": {
-    "test": "ava test/**/*.test.ts",
+    "test": "ava ../../../test/auth.test.ts",
     "build": "bundler build",
     "watch": "bundler watch"
   },

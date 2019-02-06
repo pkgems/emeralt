@@ -1,41 +1,35 @@
 import { OptionalPromise } from '../helpers'
 import { TEmeraltServerConfig } from './server'
-import { TMetadata, TVersion, TUser } from '../npm'
-
-type Entities = {
-  users: TUser
-  metadata: TMetadata
-  versions: TVersion
-
-  [key: string]: any
-}
-
-type Key = [keyof Entities, ...string[]]
+import { TMetadata, TVersion } from '../npm'
 
 export interface CEmeraltDatabase {
-  /* list all keys on path */
-  listKeys(path: Key): OptionalPromise<string[]>
+  /** list existing packages */
+  getMetadatas(): OptionalPromise<Record<string, TMetadata>>
 
-  /* check if key exists */
-  hasKey(path: Key): OptionalPromise<boolean>
+  /** check if metadata exists */
+  hasMetadata(name: string): OptionalPromise<boolean>
 
-  /* get data on path */
-  getKey(path: Key): OptionalPromise<Entities[Key[0]]>
+  /** get metadata of specific package */
+  getMetadata(name: string): OptionalPromise<TMetadata>
 
-  /* overwrite/create data on path */
-  setKey(path: Key, value: Entities[Key[0]]): OptionalPromise<boolean>
+  /** update metadata of specific package */
+  putMetadata(name: string, data: TMetadata): OptionalPromise<any>
 
-  /* create new data on path, return false if already exists */
-  createKey(path: Key, value: Entities[Key[0]]): OptionalPromise<boolean>
+  /** list existing versions of specific package */
+  getVersions(name: string): OptionalPromise<Record<string, TVersion>>
 
-  /* update data on path, return false if key does not exist */
-  updateKey(path: Key, value: Entities[Key[0]]): OptionalPromise<boolean>
+  /** check if version exists */
+  hasVersion(name: string, version: string): OptionalPromise<boolean>
 
-  /* delete key, return false if it does not exist */
-  deleteKey(path: Key): OptionalPromise<boolean>
+  /** get single version of specific package */
+  getVersion(name: string, version: string): OptionalPromise<TVersion>
 
-  /* drop all data (primarily for test purposes) */
-  dropDatabase?(): OptionalPromise<any>
+  /** update version of specific package */
+  putVersion(
+    name: string,
+    version: string,
+    data: TVersion,
+  ): OptionalPromise<void>
 }
 
 export interface IEmeraltDatabase<C = {}> {

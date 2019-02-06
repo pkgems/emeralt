@@ -1,68 +1,59 @@
-import { IEmeraltAuth, TMetadata } from '@emeralt/types'
+import {
+  CEmeraltAuth,
+  TEmeraltAuthAction,
+  CEmeraltDatabase,
+  IEmeraltAuth,
+} from '@emeralt/types'
 
 const base64 = {
   encode: (str) => Buffer.from(str).toString('base64'),
   decode: (str) => Buffer.from(str, 'base64').toString('ascii'),
 }
 
-export const EmeraltAuthInMemory: IEmeraltAuth<{
-  users?: {
-    [username: string]: string
+class CEmeraltAuthInMemory implements CEmeraltAuth {
+  private users: Map<string, string>
+
+  constructor(
+    private db: CEmeraltDatabase,
+    users: Record<string, string> = {},
+  ) {
+    this.users = new Map()
+
+    for (const username in users) {
+      this.users.set(username, base64.encode(users[username]))
+    }
   }
-}> = ({ users }) => async (_, db) => {
-  for (const username in users) {
-    await db.setKey(['users', username], {
-      username,
-      password: base64.encode(users[username]),
-      email: null,
-    })
+
+  public hasUser(username) {
+    return this.users.has(username)
   }
 
-  return {
-    createUser: async (username, password) => {
-      const exists = await db.hasKey(['users', username])
+  public putUser(username: string, password: string) {
+    this.users.set(username, base64.encode(password))
+  }
 
-      if (!exists) {
-        await db.setKey(['users', username], {
-          username,
-          password: base64.encode(password),
-          email: null,
-        })
+  public comparePassword(username: string, password: string) {
+    const hash = this.users.get(username)
 
-        return true
-      } else {
-        return false
-      }
-    },
+    return Boolean(hash && password && base64.decode(hash) === password)
+  }
 
-    deleteUser: async (username) => {
-      const exists = await db.hasKey(['users', username])
+  public async canUser(
+    username: string,
+    action: TEmeraltAuthAction,
+    name: string,
+  ) {
+    if (action === 'get') {
+      // TODO
+      return true
+    } else {
+      const metadata = await this.db.getMetadata(name)
 
-      console.log(exists)
-
-      if (exists) {
-        await db.deleteKey(['users', username])
-
-        return true
-      } else {
-        return false
-      }
-    },
-
-    comparePassword: async (username, password) => {
-      const user = await db.getKey(['users', username])
-
-      return user ? password === base64.decode(user.password) : false
-    },
-
-    canUser: async (username, action, packagename) => {
-      if (!(await db.hasKey(['users', username]))) {
-        return false
-      }
-
-      const metadata = (await db.getKey(['metadata', packagename])) as TMetadata
-
-      return metadata ? metadata._owner === username : true
-    },
+      return !metadata || metadata._owner === username
+    }
   }
 }
+
+export const EmeraltAuthInMemory: IEmeraltAuth<{
+  users: Record<string, string>
+}> = ({ users }) => (_, db) => new CEmeraltAuthInMemory(db, users)

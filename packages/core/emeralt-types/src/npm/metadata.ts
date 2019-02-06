@@ -9,24 +9,24 @@ export type TMetadata = {
   main: string
 
   // all versions
-  versions: {
+  versions?: {
     // "0.0.1": {}
     [version: string]: TVersion
   }
 
   // time when each version was uploaded
-  time: {
+  time?: {
     // "0.0.1": new Date().toString()
     [version: string]: string
   }
 
   // dist tags
-  'dist-tags': {
+  'dist-tags'?: {
     // "latest": "0.0.14"
     [tag: string]: string
   }
 
-  dist: {
+  dist?: {
     [name: string]: {
       integrity: string
       shasum: string

@@ -12,7 +12,7 @@
     "declaration": true,
     "declarationMap": true,
 
-    // "baseUrl": "",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@test/*": ["./test/*"]

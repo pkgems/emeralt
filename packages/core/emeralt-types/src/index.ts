@@ -7,6 +7,7 @@ export {
   TEmeraltHandlerParams,
   TDecodedToken,
   // auth
+  TEmeraltAuthAction,
   CEmeraltAuth,
   IEmeraltAuth,
   // database

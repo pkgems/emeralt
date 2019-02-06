@@ -11,7 +11,6 @@ createEmeraltServer({
     logLevel: 'dev',
     jwt: {
       secret: 'secret',
-      append: {},
     },
   },
   auth: EmeraltAuthInMemory({

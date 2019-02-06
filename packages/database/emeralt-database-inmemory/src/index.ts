@@ -1,35 +1,59 @@
-import { IEmeraltDatabase } from '@emeralt/types'
-import { path, keys, assocPath, dissocPath, mergeDeepLeft } from 'ramda'
+import {
+  IEmeraltDatabase,
+  CEmeraltDatabase,
+  TMetadata,
+  TVersion,
+} from '@emeralt/types'
 
-export const EmeraltDatabaseInMemory: IEmeraltDatabase = () => () => {
-  let storage = {}
+class CEmeraltDatabaseInMemory implements CEmeraltDatabase {
+  private storage: {
+    metadata: Record<string, TMetadata>
+    versions: Record<string, Record<string, TVersion>>
+  }
 
-  return {
-    getKey: (k) => path(k, storage),
+  constructor() {
+    this.storage = {
+      metadata: {},
+      versions: {},
+    }
+  }
 
-    hasKey: (k) => !!path(k, storage),
+  getMetadatas() {
+    return { ...this.storage.metadata }
+  }
 
-    listKeys: (k) => ((keys(path(k, storage)) as unknown) as string[]) || [],
+  hasMetadata(name: string) {
+    return Boolean(this.getMetadata(name))
+  }
 
-    setKey: (k, v) => (storage = assocPath(k, v, storage)) && true,
+  getMetadata(name: string) {
+    return this.storage.metadata[name]
+  }
 
-    createKey: (k, v) =>
-      path(k, storage) // check if exists
-        ? false // false if yes
-        : (storage = assocPath(k, v, storage)) && true, // create if not
+  putMetadata(name: string, data: TMetadata) {
+    this.storage.metadata[name] = data
+  }
 
-    updateKey: (k, v) =>
-      path(k, storage)
-        ? (storage = assocPath(
-            k,
-            mergeDeepLeft(v, path(k, storage)),
-            storage,
-          )) && true
-        : false,
+  getVersions(name: string) {
+    return this.storage.versions[name] || {}
+  }
 
-    deleteKey: (k) =>
-      path(k, storage) // check if exists
-        ? (storage = dissocPath(k, storage)) && true // delete if yes
-        : false, // false if not
+  hasVersion(name: string, version: string) {
+    return Boolean(this.getVersions(name)[version])
+  }
+
+  getVersion(name: string, version: string) {
+    return this.getVersions(name)[version]
+  }
+
+  putVersion(name: string, version: string, data: TVersion) {
+    const versions = this.getVersions(name)
+
+    versions[version] = data
+
+    this.storage.versions[name] = versions
   }
 }
+
+export const EmeraltDatabaseInMemory: IEmeraltDatabase = () => () =>
+  new CEmeraltDatabaseInMemory()

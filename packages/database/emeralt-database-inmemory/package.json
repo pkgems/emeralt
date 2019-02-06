@@ -10,16 +10,12 @@
     "access": "public"
   },
   "scripts": {
-    "test": "ava ../shared.test.ts",
+    "test": "ava ../../../test/database.test.ts",
     "build": "bundler build",
     "watch": "bundler watch"
   },
   "devDependencies": {
     "@emeralt/bundler": "^0.2.0",
-    "@emeralt/types": "^0.3.0-alpha.0",
-    "@types/ramda": "^0.25.46"
-  },
-  "dependencies": {
-    "ramda": "^0.26.1"
+    "@emeralt/types": "^0.3.0-alpha.0"
   }
 }
