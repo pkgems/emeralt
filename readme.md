@@ -1,4 +1,4 @@
-![logo](./packages/misc/emeralt-assets/png/full-logo-3-medium.png)
+![logo](./packages/emeralt-assets/png/full-logo-3-medium.png)
 
 [![Build Status](https://travis-ci.com/emeralt/emeralt.svg?branch=master)](https://travis-ci.com/emeralt/emeralt) 
 [![Coverage Status](https://coveralls.io/repos/github/emeralt/emeralt/badge.svg?branch=master)](https://coveralls.io/github/emeralt/emeralt?branch=master)
