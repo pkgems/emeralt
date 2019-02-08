@@ -82,3 +82,7 @@ typings/
 # APFS
 .DS_Store
 
+packages/*/node_modules
+packages/*/build
+packages/*/.rts2_cache*
+

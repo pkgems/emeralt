@@ -4,12 +4,12 @@
     ".tsx"
   ],
   "include": [
-    "packages/*/*/src"
+    "packages/*/src"
   ],
   "exclude": [
-    "packages/*/*/**/*.test.ts",
-    "packages/core/emeralt-types",
-    "packages/misc/emeralt-bundler"
+    "**/*.test.ts",
+    "packages/emeralt-types",
+    "packages/emeralt-bundler"
   ],
   "reporters": [
     "text-lcov"
