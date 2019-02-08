@@ -6,14 +6,43 @@ import { CEmeraltDatabase } from './database'
 import { CEmeraltStorage } from './storage'
 
 export type TEmeraltServerConfig = {
-  logLevel: 'combined' | 'common' | 'dev' | 'short' | 'tiny' | 'silent'
-  jwt: {
-    secret: string
+  logLevel?: 'combined' | 'common' | 'dev' | 'short' | 'tiny' | 'silent'
+  jwt?: {
+    secret?: string
+  }
+  endpoints?: {
+    ping?: boolean
+    search?: boolean
+    login?: boolean
+    adduser?: boolean
+
+    package?: {
+      get?: boolean
+      publish?: boolean
+    }
   }
 }
 
+export const emeraltServerDefaultConfig: TEmeraltServerConfig = {
+  logLevel: 'dev',
+  jwt: {
+    secret: 'secret',
+  },
+  endpoints: {
+    ping: true,
+    search: true,
+    login: true,
+    adduser: true,
+
+    package: {
+      get: true,
+      publish: true,
+    },
+  },
+}
+
 export type TEmeraltServerParams = {
-  config: TEmeraltServerConfig
+  config?: TEmeraltServerConfig
   auth: ReturnType<IEmeraltAuth>
   database: ReturnType<IEmeraltDatabase>
   storage: ReturnType<IEmeraltStorage>
@@ -45,12 +74,10 @@ export type TDecodedToken = {
 
 declare global {
   namespace Express {
-    type Context = {
-      decodedToken?: TDecodedToken
-    }
-
     interface Request {
-      context: Context
+      context: {
+        decodedToken?: TDecodedToken
+      }
     }
   }
 }

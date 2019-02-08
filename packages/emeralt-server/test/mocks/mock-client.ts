@@ -2,7 +2,7 @@ import RegClient from 'npm-registry-client'
 import doasync from 'doasync'
 import npmlog from 'npmlog'
 
-export const createMockClient = () => {
+export const createMockClient = (config = {}) => {
   const auth = {
     username: 'user1',
     password: 'user1',
@@ -18,6 +18,7 @@ export const createMockClient = () => {
       },
       auth,
       log: npmlog,
+      ...config,
     }),
   )
 

@@ -3,14 +3,15 @@ import { EmeraltDatabaseInMemory } from '@emeralt/database-inmemory'
 // import { EmeraltDatabaseRedis } from '@emeralt/database-redis'
 import { EmeraltAuthInMemory } from '@emeralt/auth-inmemory'
 import { EmeraltStorageInMemory } from '@emeralt/storage-inmemory'
+import { TEmeraltServerConfig, Optional } from '@emeralt/types'
 
-export const createMockServer = async () => {
+export const createMockServer = async (
+  config: Optional<TEmeraltServerConfig> = {},
+) => {
   const server = await createEmeraltServer({
     config: {
       logLevel: 'silent',
-      jwt: {
-        secret: 'secret',
-      },
+      ...config,
     },
     auth: EmeraltAuthInMemory({
       users: {

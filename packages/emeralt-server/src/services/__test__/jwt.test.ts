@@ -3,8 +3,8 @@ import { jwtService } from '../jwt'
 
 test('jwt', (t) => {
   const name = 'tester'
+  // @ts-ignore
   const jwt = jwtService({
-    // @ts-ignore
     config: {
       jwt: {
         secret: 'secret',
