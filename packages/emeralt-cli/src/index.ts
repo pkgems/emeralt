@@ -7,12 +7,6 @@ import { EmeraltDatabaseInMemory } from '@emeralt/database-inmemory'
 import { EmeraltStorageInMemory } from '@emeralt/storage-inmemory'
 
 createEmeraltServer({
-  config: {
-    logLevel: 'dev',
-    jwt: {
-      secret: 'secret',
-    },
-  },
   auth: EmeraltAuthInMemory({
     users: {
       emeralt: 'emeralt',

@@ -6,6 +6,8 @@ export {
   TEmeraltMiddlewareParams,
   TEmeraltHandlerParams,
   TDecodedToken,
+  TEmeraltServerParamsInternal,
+  emeraltServerDefaultConfig,
   // auth
   TEmeraltAuthAction,
   CEmeraltAuth,
@@ -25,3 +27,5 @@ export {
   TDist,
   TVersion,
 } from './npm'
+
+export * from './helpers'

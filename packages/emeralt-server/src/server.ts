@@ -1,11 +1,15 @@
 import express from 'express'
 import http from 'http'
+import merge from 'deepmerge'
 
-import { TEmeraltServerParams } from '@emeralt/types'
+import {
+  TEmeraltServerParams,
+  TEmeraltServerParamsInternal,
+  emeraltServerDefaultConfig,
+} from '@emeralt/types'
 import { createServices } from '@/services'
 import { createMiddlewares } from '@/middlewares'
 import { createHandlers } from '@/handlers'
-import { TEmeraltServerParamsInternal } from '@emeralt/types/src/emeralt'
 
 type EmeraltServer = http.Server & {
   emeralt: TEmeraltServerParamsInternal
@@ -18,8 +22,10 @@ const initializeInternal = async (
   const auth = await params.auth(params.config, database)
   const storage = await params.storage(params.config, database)
 
+  // @ts-ignore
   return {
     ...params,
+
     database,
     auth,
     storage,
@@ -27,6 +33,9 @@ const initializeInternal = async (
 }
 
 export const createEmeraltRouter = async (params: TEmeraltServerParams) => {
+  // merge with default config
+  params.config = merge(emeraltServerDefaultConfig, params.config || {})
+
   // initialize plugins
   const internal = await initializeInternal(params)
 
