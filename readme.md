@@ -26,24 +26,24 @@ Wanted! See Issues and Contribution Guidelines. Feel free to contact me at `stac
 
 ### Packages
 
-##### Core
-- [`@emeralt/cli`](./packages/core/emeralt-cli)
-- [`@emeralt/server`](./packages/core/emeralt-server)
+- [`@emeralt/cli`](./packages/emeralt-cli)
+- [`@emeralt/server`](./packages/emeralt-server)
 - [`@emeralt/types`](./packages/emeralt-types)
+- [`@emeralt/assets`](./packages/emeralt-assets)
+<!-- - [`@emeralt/bundler`](./packages/emeralt-bundler) -->
 
-##### Auth Plugins
-- [`@emeralt/auth-inmemory`](./packages/auth/emeralt-auth-inmemory)
+##### <sup>Auth plugins</sup>
 
-##### Database Plugins
-- [`@emeralt/database-inmemory`](./packages/database/emeralt-database-inmemory)
-- [`@emeralt/database-redis`](./packages/database/emeralt-database-redis)
-  
-##### Storage Plugins
-- [`@emeralt/storage-inmemory`](./packages/storage/emeralt-storage-inmemory)
-  
-##### Misc
-- [`@emeralt/bundler`](./packages/misc/emeralt-bundler)
-- [`@emeralt/assets`](./packages/misc/emeralt-assets)
+- [`@emeralt/auth-inmemory`](./packages/emeralt-auth-inmemory)
+
+##### <sup>Database plugins</sup>
+
+- [`@emeralt/database-inmemory`](./packages/emeralt-database-inmemory)
+<!-- - [`@emeralt/database-redis`](./packages/emeralt-database-redis) -->
+
+##### <sup>Storage plugins</sup>
+
+- [`@emeralt/storage-inmemory`](./packages/emeralt-storage-inmemory)
 
 ---
 

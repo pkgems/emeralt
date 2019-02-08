@@ -1,6 +1,6 @@
 {
-  "name": "%NAME%",
-  "version": "0.0.18",
+  "name": "@emeralt/database-inmemory",
+  "version": "0.3.0-alpha.0",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -10,12 +10,12 @@
     "access": "public"
   },
   "scripts": {
-    "test": "ava test/**/*.test.ts",
+    "test": "ava ../../test/database.test.ts",
     "build": "bundler build",
     "watch": "bundler watch"
   },
   "devDependencies": {
-    "@emeralt/bundler": "0.0.18",
-    "@emeralt/types": "0.0.18"
+    "@emeralt/bundler": "^0.2.0",
+    "@emeralt/types": "^0.3.0-alpha.0"
   }
 }

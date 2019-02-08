@@ -2,7 +2,7 @@
   "private": true,
   "name": "emeralt",
   "workspaces": [
-    "packages/*/*",
+    "packages/*",
     "scripts"
   ],
   "scripts": {
@@ -10,9 +10,8 @@
     "watch": "lerna exec yarn watch --parallel --stream",
     "test": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test lerna exec yarn test --sort",
     "test:coverage": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test nyc lerna exec yarn test --sort",
-    "clean": "git clean -dfX",
     "format": "npx prettier --ignore-path .gitignore --write './!(node_modules|build)/**/*.{ts,tsx,js,jsx}'",
-    "init-package": "ts-node -P ./scripts/tsconfig.json scripts/init.ts"
+    "clean": "git clean -dfX"
   },
   "dependencies": {
     "cross-env": "5.2.0",

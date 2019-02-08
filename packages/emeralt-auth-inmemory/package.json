@@ -1,5 +1,5 @@
 {
-  "name": "@emeralt/database-inmemory",
+  "name": "@emeralt/auth-inmemory",
   "version": "0.3.0-alpha.0",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "access": "public"
   },
   "scripts": {
-    "test": "ava ../../../test/database.test.ts",
+    "test": "ava ../../test/auth.test.ts",
     "build": "bundler build",
     "watch": "bundler watch"
   },
