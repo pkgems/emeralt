@@ -1,6 +1,6 @@
 ### Architecture
 
-Auth, database and storage functionality are delegated to plugins.
+Auth, database and storage functionality is delegated to plugins.
 
 - Auth - `@emeralt/auth-*`
 - Database - `@emeralt/database-*`
