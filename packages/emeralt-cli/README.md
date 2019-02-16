@@ -14,3 +14,9 @@ or using yarn:
 ```sh
 yarn add --dev @emeralt/cli
 ```
+
+## Usage
+Start registry with inmemory auth, database and storage
+```sh
+emeralt
+```
