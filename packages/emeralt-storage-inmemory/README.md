@@ -1,4 +1,5 @@
 # @emeralt/storage-inmemory
+Emeralt storage plugin to store package tarballs in memory
 
 ## Install
 
@@ -12,4 +13,10 @@ or using yarn:
 
 ```sh
 yarn add --dev @emeralt/storage-inmemory
+```
+
+## Usage
+
+```ts
+new EmeraltStorageInMemory()
 ```

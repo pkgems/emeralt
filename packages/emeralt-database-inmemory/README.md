@@ -1,4 +1,5 @@
 # @emeralt/database-inmemory
+Emeralt database plugin to store packages in memory
 
 ## Install
 
@@ -12,4 +13,10 @@ or using yarn:
 
 ```sh
 yarn add --dev @emeralt/database-inmemory
+```
+
+## Usage
+
+```ts
+new EmeraltDatabaseInMemory()
 ```

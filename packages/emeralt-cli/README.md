@@ -1,5 +1,5 @@
 # @emeralt/cli
-> Emeralt command line interface
+Emeralt command-line interface
 
 ## Install
 
@@ -16,6 +16,7 @@ yarn add --dev @emeralt/cli
 ```
 
 ## Usage
+
 Start registry with inmemory auth, database and storage
 ```sh
 emeralt

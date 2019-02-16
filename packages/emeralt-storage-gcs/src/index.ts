@@ -2,19 +2,12 @@ import { IEmeraltStorage } from '@emeralt/types'
 import { join } from 'path'
 import { Storage } from '@google-cloud/storage'
 
-type Config = {
+export const EmeraltStorageGCS: IEmeraltStorage<{
   projectId: string
   keyFilename: string
   bucket: string
   dir: string
-}
-
-export const EmeraltStorageGCS: IEmeraltStorage<Config> = ({
-  projectId,
-  keyFilename,
-  bucket,
-  dir,
-}) => async () => {
+}> = ({ projectId, keyFilename, bucket, dir }) => async () => {
   const storage = new Storage({
     projectId,
     keyFilename,

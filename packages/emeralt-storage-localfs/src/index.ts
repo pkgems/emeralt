@@ -2,13 +2,9 @@ import { IEmeraltStorage } from '@emeralt/types'
 import fs, { pathExists } from 'fs-extra'
 import { resolve } from 'path'
 
-type Config = {
+export const EmeraltStorageLocalFS: IEmeraltStorage<{
   path: string
-}
-
-export const EmeraltStorageLocalFS: IEmeraltStorage<Config> = (
-  config,
-) => () => {
+}> = (config) => () => {
   return {
     getTarball: async (name, version) => {
       const file = resolve(config.path, name, version)

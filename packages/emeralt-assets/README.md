@@ -1,5 +1,5 @@
 # @emeralt/assets
-> Emeralt logos and other assets
+Emeralt logos and other assets
 
 ## Install
 

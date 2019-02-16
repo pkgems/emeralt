@@ -1,5 +1,5 @@
 # @emeralt/auth-inmemory
-> Emeralt auth which stores users in memory
+Emeralt auth plugin to store users in memory
 
 ## Install
 
@@ -13,4 +13,14 @@ or using yarn:
 
 ```sh
 yarn add --dev @emeralt/auth-inmemory
+```
+
+## Usage
+
+```ts
+new EmeraltAuthInMemory({
+  users: {
+    username: 'password',
+  }
+})
 ```

@@ -1,5 +1,5 @@
 # @emeralt/server
-> Emeralt Node.js HTTP server module
+Emeralt Node.js HTTP server module
 
 ### Install
 

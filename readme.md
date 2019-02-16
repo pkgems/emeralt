@@ -44,6 +44,8 @@ Wanted! See Issues and Contribution Guidelines. Feel free to contact me at `stac
 ##### <sup>Storage plugins</sup>
 
 - [`@emeralt/storage-inmemory`](./packages/emeralt-storage-inmemory)
+- [`@emeralt/storage-localfs`](./packages/emeralt-storage-localfs)
+- [`@emeralt/storage-gcs`](./packages/emeralt-storage-gcs)
 
 ---
 
