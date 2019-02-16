@@ -39,7 +39,7 @@ Wanted! See Issues and Contribution Guidelines. Feel free to contact me at `stac
 ##### <sup>Database plugins</sup>
 
 - [`@emeralt/database-inmemory`](./packages/emeralt-database-inmemory)
-<!-- - [`@emeralt/database-redis`](./packages/emeralt-database-redis) -->
+- [`@emeralt/database-redis`](./packages/emeralt-database-redis)
 
 ##### <sup>Storage plugins</sup>
 

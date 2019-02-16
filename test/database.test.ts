@@ -9,7 +9,7 @@ test<IEmeraltDatabase>('metadata', async (t, dbc) => {
 
   t.log('no metadata')
   t.deepEqual(await db.hasMetadata(metadata.name), false)
-  t.deepEqual(await db.getMetadata(metadata.name), undefined)
+  t.falsy(await db.getMetadata(metadata.name))
   t.deepEqual(await db.getMetadatas(), {})
 
   t.log('put metadata')
@@ -29,7 +29,7 @@ test<IEmeraltDatabase>('versions', async (t, dbc) => {
 
   t.log('no version')
   t.deepEqual(await db.hasVersion(metadata.name, version.version), false)
-  t.deepEqual(await db.getVersion(metadata.name, version.version), undefined)
+  t.falsy(await db.getVersion(metadata.name, version.version))
   t.deepEqual(await db.getVersions(metadata.name), {})
 
   t.log('put version')
