@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
     "target": "es2015",
+    "module": "es2015",
     "types": ["node"],
     "lib": ["esnext"],
 
-    "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
 
+    "outDir": "build",
     "declaration": true,
     "declarationMap": true,
-
+    
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],

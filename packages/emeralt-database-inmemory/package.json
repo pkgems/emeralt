@@ -11,8 +11,7 @@
   },
   "scripts": {
     "test": "ava ../../test/database.test.ts",
-    "build": "bundler build",
-    "watch": "bundler watch"
+    "build": "gemcart build"
   },
   "devDependencies": {
     "@emeralt/bundler": "^0.2.0",

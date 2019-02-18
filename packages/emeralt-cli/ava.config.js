@@ -1,5 +1,1 @@
-import sharedConfig from '../../ava.config'
-
-export default {
-  ...sharedConfig,
-}
+export { default } from '../../ava.config'

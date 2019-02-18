@@ -11,8 +11,7 @@
   },
   "scripts": {
     "test": "exit 0",
-    "build": "bundler build",
-    "watch": "bundler watch"
+    "build": "gemcart build"
   },
   "devDependencies": {
     "@emeralt/bundler": "^0.2.0",

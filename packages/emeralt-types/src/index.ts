@@ -7,7 +7,6 @@ export {
   TEmeraltHandlerParams,
   TDecodedToken,
   TEmeraltServerParamsInternal,
-  emeraltServerDefaultConfig,
   // auth
   TEmeraltAuthAction,
   CEmeraltAuth,

@@ -5,11 +5,11 @@ import merge from 'deepmerge'
 import {
   TEmeraltServerParams,
   TEmeraltServerParamsInternal,
-  emeraltServerDefaultConfig,
 } from '@emeralt/types'
 import { createServices } from '@/services'
 import { createMiddlewares } from '@/middlewares'
 import { createHandlers } from '@/handlers'
+import { emeraltServerDefaultConfig } from './config'
 
 type EmeraltServer = http.Server & {
   emeralt: TEmeraltServerParamsInternal

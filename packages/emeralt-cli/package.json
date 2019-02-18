@@ -14,8 +14,7 @@
   },
   "scripts": {
     "test": "ava test/**/*.test.ts",
-    "build": "bundler build",
-    "watch": "bundler watch",
+    "build": "gemcart build -b",
     "start": "node build/index.js"
   },
   "dependencies": {

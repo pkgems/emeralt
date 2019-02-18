@@ -1,6 +1,9 @@
-export default {
+import { resolve } from 'path'
+
+export default ({ projectDir }) => ({
   compileEnhancements: false,
   extensions: ['ts'],
-  require: ['ts-node/register', 'tsconfig-paths/register'],
+  // relative to project directory
+  require: [resolve(projectDir, '../../', 'test/register')],
   sources: ['src/**/*'],
-}
+})
