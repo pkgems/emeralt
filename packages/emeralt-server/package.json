@@ -37,7 +37,6 @@
     "@types/supertest": "2.0.7",
     "@types/tar": "^4.0.0",
     "doasync": "^2.0.1",
-    "gemcart": "../gemcart",
     "node-fetch": "^2.3.0",
     "npm-packlist": "^1.2.0",
     "npm-registry-client": "^8.6.0",
