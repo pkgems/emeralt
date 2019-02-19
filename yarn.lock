@@ -393,6 +393,23 @@
     resolve-from "4.0.0"
     resolve-global "0.1.0"
 
+"@commitlint/cli@7.5.2":
+  version "7.5.2"
+  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-7.5.2.tgz#2475cd8f7ed3b2f9c2ab96c06bc24d61d23f8716"
+  integrity sha512-UQdW/wNb+XeANoYYLyuKEDIfWKSzdhJkPQZ8ie/IjfMNnsP+B23bkX4Ati+6U8zgz0yyngoxWl+3lfExiIL4hQ==
+  dependencies:
+    "@commitlint/format" "^7.5.0"
+    "@commitlint/lint" "^7.5.2"
+    "@commitlint/load" "^7.5.0"
+    "@commitlint/read" "^7.5.0"
+    babel-polyfill "6.26.0"
+    chalk "2.3.1"
+    get-stdin "5.0.1"
+    lodash "4.17.11"
+    meow "5.0.0"
+    resolve-from "4.0.0"
+    resolve-global "0.1.0"
+
 "@commitlint/config-conventional@7.3.1":
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-7.3.1.tgz#ed96c14200ebfe344944540580a883ef39552a70"
@@ -421,7 +438,7 @@
   dependencies:
     babel-runtime "6.26.0"
 
-"@commitlint/format@^7.3.1":
+"@commitlint/format@^7.3.1", "@commitlint/format@^7.5.0":
   version "7.5.0"
   resolved "https://registry.yarnpkg.com/@commitlint/format/-/format-7.5.0.tgz#57a2b92dc58a3409b2be67c4c8c10bd1b28e9fe8"
   integrity sha512-DEeQXfTLUm9kARliCBfw3SlQRAYjK2aXeRAUMs1HPhLA2tjNFFGv6LOpFFNdiu/WV+o1ojcgIvBBjpHaVT+Tvw==
@@ -436,7 +453,7 @@
   dependencies:
     semver "5.6.0"
 
-"@commitlint/lint@^7.3.1":
+"@commitlint/lint@^7.3.1", "@commitlint/lint@^7.5.2":
   version "7.5.2"
   resolved "https://registry.yarnpkg.com/@commitlint/lint/-/lint-7.5.2.tgz#26cb819c74f8770413c4f6ef1e7abf1b739eda77"
   integrity sha512-DY/UfGFDquMno+5c6+tE50rMxpjdQK3CRG+nktgYlVz1UAqeUD+bRc3pvX5HwAsuGvyDrWAjtszHtEDeYJKcjw==
@@ -447,7 +464,7 @@
     babel-runtime "^6.23.0"
     lodash "4.17.11"
 
-"@commitlint/load@^7.3.1":
+"@commitlint/load@^7.3.1", "@commitlint/load@^7.5.0":
   version "7.5.0"
   resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-7.5.0.tgz#2b225b97d631c2235d8b2084bc2fefb4d4d66719"
   integrity sha512-fhBER/rzPsteM6zq5qqMiOi+A2bHKCE/0PKmOzYgaqTKcG9c1SsOle9phPemW85to8Gxd2YgUOVLsZkCMltLtA==
@@ -473,7 +490,7 @@
     conventional-commits-parser "^2.1.0"
     lodash "^4.17.11"
 
-"@commitlint/read@^7.3.1":
+"@commitlint/read@^7.3.1", "@commitlint/read@^7.5.0":
   version "7.5.0"
   resolved "https://registry.yarnpkg.com/@commitlint/read/-/read-7.5.0.tgz#35d563b0f3075da2ce6945978996b16fb4acb0f8"
   integrity sha512-uqGFCKZGnBUCTkxoCCJp4MfWUkegXkyT0T0RVM9diyG6uNWPWlMH1509sjLFlyeJKG+cSyYGG/d6T103ScMb4Q==
