@@ -46,4 +46,3 @@ test<IEmeraltDatabase>('versions', async (t, dbc) => {
 
   await db.dropData()
 })
-

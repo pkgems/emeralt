@@ -5,6 +5,7 @@ export const emeraltServerDefaultConfig: TEmeraltServerConfig = {
   jwt: {
     secret: 'secret',
   },
+  url: 'http://localhost:8080',
   endpoints: {
     ping: true,
     search: true,

@@ -1,32 +1,98 @@
 import test from 'ava'
-import { resolve } from 'url'
-import { createMocks } from './mocks'
-import { packagesFixtures } from './fixtures'
-import { readPackageJson, publishPackage } from './utils'
+import { createFixtures } from './fixtures'
+import { publish } from './shortcuts'
 
-test('get upstream', async (t) => {
-  const { client, address } = await createMocks()
-
-  const response = await client.get(resolve(address, 'react'), client.config)
-
-  t.is(response._id, 'react')
+const getMetadataSnapshot = (metadata: any) => ({
+  ...metadata,
+  _integrity: 'skipped',
+  _resolved: 'skipped',
+  _shasum: 'skipped',
 })
 
-test('get local', async (t) => {
-  const { client, address } = await createMocks()
+const getPackumentSnapshot = (packument: any) => ({
+  ...packument,
+  _owner: 'skipped',
+  versions: Object.keys(packument.versions).map((version) => ({
+    ...packument.versions[version],
+    _nodeVersion: 'skipped',
+    dist: {
+      ...packument.versions[version].dist,
+      integrity: 'skipped',
+      shasum: 'skipped',
+      tarball: 'skipped',
+    },
+  })),
+})
 
-  await publishPackage(client, address, packagesFixtures[0])
-  await publishPackage(client, address, packagesFixtures[0], {
-    metadata: { version: '2.0.0' },
-  })
+test('get metadata', async (t) => {
+  const fixtures = await createFixtures()
 
-  const metadata = await readPackageJson(packagesFixtures[0])
-  const response = await client.get(
-    resolve(address, metadata.name),
-    client.config,
+  await publish(fixtures, fixtures.users[0], fixtures.packages[0], '1.0.0')
+  await publish(fixtures, fixtures.users[0], fixtures.packages[0], '2.0.0')
+
+  t.snapshot(
+    getMetadataSnapshot(
+      await fixtures.client('manifest')(fixtures.packages[0].metadata.name),
+    ),
   )
 
-  t.is(response._id, metadata.name)
-  t.is(response['dist-tags']['latest'], '2.0.0')
-  t.deepEqual(Object.keys(response.versions), ['1.0.0', '2.0.0'])
+  t.snapshot(
+    getMetadataSnapshot(
+      await fixtures.client('manifest')(
+        `${fixtures.packages[0].metadata.name}@1.0.0`,
+      ),
+    ),
+  )
+
+  t.snapshot(
+    getMetadataSnapshot(
+      await fixtures.client('manifest')(
+        `${fixtures.packages[0].metadata.name}@2.0.0`,
+      ),
+    ),
+  )
+
+  await t.throwsAsync(
+    fixtures.client('manifest')(`${fixtures.packages[0].metadata.name}@3.0.0`),
+    'No matching version found for @test/package-1@3.0.0',
+  )
+})
+
+test('get packument', async (t) => {
+  const fixtures = await createFixtures()
+
+  await publish(fixtures, fixtures.users[0], fixtures.packages[0], '1.0.0')
+  await publish(fixtures, fixtures.users[0], fixtures.packages[0], '2.0.0')
+
+  t.snapshot(
+    getPackumentSnapshot(
+      await fixtures.client('packument')(fixtures.packages[0].metadata.name),
+    ),
+  )
+})
+
+test('get tarball', async (t) => {
+  const fixtures = await createFixtures()
+
+  await publish(fixtures, fixtures.users[0], fixtures.packages[0], '1.0.0')
+  await publish(fixtures, fixtures.users[0], fixtures.packages[0], '2.0.0')
+
+  t.true(
+    (await fixtures.client('tarball')(
+      fixtures.packages[0].metadata.name,
+    )) instanceof Buffer,
+  )
+
+  t.true(
+    (await fixtures.client('tarball')(
+      `${fixtures.packages[0].metadata.name}@2.0.0`,
+    )) instanceof Buffer,
+  )
+
+  await t.throwsAsync(
+    fixtures.client('tarball')(`${fixtures.packages[0].metadata.name}@3.0.0`),
+  )
+  await t.throwsAsync(
+    fixtures.client('tarball')(fixtures.packages[1].metadata.name),
+  )
 })
