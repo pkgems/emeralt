@@ -407,6 +407,15 @@
     resolve-pkg "1.0.0"
     semver "5.6.0"
 
+"@commitlint/config-lerna-scopes@7.5.1":
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/config-lerna-scopes/-/config-lerna-scopes-7.5.1.tgz#b4747e9cc7558f14a0fc9d59715e771d73a63caa"
+  integrity sha512-llv08M+b/VSemUfDsKFo8Dv1LHGVTMPsA8J1/ISMAlJCayTCCkgnJS812E8HPOVVQlMxBmqXvMmSOhvp3gFkZQ==
+  dependencies:
+    import-from "2.1.0"
+    resolve-pkg "1.0.0"
+    semver "5.6.0"
+
 "@commitlint/ensure@^7.5.2":
   version "7.5.2"
   resolved "https://registry.yarnpkg.com/@commitlint/ensure/-/ensure-7.5.2.tgz#57bb7dcbf1e9913e27c3b294325d0d68dd14cebf"
