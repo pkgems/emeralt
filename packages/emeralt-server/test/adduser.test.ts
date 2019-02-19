@@ -1,26 +1,39 @@
 import test from 'ava'
-import { createMocks } from './mocks'
+import { adduser } from './shortcuts'
+import { createFixtures } from './fixtures'
+import { createUser } from './fixtures/user'
 
 test('adduser', async (t) => {
-  const { client, auth, address } = await createMocks()
+  const fixtures = await createFixtures()
 
-  const response = await client.adduser(address, client.config)
+  const res = await adduser(fixtures, fixtures.users[0])
 
-  t.is(response.ok, true)
-  t.is(response.id, auth.username)
+  t.true(res.ok)
+  t.is(res.id, fixtures.users[0].username)
+  t.is(res.username, fixtures.users[0].username)
+  t.truthy(res.token)
 })
 
-test('adduser malformed', async (t) => {
-  const { client, auth, address } = await createMocks()
+test('adduser nonexistent user', async (t) => {
+  const fixtures = await createFixtures()
+
+  await t.throwsAsync(adduser(fixtures, createUser()))
+})
+
+test('adduser wrong password', async (t) => {
+  const fixtures = await createFixtures()
 
   await t.throwsAsync(
-    client.adduser(address, {
-      ...client.config,
-      auth: {
-        username: 'a',
-        password: 'b',
-        email: 'a@b.c',
-      },
+    adduser(fixtures, {
+      ...fixtures.users[0],
+      password: 'wrong-password',
     }),
   )
+})
+
+test('adduser empty', async (t) => {
+  const fixtures = await createFixtures()
+
+  // @ts-ignore
+  await t.throwsAsync(adduser(fixtures, {}))
 })

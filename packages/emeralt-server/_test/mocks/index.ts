@@ -14,3 +14,6 @@ export const createMocks = async ({
   ...(await createMockServer(serverConfig)),
   ...(await createMockClient(clientConfig)),
 })
+
+export { createMockServer } from './mock-server'
+export { createMockClient } from './mock-client'

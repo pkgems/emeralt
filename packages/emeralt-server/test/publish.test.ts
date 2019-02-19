@@ -1,81 +1,31 @@
 import test from 'ava'
-import { createMocks } from './mocks'
-import { publishPackage } from './utils'
-import { packagesFixtures } from './fixtures'
+import { createFixtures } from './fixtures'
+import { publish } from './shortcuts'
 
 test('publish', async (t) => {
-  const { client, address } = await createMocks()
+  const fixtures = await createFixtures()
 
-  const res = await publishPackage(client, address, packagesFixtures[0])
-
-  t.deepEqual(res, {})
+  t.true(await publish(fixtures, fixtures.users[0], fixtures.packages[0]))
+  t.true(await publish(fixtures, fixtures.users[0], fixtures.packages[1]))
 })
 
-test('publish with token', async (t) => {
-  const { client, address } = await createMocks()
+test('publish existing', async (t) => {
+  const fixtures = await createFixtures()
 
-  const { token } = await client.adduser(address, client.config)
-
+  t.true(await publish(fixtures, fixtures.users[0], fixtures.packages[0]))
   await t.throwsAsync(
-    publishPackage(client, address, packagesFixtures[0], {
-      auth: { token: 'abced' },
-    }),
-  )
-
-  t.deepEqual(
-    await publishPackage(client, address, packagesFixtures[0], {
-      auth: { token },
-    }),
-    {},
+    publish(fixtures, fixtures.users[1], fixtures.packages[0]),
   )
 })
 
-test('reject publish the same version', async (t) => {
-  const { client, address } = await createMocks()
-
-  await publishPackage(client, address, packagesFixtures[0])
-
-  await t.throwsAsync(publishPackage(client, address, packagesFixtures[0]))
-})
-
-test('reject unauthorized publish', async (t) => {
-  const { client, address } = await createMocks()
-
-  await publishPackage(client, address, packagesFixtures[0], {
-    auth: {
-      username: 'user1',
-      password: 'user1',
-      email: 'user1@user1.user1',
-    },
-  })
+test('publish unauthenticated', async (t) => {
+  const fixtures = await createFixtures()
 
   await t.throwsAsync(
-    publishPackage(client, address, packagesFixtures[0], {
-      auth: {
-        username: 'user2',
-        password: 'user2',
-        email: 'user2@user2.user2',
-      },
-      metadata: {
-        version: '2.0.0',
-      },
-    }),
-  )
-})
-
-test('reject unauthenticated publish', async (t) => {
-  const { client, address } = await createMocks()
-
-  await t.throwsAsync(
-    publishPackage(client, address, packagesFixtures[0], {
-      auth: {
-        username: 'a',
-        password: 'b',
-        email: 'a@b.c',
-      },
-      metadata: {
-        version: '3.0.0',
-      },
-    }),
+    publish(
+      fixtures,
+      { ...fixtures.users[0], password: 'wrong-password' },
+      fixtures.packages[0],
+    ),
   )
 })
