@@ -13,6 +13,9 @@ export interface CEmeraltStorage {
     version: string,
     tarball: Buffer,
   ): OptionalPromise<any>
+
+  /** drop all data (used for test purposes) */
+  dropData(): OptionalPromise<any>
 }
 
 export interface IEmeraltStorage<C = {}> {

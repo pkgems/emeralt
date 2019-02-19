@@ -1,24 +1,34 @@
 import { IEmeraltStorage } from '@emeralt/types'
-import fs, { pathExists } from 'fs-extra'
+import {
+  pathExists,
+  remove,
+  createReadStream,
+  mkdirp,
+  writeFile,
+} from 'fs-extra'
 import { resolve } from 'path'
 
 export const EmeraltStorageLocalFS: IEmeraltStorage<{
   path: string
-}> = (config) => () => {
+}> = ({ path }) => () => {
   return {
     getTarball: async (name, version) => {
-      const file = resolve(config.path, name, version)
+      const file = resolve(path, name, version)
 
-      if (await pathExists(file)) return fs.createReadStream(file)
+      if (await pathExists(file)) return createReadStream(file)
       else return undefined
     },
 
     putTarball: async (name, version, tarball) => {
-      const dir = resolve(config.path, name)
+      const dir = resolve(path, name)
       const file = resolve(dir, version)
 
-      await fs.mkdirp(dir)
-      await fs.writeFile(file, tarball)
+      await mkdirp(dir)
+      await writeFile(file, tarball)
+    },
+
+    dropData() {
+      return remove(path)
     },
   }
 }

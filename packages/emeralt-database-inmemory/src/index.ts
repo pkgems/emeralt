@@ -18,40 +18,47 @@ class CEmeraltDatabaseInMemory implements CEmeraltDatabase {
     }
   }
 
-  getMetadatas() {
+  public getMetadatas() {
     return { ...this.storage.metadata }
   }
 
-  hasMetadata(name: string) {
+  public hasMetadata(name: string) {
     return Boolean(this.getMetadata(name))
   }
 
-  getMetadata(name: string) {
+  public getMetadata(name: string) {
     return this.storage.metadata[name]
   }
 
-  putMetadata(name: string, data: TMetadata) {
+  public putMetadata(name: string, data: TMetadata) {
     this.storage.metadata[name] = data
   }
 
-  getVersions(name: string) {
+  public getVersions(name: string) {
     return this.storage.versions[name] || {}
   }
 
-  hasVersion(name: string, version: string) {
+  public hasVersion(name: string, version: string) {
     return Boolean(this.getVersions(name)[version])
   }
 
-  getVersion(name: string, version: string) {
+  public getVersion(name: string, version: string) {
     return this.getVersions(name)[version]
   }
 
-  putVersion(name: string, version: string, data: TVersion) {
+  public putVersion(name: string, version: string, data: TVersion) {
     const versions = this.getVersions(name)
 
     versions[version] = data
 
     this.storage.versions[name] = versions
+  }
+
+  public dropData() {
+    this.storage = {
+      metadata: {},
+      versions: {},
+    }
   }
 }
 

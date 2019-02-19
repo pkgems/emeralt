@@ -35,50 +35,54 @@ class CEmeraltDatabaseInMemory implements CEmeraltDatabase {
     return `${this.options.prefix}${str}`
   }
 
-  getMetadatas() {
+  public getMetadatas() {
     return this.redis.hgetall(this.getPath('packages')).then(this.parseRecord)
   }
 
-  hasMetadata(name: string) {
+  public hasMetadata(name: string) {
     return this.redis
       .hexists(this.getPath('packages'), name)
       .then((r) => Boolean(r))
   }
 
-  getMetadata(name: string) {
+  public getMetadata(name: string) {
     return this.redis
       .hget(this.getPath('packages'), name)
       .then((r) => JSON.parse(r))
   }
 
-  putMetadata(name: string, data: TMetadata) {
+  public putMetadata(name: string, data: TMetadata) {
     return this.redis.hset(this.getPath('packages'), name, JSON.stringify(data))
   }
 
-  getVersions(name: string) {
+  public getVersions(name: string) {
     return this.redis
       .hgetall(this.getPath(`versions-${name}`))
       .then(this.parseRecord)
   }
 
-  hasVersion(name: string, version: string) {
+  public hasVersion(name: string, version: string) {
     return this.redis
       .hexists(this.getPath(`versions-${name}`), version)
       .then((r) => Boolean(r))
   }
 
-  getVersion(name: string, version: string) {
+  public getVersion(name: string, version: string) {
     return this.redis
       .hget(this.getPath(`versions-${name}`), version)
       .then((r) => JSON.parse(r))
   }
 
-  putVersion(name: string, version: string, data: TVersion) {
+  public putVersion(name: string, version: string, data: TVersion) {
     return void this.redis.hset(
       this.getPath(`versions-${name}`),
       version,
       JSON.stringify(data),
     )
+  }
+
+  public dropData() {
+    return this.redis.flushdb()
   }
 }
 

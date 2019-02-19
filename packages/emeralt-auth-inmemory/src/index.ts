@@ -52,6 +52,10 @@ class CEmeraltAuthInMemory implements CEmeraltAuth {
       return !metadata || metadata._owner === username
     }
   }
+
+  public dropData() {
+    this.users.clear()
+  }
 }
 
 export const EmeraltAuthInMemory: IEmeraltAuth<{

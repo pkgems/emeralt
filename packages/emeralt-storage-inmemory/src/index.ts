@@ -24,5 +24,9 @@ export const EmeraltStorageInMemory: IEmeraltStorage = () => () => {
     putTarball: (name, version, tarball) => {
       storage = assocPath([name, version], tarball, storage)
     },
+
+    dropData() {
+      storage = {}
+    },
   }
 }
