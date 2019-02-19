@@ -14,6 +14,7 @@ const getPackumentSnapshot = (packument: any) => ({
   _owner: 'skipped',
   versions: Object.keys(packument.versions).map((version) => ({
     ...packument.versions[version],
+    _nodeVersion: 'skipped',
     dist: {
       ...packument.versions[version].dist,
       integrity: 'skipped',
