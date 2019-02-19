@@ -16,6 +16,9 @@ export interface CEmeraltAuth {
     action: TEmeraltAuthAction,
     packagename: string,
   ): OptionalPromise<boolean>
+
+  /** drop all data (used for test purposes) */
+  dropData(): OptionalPromise<any>
 }
 export interface IEmeraltAuth<C = {}> {
   (pluginConfig: C): (

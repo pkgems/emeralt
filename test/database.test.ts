@@ -21,6 +21,8 @@ test<IEmeraltDatabase>('metadata', async (t, dbc) => {
   t.deepEqual(await db.getMetadatas(), {
     [metadata.name]: metadata,
   })
+
+  await db.dropData()
 })
 
 test<IEmeraltDatabase>('versions', async (t, dbc) => {
@@ -41,4 +43,7 @@ test<IEmeraltDatabase>('versions', async (t, dbc) => {
   t.deepEqual(await db.getVersions(metadata.name), {
     [version.version]: version,
   })
+
+  await db.dropData()
 })
+

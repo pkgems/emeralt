@@ -30,6 +30,9 @@ export interface CEmeraltDatabase {
     version: string,
     data: TVersion,
   ): OptionalPromise<void>
+
+  /** drop all data (used for test purposes) */
+  dropData(): OptionalPromise<any>
 }
 
 export interface IEmeraltDatabase<C = {}> {

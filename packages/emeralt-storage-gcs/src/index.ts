@@ -1,6 +1,37 @@
-import { IEmeraltStorage } from '@emeralt/types'
+import { IEmeraltStorage, CEmeraltStorage } from '@emeralt/types'
 import { join } from 'path'
 import { Storage } from '@google-cloud/storage'
+
+class CEmeraltStorageGCS implements CEmeraltStorage {
+  constructor(private storage, private dir) {}
+
+  public async getTarball(name, version) {
+    const file = this.storage.file(join(this.dir, name, version))
+    if (await file.exists()) {
+      return file.createReadStream()
+    } else {
+      return undefined
+    }
+  }
+
+  public async putTarball(name, version, tarball) {
+    return new Promise(async (rs, rj) => {
+      const file = this.storage.file(join(this.dir, name, version))
+
+      const ws = file
+        .createWriteStream()
+        .on('finish', rs)
+        .on('close', rs)
+        .on('error', rj)
+
+      ws.write(tarball, 'base64', () => {
+        ws.end()
+      })
+    })
+  }
+
+  public async dropData() {}
+}
 
 export const EmeraltStorageGCS: IEmeraltStorage<{
   projectId: string
@@ -17,29 +48,5 @@ export const EmeraltStorageGCS: IEmeraltStorage<{
     await storage.create()
   }
 
-  return {
-    getTarball: async (name, version) => {
-      const file = storage.file(join(dir, name, version))
-      if (await file.exists()) {
-        return file.createReadStream()
-      } else {
-        return undefined
-      }
-    },
-
-    putTarball: (name, version, tarball) =>
-      new Promise(async (rs, rj) => {
-        const file = storage.file(join(dir, name, version))
-
-        const ws = file
-          .createWriteStream()
-          .on('finish', rs)
-          .on('close', rs)
-          .on('error', rj)
-
-        ws.write(tarball, 'base64', () => {
-          ws.end()
-        })
-      }),
-  }
+  return new CEmeraltStorageGCS(storage, dir)
 }

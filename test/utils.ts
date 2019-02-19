@@ -10,5 +10,5 @@ export const test = <T>(
     require(resolve(process.cwd(), 'src/index.ts')),
   )[0]
 
-  return ava(msg, (t) => cb(t, plugin))
+  return ava.serial(msg, (t) => cb(t, plugin))
 }
