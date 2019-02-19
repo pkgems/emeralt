@@ -2,6 +2,7 @@ import { TEmeraltHandlerParams } from '@emeralt/types'
 import { endpoints } from '@/constants'
 import { useIf } from '@/utils'
 import { Router } from 'express'
+import { resolve } from 'url'
 
 export const getHandler = ({ config, database }: TEmeraltHandlerParams) =>
   useIf(
@@ -19,6 +20,16 @@ export const getHandler = ({ config, database }: TEmeraltHandlerParams) =>
 
       // retrieve all package versions
       const versions = await database.getVersions(package_name)
+
+      // determine tarball absolute url
+      Object.keys(versions).forEach((version) => {
+        versions[version].dist.tarball = resolve(
+          config.url,
+          `/-/tarball/${encodeURIComponent(
+            versions[version].name,
+          )}/${encodeURIComponent(versions[version].version)}`,
+        )
+      })
 
       res.status(200).json({
         ...metadata,

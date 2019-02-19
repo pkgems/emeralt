@@ -10,6 +10,7 @@ export type TEmeraltServerConfig = {
   jwt?: {
     secret?: string
   }
+  url?: string
   endpoints?: {
     ping?: boolean
     search?: boolean

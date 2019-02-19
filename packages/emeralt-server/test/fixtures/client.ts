@@ -9,6 +9,7 @@ export const createClient = (address: string) => {
       log: npmlog,
       // @ts-ignore
       registry: address,
+      'fetch-retries': 0,
       ...config,
     })
   }

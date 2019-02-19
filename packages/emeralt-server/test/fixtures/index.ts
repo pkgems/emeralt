@@ -1,4 +1,4 @@
-import { TUser, TMetadata, Unpack } from '@emeralt/types'
+import { TUser, TMetadata, Unpack, TEmeraltServerConfig } from '@emeralt/types'
 import { Readable } from 'stream'
 import { Server } from 'http'
 import { join } from 'path'
@@ -9,9 +9,13 @@ import { createClient } from './client'
 import { createUser } from './user'
 import { AddressInfo } from 'net'
 
+export type TOptions = {
+  serverConfig?: TEmeraltServerConfig
+}
+
 export type TFixtures = Unpack<ReturnType<typeof createFixtures>>
 
-export const createFixtures = async (): Promise<{
+export const createFixtures = async ({ serverConfig }: TOptions = {}): Promise<{
   address: string
   server: Server
   client: Unpack<typeof createClient>
@@ -21,13 +25,11 @@ export const createFixtures = async (): Promise<{
     tarball: Readable
   }[]
 }> => {
-  const pkgsDir = join(__dirname, 'packages')
-
   // generate 3 users
   const users = [1, 2, 3].map(createUser)
 
   // create fully in-memory server
-  const server = await createServer(users)
+  const server = await createServer(serverConfig, users)
 
   // get server address
   const address = `http://localhost:${(server.address() as AddressInfo).port}`

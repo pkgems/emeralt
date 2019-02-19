@@ -60,6 +60,13 @@ export const createEmeraltRouter = async (params: TEmeraltServerParams) => {
     .use(handlers.search)
     .use(handlers.packages)
 
+  // HACK FOR TESTS
+  // used to dynamically change the config
+  // @ts-ignore
+  router._setConfig = (key, value) => {
+    internal.config[key] = value
+  }
+
   return router
 }
 
@@ -67,6 +74,10 @@ export const createEmeraltServer = async (params: TEmeraltServerParams) => {
   const router = await createEmeraltRouter(params)
 
   const httpServer = http.createServer(router) as EmeraltServer
+
+  // ↑ HACK FOR TESTS ↑
+  // @ts-ignore
+  httpServer._setConfig = router._setConfig
 
   return httpServer
 }
