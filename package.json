@@ -17,7 +17,7 @@
     "cross-env": "5.2.0",
     "prettier": "1.15.3",
     "ts-node": "7.0.1",
-    "typescript": "3.2.2"
+    "typescript": "3.3.3"
   },
   "devDependencies": {
     "@commitlint/cli": "7.3.1",
