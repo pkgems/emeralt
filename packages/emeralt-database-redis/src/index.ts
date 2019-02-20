@@ -15,7 +15,7 @@ type Options = {
   prefix?: string
 }
 
-class CEmeraltDatabaseInMemory implements CEmeraltDatabase {
+class CEmeraltDatabaseRedis implements CEmeraltDatabase {
   redis: TRedis
 
   constructor(private options: Options) {
@@ -86,6 +86,6 @@ class CEmeraltDatabaseInMemory implements CEmeraltDatabase {
   }
 }
 
-export const EmeraltDatabaseInMemory: IEmeraltDatabase<Options> = (
+export const EmeraltDatabaseRedis: IEmeraltDatabase<Options> = (
   options,
-) => () => new CEmeraltDatabaseInMemory(options)
+) => () => new CEmeraltDatabaseRedis(options)
