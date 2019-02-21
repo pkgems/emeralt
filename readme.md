@@ -40,6 +40,7 @@ Wanted! See Issues and Contribution Guidelines. Feel free to contact me at `stac
 
 - [`@emeralt/database-inmemory`](./packages/emeralt-database-inmemory)
 - [`@emeralt/database-redis`](./packages/emeralt-database-redis)
+- [`@emeralt/database-cloud-firestore`](./packages/emeralt-database-cloud-firestore)
 
 ##### <sup>Storage plugins</sup>
 
