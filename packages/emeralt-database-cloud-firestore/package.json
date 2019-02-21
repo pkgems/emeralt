@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/database-cloud-firestore",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
