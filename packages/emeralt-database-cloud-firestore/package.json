@@ -1,0 +1,23 @@
+{
+  "name": "@emeralt/database-cloud-firestore",
+  "version": "0.3.1",
+  "author": "stackdumper <stackdumper@gmail.com>",
+  "license": "MIT",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
+  "source": "./src/index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "ava ../../test/database.test.ts",
+    "build": "gemcart build"
+  },
+  "devDependencies": {
+    "@emeralt/bundler": "^0.2.0",
+    "@emeralt/types": "^0.3.1"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "^1.0.1"
+  }
+}

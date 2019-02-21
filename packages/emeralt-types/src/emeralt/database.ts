@@ -29,7 +29,7 @@ export interface CEmeraltDatabase {
     name: string,
     version: string,
     data: TVersion,
-  ): OptionalPromise<void>
+  ): OptionalPromise<any>
 
   /** drop all data (used for test purposes) */
   dropData(): OptionalPromise<any>
