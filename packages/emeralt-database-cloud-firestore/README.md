@@ -18,5 +18,16 @@ yarn add --dev @emeralt/database-cloud-firestore
 ## Usage
 
 ```ts
-new EmeraltDatabaseCloudFirestore()
+new EmeraltDatabaseCloudFirestore(options)
+```
+
+### Options
+
+```ts
+type Options = {
+  prefix?: {
+    collection: string
+    document: string
+  }
+}
 ```

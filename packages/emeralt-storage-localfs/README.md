@@ -18,7 +18,14 @@ yarn add --dev @emeralt/storage-localfs
 ## Usage
 
 ```ts
-new EmeraltStorageLocalFS({
+new EmeraltStorageLocalFS(options)
+```
+
+### Options
+
+```ts
+type Options = {
   // path where to store tarballs
-  path: './storage'
-})
+  path: string
+}
+````

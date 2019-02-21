@@ -8,9 +8,13 @@ import {
 } from 'fs-extra'
 import { resolve } from 'path'
 
-export const EmeraltStorageLocalFS: IEmeraltStorage<{
+type Options = {
   path: string
-}> = ({ path }) => () => {
+}
+
+export const EmeraltStorageLocalFS: IEmeraltStorage<Options> = ({
+  path,
+}) => () => {
   return {
     getTarball: async (name, version) => {
       const file = resolve(path, name, version)

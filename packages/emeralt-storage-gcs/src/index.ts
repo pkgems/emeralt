@@ -33,12 +33,19 @@ class CEmeraltStorageGCS implements CEmeraltStorage {
   public async dropData() {}
 }
 
-export const EmeraltStorageGCS: IEmeraltStorage<{
+type Options = {
   projectId: string
   keyFilename: string
   bucket: string
   dir: string
-}> = ({ projectId, keyFilename, bucket, dir }) => async () => {
+}
+
+export const EmeraltStorageGCS: IEmeraltStorage<Options> = ({
+  projectId,
+  keyFilename,
+  bucket,
+  dir,
+}) => async () => {
   const storage = new Storage({
     projectId,
     keyFilename,

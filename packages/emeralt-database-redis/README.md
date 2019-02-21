@@ -13,7 +13,13 @@ or using yarn:
 yarn add --dev @emeralt/database-redis
 ```
 
-## Options
+## Usage
+
+```ts
+new EmeraltDatabaseRedis(options)
+```
+
+### Options
 
 ```ts
 type Options = {

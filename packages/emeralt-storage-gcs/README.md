@@ -18,17 +18,23 @@ yarn add --dev @emeralt/storage-gcs
 ## Usage
 
 ```ts
-new EmeraltStorageGCS({
+new EmeraltStorageGCS(options)
+```
+
+### Options
+
+```ts
+type Options = {
   // your GCP project ID
-  projectId,
+  projectId: string
 
   // path to auth key file (service account)
-  keyFilename,
+  keyFilename: string
 
   // storage bucket name
-  bucket,
+  bucket: string
 
   // dir inside of storage bucket to use
-  dir,
-})
+  dir: string
+}
 ```
