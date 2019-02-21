@@ -6,7 +6,7 @@ export const user: TUser = {
 }
 
 export const metadata: TMetadata = {
-  name: 'test',
+  name: '@test/test',
   version: '1.0.0',
   author: 'tester',
   main: 'index.js',
