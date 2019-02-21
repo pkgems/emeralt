@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/storage-localfs",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "author": "stackdumper <stackdumper@gmail.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@emeralt/bundler": "^0.2.0",
-    "@emeralt/types": "^0.3.1",
+    "@emeralt/types": "^0.4.0",
     "@types/fs-extra": "^5.0.4"
   },
   "dependencies": {
