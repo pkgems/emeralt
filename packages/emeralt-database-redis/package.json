@@ -2,10 +2,15 @@
   "name": "@emeralt/database-redis",
   "version": "0.4.0",
   "author": "stackdumper <stackdumper@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emeralt/emeralt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emeralt/emeralt/issues"
+  },
   "license": "MIT",
   "main": "./build/index.js",
-  "module": "./build/index.mjs",
-  "source": "./src/index.ts",
   "publishConfig": {
     "access": "public"
   },

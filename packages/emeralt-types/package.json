@@ -2,6 +2,13 @@
   "name": "@emeralt/types",
   "version": "0.4.0",
   "author": "stackdumper <stackdumper@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emeralt/emeralt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emeralt/emeralt/issues"
+  },
   "license": "MIT",
   "main": "./src/index.ts",
   "publishConfig": {

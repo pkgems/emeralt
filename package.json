@@ -5,6 +5,14 @@
     "packages/*",
     "scripts"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emeralt/emeralt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emeralt/emeralt/issues"
+  },
+  "license": "MIT",
   "scripts": {
     "build": "lerna exec yarn build --sort",
     "watch": "lerna exec yarn watch --parallel --stream",
