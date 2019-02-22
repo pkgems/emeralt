@@ -30,7 +30,6 @@ Wanted! See Issues and Contribution Guidelines. Feel free to contact me at `stac
 - [`@emeralt/server`](./packages/emeralt-server)
 - [`@emeralt/types`](./packages/emeralt-types)
 - [`@emeralt/assets`](./packages/emeralt-assets)
-<!-- - [`@emeralt/bundler`](./packages/emeralt-bundler) -->
 
 ##### <sup>Auth plugins</sup>
 

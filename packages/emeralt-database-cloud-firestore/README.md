@@ -26,8 +26,17 @@ new EmeraltDatabaseCloudFirestore(options)
 ```ts
 type Options = {
   prefix?: {
-    collection: string
-    document: string
-  }
+    collection: string // default: emeralt-test
+    document: string // default: emeralt-test
+  },
+
+  // credentials for firestore
+  // https://cloud.google.com/compute/docs/access/service-accounts
+  firestore?: {
+    projectId?: string
+    keyFilename?: string
+    credentials?: string
+    timestampsInSnapshots?: string
+  },
 }
 ```

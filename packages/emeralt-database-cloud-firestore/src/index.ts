@@ -15,6 +15,7 @@ type Options = {
     collection: string
     document: string
   }
+  firestore?: FirebaseFirestore.Settings
 }
 
 class CEmeraltDatabaseCloudFirestore implements CEmeraltDatabase {
@@ -24,14 +25,14 @@ class CEmeraltDatabaseCloudFirestore implements CEmeraltDatabase {
   }
 
   constructor(private options: Options) {
-    let firestore = new Firestore() as Firestore | DocumentReference
-
-    // prefixify
-    if (this.options.prefix) {
-      firestore = firestore
-        .collection(this.options.prefix.collection)
-        .doc(this.options.prefix.document)
+    const { document, collection } = this.options.prefix || {
+      document: 'emeralt-test',
+      collection: 'emeralt-test',
     }
+
+    let firestore = new Firestore(this.options.firestore)
+      .collection(collection)
+      .doc(document)
 
     this.db = {
       metadatas: firestore.collection('metadatas'),
