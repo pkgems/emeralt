@@ -13,7 +13,7 @@ type Options = {
 }
 
 export const EmeraltStorageLocalFS: IEmeraltStorage<Options> = ({
-  path,
+  path = 'node_modules/.data',
 }) => () => {
   return {
     getTarball: async (name, version) => {

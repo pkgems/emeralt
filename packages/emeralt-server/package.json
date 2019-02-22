@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@emeralt/auth-inmemory": "^0.4.0",
-    "@emeralt/bundler": "^0.2.0",
     "@emeralt/database-inmemory": "^0.4.0",
     "@emeralt/storage-inmemory": "^0.4.0",
     "@emeralt/types": "^0.4.0",
@@ -41,7 +40,6 @@
     "doasync": "^2.0.1",
     "node-fetch": "^2.3.0",
     "npm-packlist": "^1.2.0",
-    "npm-registry-client": "^8.6.0",
     "npmlog": "^4.1.2",
     "path-to-regexp": "3.0.0",
     "supertest": "3.4.2",

@@ -10,15 +10,14 @@
     "access": "public"
   },
   "scripts": {
-    "test": "ava test/**/*.test.ts",
+    "test": "ava ../../test/storage.test.ts",
     "build": "gemcart build"
   },
-  "devDependencies": {
-    "@emeralt/bundler": "^0.2.0",
-    "@emeralt/types": "^0.4.0"
-  },
   "dependencies": {
-    "@types/ramda": "^0.25.46",
     "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@types/ramda": "^0.25.46",
+    "@emeralt/types": "^0.4.0"
   }
 }

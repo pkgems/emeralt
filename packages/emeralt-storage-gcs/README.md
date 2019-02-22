@@ -25,16 +25,18 @@ new EmeraltStorageGCS(options)
 
 ```ts
 type Options = {
-  // your GCP project ID
-  projectId: string
+  // @google-cloud/storage options
+  // https://www.npmjs.com/package/@google-cloud/storage
+  storage: StorageOptions
 
-  // path to auth key file (service account)
-  keyFilename: string
+  path: {
+    // bucket to use
+    // default: emeralt-test
+    bucket: string
 
-  // storage bucket name
-  bucket: string
-
-  // dir inside of storage bucket to use
-  dir: string
+    // prefix (for example, my/dir/prefix)
+    prefix?: string
+  }
 }
+
 ```

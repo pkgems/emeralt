@@ -1,14 +1,36 @@
 import { IEmeraltStorage, CEmeraltStorage } from '@emeralt/types'
 import { join } from 'path'
-import { Storage } from '@google-cloud/storage'
+import { Storage, StorageOptions, Bucket } from '@google-cloud/storage'
+import { Readable } from 'stream'
+
+type Options = {
+  storage: StorageOptions
+  path: {
+    bucket: string
+    prefix?: string
+  }
+}
 
 class CEmeraltStorageGCS implements CEmeraltStorage {
-  constructor(private storage, private dir) {}
+  private bucket: Bucket
+  private prefix
+
+  constructor({
+    storage,
+    path = {
+      bucket: 'emeralt-test',
+      prefix: '',
+    },
+  }: Options) {
+    this.bucket = new Storage(storage).bucket(path.bucket)
+    this.prefix = path.prefix
+  }
 
   public async getTarball(name, version) {
-    const file = this.storage.file(join(this.dir, name, version))
+    const file = this.bucket.file(join(this.prefix, name, version))
+
     if (await file.exists()) {
-      return file.createReadStream()
+      return new Readable().wrap(file.createReadStream())
     } else {
       return undefined
     }
@@ -16,7 +38,7 @@ class CEmeraltStorageGCS implements CEmeraltStorage {
 
   public async putTarball(name, version, tarball) {
     return new Promise(async (rs, rj) => {
-      const file = this.storage.file(join(this.dir, name, version))
+      const file = this.bucket.file(join(this.prefix, name, version))
 
       const ws = file
         .createWriteStream()
@@ -30,30 +52,10 @@ class CEmeraltStorageGCS implements CEmeraltStorage {
     })
   }
 
-  public async dropData() {}
-}
-
-type Options = {
-  projectId: string
-  keyFilename: string
-  bucket: string
-  dir: string
-}
-
-export const EmeraltStorageGCS: IEmeraltStorage<Options> = ({
-  projectId,
-  keyFilename,
-  bucket,
-  dir,
-}) => async () => {
-  const storage = new Storage({
-    projectId,
-    keyFilename,
-  }).bucket(bucket)
-
-  if (!(await storage.exists())) {
-    await storage.create()
+  public async dropData() {
+    await this.bucket.deleteFiles()
   }
-
-  return new CEmeraltStorageGCS(storage, dir)
 }
+
+export const EmeraltStorageGCS: IEmeraltStorage<Options> = (options) => () =>
+  new CEmeraltStorageGCS(options)

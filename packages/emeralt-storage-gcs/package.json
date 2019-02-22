@@ -10,14 +10,13 @@
     "access": "public"
   },
   "scripts": {
-    "test": "exit 0",
-    "build": "gemcart build"
-  },
-  "devDependencies": {
-    "@emeralt/bundler": "^0.2.0",
-    "@emeralt/types": "^0.4.0"
+    "build": "gemcart build",
+    "test": "ava ../../test/storage.test.ts"
   },
   "dependencies": {
     "@google-cloud/storage": "^2.3.4"
+  },
+  "devDependencies": {
+    "@emeralt/types": "^0.4.0"
   }
 }

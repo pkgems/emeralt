@@ -13,11 +13,10 @@
     "test": "ava ../../test/database.test.ts",
     "build": "gemcart build"
   },
-  "devDependencies": {
-    "@emeralt/bundler": "^0.2.0",
-    "@emeralt/types": "^0.4.0"
-  },
   "dependencies": {
     "@google-cloud/firestore": "^1.0.1"
+  },
+  "devDependencies": {
+    "@emeralt/types": "^0.4.0"
   }
 }

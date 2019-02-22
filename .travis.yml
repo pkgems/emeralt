@@ -27,5 +27,5 @@ cache: yarn
 before_script:
   - yarn build
 script:
-  - yarn test:coverage
+  - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
   - yarn nyc report --reporter=text-lcov | yarn coveralls
