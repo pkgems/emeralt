@@ -56,6 +56,10 @@ class CEmeraltAuthInMemory implements CEmeraltAuth {
   public dropData() {
     this.users.clear()
   }
+
+  public healthz() {
+    return { ok: true }
+  }
 }
 
 export const EmeraltAuthInMemory: IEmeraltAuth<{

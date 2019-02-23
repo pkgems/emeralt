@@ -3,12 +3,23 @@ import { resolve } from 'path'
 
 export const test = <T>(
   msg: string,
-  cb: (t: ExecutionContext, plugin: T) => any,
+  cb: (t: ExecutionContext, createPlugin: T) => any,
 ) => {
   // @ts-ignore
-  const plugin: T = Object.values(
+  const createPlugin: T = Object.values(
     require(resolve(process.cwd(), 'src/index.ts')),
   )[0]
 
-  return ava.serial(msg, (t) => cb(t, plugin))
+  return ava.serial(msg, async (t) => {
+    try {
+      await cb(t, createPlugin)
+    } catch (error) {
+      throw error
+    } finally {
+      // cleanup
+      // @ts-ignore
+      const plugin = await createPlugin({})({})
+      await plugin.dropData()
+    }
+  })
 }

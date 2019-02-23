@@ -4,7 +4,10 @@ import { useIf } from '@/utils'
 import { Router } from 'express'
 import { resolve } from 'url'
 
-export const getHandler = ({ config, database }: TEmeraltHandlerParams) =>
+export const getPackageHandler = ({
+  config,
+  database,
+}: TEmeraltHandlerParams) =>
   useIf(
     config.endpoints.package.get,
     Router().get(endpoints.package.get, async (req, res, next) => {

@@ -16,5 +16,9 @@ export const emeraltServerDefaultConfig: TEmeraltServerConfig = {
       get: true,
       publish: true,
     },
+
+    sys: {
+      healthz: true,
+    },
   },
 }

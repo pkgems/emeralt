@@ -1,6 +1,8 @@
 # @emeralt/server
 Emeralt Node.js HTTP server module
 
+---
+
 ### Install
 
 Using npm:
@@ -15,7 +17,9 @@ or using yarn:
 yarn add --dev @emeralt/server
 ```
 
-### Usage
+---
+
+### Example
 
 ```ts
 // import server 
@@ -42,16 +46,19 @@ createEmeraltServer({
 })
 ```
 
-### Config
+##### Config
 
 ```ts
 type TEmeraltServerConfig = {
+  // default: "dev"
   logLevel?: 'combined' | 'common' | 'dev' | 'short' | 'tiny' | 'silent'
   jwt?: {
     // secret to sign JWT tokens with
+    // default: "secret"
     secret?: string
   }
-  // enable specific endpoint, defaults to true
+  // enable specific endpoint
+  // default: all true
   endpoints?: {
     ping?: boolean
     search?: boolean
@@ -62,30 +69,43 @@ type TEmeraltServerConfig = {
       get?: boolean
       publish?: boolean
     }
+
+    sys?: {
+      healthz: boolean
+    }
   }
 }
 ```
+---
 
-### Default Config
+### Healthcheck
 
+Additionally, server exposes a healthcheck endpoint, which verifies that every plugin is healthy and able to serve the needs.
+
+##### Endpoint
+`GET /-/sys/health`
+
+##### Response status
+`200` if ok, `503` otherwise.
+
+##### Response body:
 ```ts
-const emeraltServerDefaultConfig: TEmeraltServerConfig = {
-  logLevel: 'dev',
-  jwt: {
-    secret: 'secret',
-  },
-  endpoints: {
-    ping: true,
-    search: true,
-    login: true,
-    adduser: true,
-
-    package: {
-      get: true,
-      publish: true,
-    },
-  },
+type Response = {
+  ok: boolean // true if every plugin is healthy
+  healthz: {
+    auth: THealthz,
+    database: THealthz,
+    storage: THealthz,
+  }
 }
+
+type THealthz = {
+  ok: boolean
+  message?: string
+  error?: Error
+} 
 ```
+
+---
 
 ### [Architecture](./docs/architecture.md)

@@ -55,6 +55,22 @@ class CEmeraltStorageGCS implements CEmeraltStorage {
   public async dropData() {
     await this.bucket.deleteFiles()
   }
+
+  public async healthz() {
+    try {
+      const [ok] = await this.bucket.exists()
+
+      return ok
+        ? { ok: true }
+        : { ok: false, message: 'GCS bucket does not exist!' }
+    } catch (error) {
+      return {
+        ok: false,
+        message: error.message,
+        error: error,
+      }
+    }
+  }
 }
 
 export const EmeraltStorageGCS: IEmeraltStorage<Options> = (options) => () =>

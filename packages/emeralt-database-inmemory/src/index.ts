@@ -60,6 +60,10 @@ class CEmeraltDatabaseInMemory implements CEmeraltDatabase {
       versions: {},
     }
   }
+
+  public healthz() {
+    return { ok: true }
+  }
 }
 
 export const EmeraltDatabaseInMemory: IEmeraltDatabase = () => () =>

@@ -59,6 +59,7 @@ export const createEmeraltRouter = async (params: TEmeraltServerParams) => {
     .use(handlers.adduser)
     .use(handlers.search)
     .use(handlers.packages)
+    .use(handlers.sys)
 
   // HACK FOR TESTS
   // used to dynamically change the config

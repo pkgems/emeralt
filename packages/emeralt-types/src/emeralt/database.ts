@@ -1,8 +1,9 @@
 import { OptionalPromise } from '../helpers'
 import { TEmeraltServerConfig } from './server'
 import { TMetadata, TVersion } from '../npm'
+import { CEmeraltPlugin } from './plugin'
 
-export interface CEmeraltDatabase {
+export interface CEmeraltDatabase extends CEmeraltPlugin {
   /** list existing packages */
   getMetadatas(): OptionalPromise<Record<string, TMetadata>>
 

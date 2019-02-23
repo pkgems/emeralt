@@ -18,6 +18,9 @@ test<IEmeraltStorage>('storage', async (t, createStorage) => {
   const storage = await createStorage({})({})
   const data = 'test'
 
+  t.log('healthz')
+  t.deepEqual(await storage.healthz(), { ok: true })
+
   t.log('putTarball')
   await storage.putTarball('test', '1.0.0', Buffer.from(data))
 
@@ -30,7 +33,4 @@ test<IEmeraltStorage>('storage', async (t, createStorage) => {
   ).then((t) => t.toString())
 
   t.is(newData, data)
-
-  t.log('dropData')
-  await storage.dropData()
 })

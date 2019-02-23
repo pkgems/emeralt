@@ -22,6 +22,8 @@ class CEmeraltDatabaseCloudFirestore implements CEmeraltDatabase {
   db: {
     metadatas: CollectionReference
     versions: CollectionReference
+    // used for healtz
+    ping: DocumentReference
   }
 
   constructor(private options: Options) {
@@ -37,6 +39,7 @@ class CEmeraltDatabaseCloudFirestore implements CEmeraltDatabase {
     this.db = {
       metadatas: firestore.collection('metadatas'),
       versions: firestore.collection('versions'),
+      ping: firestore.collection('ping').doc('ping'),
     }
   }
 
@@ -136,6 +139,20 @@ class CEmeraltDatabaseCloudFirestore implements CEmeraltDatabase {
         }),
       ),
     )
+  }
+
+  public async healthz() {
+    try {
+      await this.db.ping.set({ lastUpdated: Date.now() })
+
+      return { ok: true }
+    } catch (error) {
+      return {
+        ok: false,
+        message: error.message,
+        error: error,
+      }
+    }
   }
 }
 

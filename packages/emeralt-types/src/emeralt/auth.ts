@@ -1,10 +1,11 @@
 import { OptionalPromise } from '../helpers'
 import { TEmeraltServerConfig } from './server'
 import { CEmeraltDatabase } from './database'
+import { CEmeraltPlugin } from './plugin'
 
 export type TEmeraltAuthAction = 'publish' | 'get'
 
-export interface CEmeraltAuth {
+export interface CEmeraltAuth extends CEmeraltPlugin {
   putUser(username: string, password: string): OptionalPromise<any>
 
   hasUser(username: string): OptionalPromise<boolean>
@@ -20,6 +21,7 @@ export interface CEmeraltAuth {
   /** drop all data (used for test purposes) */
   dropData(): OptionalPromise<any>
 }
+
 export interface IEmeraltAuth<C = {}> {
   (pluginConfig: C): (
     serverConfig: TEmeraltServerConfig,

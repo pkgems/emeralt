@@ -7,6 +7,9 @@ test<IEmeraltDatabase>('metadata', async (t, dbc) => {
   // @ts-ignore
   const db = await dbc({})({})
 
+  t.log('healthz')
+  t.deepEqual(await db.healthz(), { ok: true })
+
   t.log('no metadata')
   t.deepEqual(await db.hasMetadata(metadata.name), false)
   t.falsy(await db.getMetadata(metadata.name))
@@ -21,8 +24,6 @@ test<IEmeraltDatabase>('metadata', async (t, dbc) => {
   t.deepEqual(await db.getMetadatas(), {
     [metadata.name]: metadata,
   })
-
-  await db.dropData()
 })
 
 test<IEmeraltDatabase>('versions', async (t, dbc) => {
@@ -43,6 +44,4 @@ test<IEmeraltDatabase>('versions', async (t, dbc) => {
   t.deepEqual(await db.getVersions(metadata.name), {
     [version.version]: version,
   })
-
-  await db.dropData()
 })

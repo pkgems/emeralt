@@ -31,8 +31,22 @@ export const EmeraltStorageLocalFS: IEmeraltStorage<Options> = ({
       await writeFile(file, tarball)
     },
 
-    dropData() {
+    dropData: () => {
       return remove(path)
+    },
+
+    healthz: async () => {
+      try {
+        await mkdirp(path)
+
+        return { ok: true }
+      } catch (error) {
+        return {
+          ok: false,
+          message: error.message,
+          error: error,
+        }
+      }
     },
   }
 }

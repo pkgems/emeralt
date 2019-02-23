@@ -4,7 +4,7 @@ import { Router } from 'express'
 import jwt from 'jsonwebtoken'
 import { useIf } from '@/utils'
 
-export const adduser = ({ auth, config }: TEmeraltHandlerParams) =>
+export const adduserHandler = ({ auth, config }: TEmeraltHandlerParams) =>
   useIf(
     config.endpoints.adduser,
     Router().put(endpoints.adduser, async (req, res, next) => {
