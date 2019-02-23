@@ -28,5 +28,9 @@ export const EmeraltStorageInMemory: IEmeraltStorage = () => () => {
     dropData() {
       storage = {}
     },
+
+    healthz() {
+      return { ok: true }
+    },
   }
 }

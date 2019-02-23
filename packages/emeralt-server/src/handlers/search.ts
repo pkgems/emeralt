@@ -3,7 +3,7 @@ import { endpoints } from '@/constants'
 import { useIf } from '@/utils'
 import { Router } from 'express'
 
-export const search = ({ config }: TEmeraltHandlerParams) =>
+export const searchHandler = ({ config }: TEmeraltHandlerParams) =>
   useIf(
     config.endpoints.search,
     Router().get(endpoints.search, (req, res) => {

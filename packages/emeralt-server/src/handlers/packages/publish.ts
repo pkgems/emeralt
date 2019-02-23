@@ -5,7 +5,7 @@ import { endpoints } from '@/constants'
 import { Router } from 'express'
 import ssri from 'ssri'
 
-export const publishHandler = ({
+export const publishPackageHandler = ({
   config,
   middlewares,
   database,

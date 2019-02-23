@@ -2,8 +2,9 @@ import { OptionalPromise } from '../helpers'
 import { TEmeraltServerConfig } from './server'
 import { CEmeraltDatabase } from './database'
 import { Readable } from 'stream'
+import { CEmeraltPlugin } from './plugin'
 
-export interface CEmeraltStorage {
+export interface CEmeraltStorage extends CEmeraltPlugin {
   /* get raw data */
   getTarball(name: string, version: string): OptionalPromise<Readable>
 

@@ -9,4 +9,8 @@ export const endpoints = {
     getTarball: '/-/tarball/:name/:version',
     publish: '/:package_name',
   },
+
+  sys: {
+    healthz: '/-/sys/healthz',
+  },
 }

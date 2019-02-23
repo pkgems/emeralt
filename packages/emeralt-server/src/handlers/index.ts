@@ -1,15 +1,18 @@
 import { TEmeraltHandlerParams } from '@emeralt/types'
 
-import { ping } from './ping'
-import { search } from './search'
-import { packages } from './packages'
-import { login } from './login'
-import { adduser } from './adduser'
+// handlers
+import { pingHandler } from './ping'
+import { searchHandler } from './search'
+import { packagesHandler } from './packages'
+import { loginHandler } from './login'
+import { adduserHandler } from './adduser'
+import { sysHandler } from './sys'
 
 export const createHandlers = (params: TEmeraltHandlerParams) => ({
-  ping: ping(params),
-  search: search(params),
-  packages: packages(params),
-  login: login(params),
-  adduser: adduser(params),
+  ping: pingHandler(params),
+  search: searchHandler(params),
+  packages: packagesHandler(params),
+  login: loginHandler(params),
+  adduser: adduserHandler(params),
+  sys: sysHandler(params),
 })

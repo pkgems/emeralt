@@ -3,7 +3,7 @@ import { endpoints } from '@/constants'
 import { useIf } from '@/utils'
 import { Router } from 'express'
 
-export const login = ({ config }: TEmeraltHandlerParams) =>
+export const loginHandler = ({ config }: TEmeraltHandlerParams) =>
   useIf(
     config.endpoints.login,
     Router().post(endpoints.login, (req, res) => {

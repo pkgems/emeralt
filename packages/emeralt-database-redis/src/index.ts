@@ -84,6 +84,20 @@ class CEmeraltDatabaseRedis implements CEmeraltDatabase {
   public dropData() {
     return this.redis.flushdb()
   }
+
+  public async healthz() {
+    try {
+      await this.redis.ping()
+
+      return { ok: true }
+    } catch (error) {
+      return {
+        ok: false,
+        message: error.message,
+        error: error,
+      }
+    }
+  }
 }
 
 export const EmeraltDatabaseRedis: IEmeraltDatabase<Options> = (
