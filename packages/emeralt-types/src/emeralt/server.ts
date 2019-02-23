@@ -21,6 +21,10 @@ export type TEmeraltServerConfig = {
       get?: boolean
       publish?: boolean
     }
+
+    sys?: {
+      healthz?: boolean
+    }
   }
 }
 
