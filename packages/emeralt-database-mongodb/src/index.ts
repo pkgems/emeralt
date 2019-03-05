@@ -40,7 +40,11 @@ class CEmeraltDatabaseMongoDB implements CEmeraltDatabase {
   }
 
   public hasMetadata(name: string) {
-    return this.getMetadata(name).then((metadata) => Boolean(metadata))
+    return this.storage.metadatas
+      .find({ name })
+      .limit(1)
+      .count()
+      .then((c) => c === 1)
   }
 
   public getMetadata(name: string) {
@@ -105,11 +109,10 @@ class CEmeraltDatabaseMongoDB implements CEmeraltDatabase {
   }
 }
 
-export const EmeraltDatabaseMongoDB: IEmeraltDatabase<Options> = (
-  options,
-) => async () => {
-  const { url = 'mongodb://localhost:27017', dbName = 'emeralt-test' } = options
-
+export const EmeraltDatabaseMongoDB: IEmeraltDatabase<Options> = ({
+  url = 'mongodb://localhost:27017',
+  dbName = 'emeralt-test',
+}) => async () => {
   const client = await new MongoClient(url, { useNewUrlParser: true }).connect()
   const db = client.db(dbName)
 
