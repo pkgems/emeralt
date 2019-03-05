@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Router } from 'express'
 import http from 'http'
 import merge from 'deepmerge'
 
@@ -43,10 +43,7 @@ export const createEmeraltRouter = async (params: TEmeraltServerParams) => {
   const middlewares = createMiddlewares({ ...internal, services })
   const handlers = createHandlers({ ...internal, services, middlewares })
 
-  const router = express()
-    // options
-    .set('etag', false)
-
+  const router = Router()
     // middlewares
     .use(middlewares.logger)
     .use(middlewares.json)
@@ -73,8 +70,11 @@ export const createEmeraltRouter = async (params: TEmeraltServerParams) => {
 
 export const createEmeraltServer = async (params: TEmeraltServerParams) => {
   const router = await createEmeraltRouter(params)
+  const server = express()
+    .set('etag', false)
+    .use(router)
 
-  const httpServer = http.createServer(router) as EmeraltServer
+  const httpServer = http.createServer(server) as EmeraltServer
 
   // ↑ HACK FOR TESTS ↑
   // @ts-ignore
