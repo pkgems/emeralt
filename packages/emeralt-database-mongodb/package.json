@@ -1,0 +1,28 @@
+{
+  "name": "@emeralt/database-mongodb",
+  "version": "0.5.0",
+  "author": "stackdumper <stackdumper@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emeralt/emeralt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emeralt/emeralt/issues"
+  },
+  "license": "MIT",
+  "main": "./build/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "ava ../../test/database.test.ts",
+    "build": "gemcart build"
+  },
+  "devDependencies": {
+    "@emeralt/types": "^0.5.0",
+    "@types/mongodb": "^3.1.20"
+  },
+  "dependencies": {
+    "mongodb": "^3.1.13"
+  }
+}
