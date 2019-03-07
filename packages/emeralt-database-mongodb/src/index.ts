@@ -4,11 +4,33 @@ import {
   TVersion,
   TMetadata,
 } from '@emeralt/types'
-import { MongoClient, Db, Collection } from 'mongodb'
+import { MongoClient, Db, Collection, IndexOptions } from 'mongodb'
+import deepmerge from 'deepmerge'
 
 type Options = {
-  url: string
-  dbName: string
+  uri?: string
+  indexing?:
+    | {
+        metadatas: boolean
+        versions: boolean
+        options?: IndexOptions
+      }
+    | false
+}
+
+export const defaultOptions: Options = {
+  uri: 'mongodb://localhost:27017/emeralt-test',
+
+  // indexing configuration
+  // by default, indexing is enabled (indexing property is undefined)
+  // but it can be enabled explicitly by setting indexing to false
+  indexing: {
+    metadatas: true,
+    versions: true,
+    options: {
+      background: true,
+    },
+  },
 }
 
 class CEmeraltDatabaseMongoDB implements CEmeraltDatabase {
@@ -109,12 +131,28 @@ class CEmeraltDatabaseMongoDB implements CEmeraltDatabase {
   }
 }
 
-export const EmeraltDatabaseMongoDB: IEmeraltDatabase<Options> = ({
-  url = 'mongodb://localhost:27017',
-  dbName = 'emeralt-test',
-}) => async () => {
-  const client = await new MongoClient(url, { useNewUrlParser: true }).connect()
-  const db = client.db(dbName)
+export const EmeraltDatabaseMongoDB: IEmeraltDatabase<Options> = (
+  userOptions,
+) => async () => {
+  const { uri, indexing } = deepmerge(defaultOptions, userOptions || {})
+
+  const client = await new MongoClient(uri, { useNewUrlParser: true }).connect()
+  const db = client.db()
+
+  await db.createCollection('metadatas')
+  await db.createCollection('versions')
+
+  if (indexing) {
+    // use indexing for metadatas, true by default
+    if (indexing.metadatas)
+      await db
+        .collection('metadatas')
+        .createIndex({ name: 1 }, indexing.options)
+
+    // use indexing for versions, true by default
+    if (indexing.versions)
+      await db.collection('versions').createIndex({ name: 1 }, indexing.options)
+  }
 
   return new CEmeraltDatabaseMongoDB(db)
 }

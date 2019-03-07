@@ -8,7 +8,7 @@ export const test = <T>(
   // @ts-ignore
   const createPlugin: T = Object.values(
     require(resolve(process.cwd(), 'src/index.ts')),
-  )[0]
+  ).find((t) => typeof t === 'function')
 
   return ava.serial(msg, async (t) => {
     try {
