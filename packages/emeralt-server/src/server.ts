@@ -39,6 +39,23 @@ export const createEmeraltRouter = async (params: TEmeraltServerParams) => {
   // initialize plugins
   const internal = await initializeInternal(params)
 
+  // check every plugin is health. If no, throw an error
+  const health = await Promise.all([
+    internal.auth.healthz(),
+    internal.database.healthz(),
+    internal.storage.healthz(),
+  ])
+
+  if (!health.every((s) => s.ok)) {
+    throw new Error(
+      `Some plugins are unhealthy, ${{
+        auth: health[0],
+        database: health[1],
+        storage: health[2],
+      }}`,
+    )
+  }
+
   const services = createServices(internal)
   const middlewares = createMiddlewares({ ...internal, services })
   const handlers = createHandlers({ ...internal, services, middlewares })
