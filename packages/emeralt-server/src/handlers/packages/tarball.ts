@@ -8,6 +8,10 @@ export const getPackageTarballHandler = ({ storage }: TEmeraltHandlerParams) =>
 
     const rs = await storage.getTarball(name, version)
 
-    res.header('content-encoding', 'application/octet-stream')
-    rs.pipe(res)
+    if (rs) {
+      res.header('content-encoding', 'application/octet-stream')
+      rs.pipe(res)
+    } else {
+      res.status(404).json({ ok: false })
+    }
   })
