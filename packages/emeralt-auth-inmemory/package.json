@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/auth-inmemory",
-  "version": "0.6.0",
+  "version": "0.6.2",
   "author": "stackdumper <stackdumper@gmail.com>",
   "repository": {
     "type": "git",
@@ -19,6 +19,6 @@
     "build": "gemcart build"
   },
   "devDependencies": {
-    "@emeralt/types": "^0.6.0"
+    "@emeralt/types": "^0.6.2"
   }
 }
