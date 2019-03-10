@@ -1,6 +1,6 @@
 import { IEmeraltAuth, IEmeraltDatabase, IEmeraltStorage } from '@emeralt/types'
-import { createServices } from '../../../emeralt-server/src/services'
-import { createMiddlewares } from '../../../emeralt-server/src/middlewares'
+import { createServices } from '@emeralt/server/src/services'
+import { createMiddlewares } from '@emeralt/server/src/middlewares'
 import { CEmeraltAuth } from './auth'
 import { CEmeraltDatabase } from './database'
 import { CEmeraltStorage } from './storage'
