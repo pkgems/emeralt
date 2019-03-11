@@ -47,7 +47,7 @@
     "npm-packlist": "^1.2.0",
     "npmlog": "^4.1.2",
     "path-to-regexp": "3.0.0",
-    "supertest": "3.4.2",
+    "supertest": "4.0.0",
     "tar": "^4.4.8"
   }
 }
