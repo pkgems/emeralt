@@ -51,19 +51,3 @@ test<IEmeraltDatabase>('indexing disable', async (t, dbc) => {
   t.false(await db.collection('versions').indexExists('name_1'))
   t.false(await db.collection('metadatas').indexExists('name_1'))
 })
-
-// test.serial('indexes', async (t) => {
-
-//   // @ts-ignore
-//   await EmeraltDatabaseMongoDB({
-//     indexing: {
-//       metadatas: false,
-//       versions: false,
-//     },
-//   })({})
-
-//   t.true(await db.collection('metadata').indexExists('name_1'))
-//   t.true(await db.collection('versions').indexExists('name_1'))
-
-//   db.dropDatabase()
-// })

@@ -5,12 +5,12 @@ Emeralt database plugin to store packages in Redis
 
 Using npm:
 ```sh
-npm install --save-dev @emeralt/database-redis
+npm install @emeralt/database-redis
 ```
 
 or using yarn:
 ```sh
-yarn add --dev @emeralt/database-redis
+yarn add @emeralt/database-redis
 ```
 
 ## Usage

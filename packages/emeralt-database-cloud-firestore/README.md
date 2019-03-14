@@ -6,13 +6,13 @@ Emeralt database plugin to store packages in Google Cloud Firestore
 Using npm:
 
 ```sh
-npm install --save-dev @emeralt/database-cloud-firestore
+npm install @emeralt/database-cloud-firestore
 ```
 
 or using yarn:
 
 ```sh
-yarn add --dev @emeralt/database-cloud-firestore
+yarn add @emeralt/database-cloud-firestore
 ```
 
 ## Usage

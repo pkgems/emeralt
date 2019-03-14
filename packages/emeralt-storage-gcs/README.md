@@ -6,13 +6,13 @@ Emeralt storage plugin to store package tarball in Google Cloud Storage
 Using npm:
 
 ```sh
-npm install --save-dev @emeralt/storage-gcs
+npm install @emeralt/storage-gcs
 ```
 
 or using yarn:
 
 ```sh
-yarn add --dev @emeralt/storage-gcs
+yarn add @emeralt/storage-gcs
 ```
 
 ## Usage

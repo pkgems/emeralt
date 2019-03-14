@@ -6,13 +6,13 @@ Emeralt command-line interface
 Using npm:
 
 ```sh
-npm install --save-dev @emeralt/cli
+npm install --global @emeralt/cli
 ```
 
 or using yarn:
 
 ```sh
-yarn add --dev @emeralt/cli
+yarn global add @emeralt/cli
 ```
 
 ## Usage

@@ -11,7 +11,7 @@
 Emeralt is the NPM registry with focus on high extensibility, simplicity and clean codebase written fully in TypeScript. Highly inspired by Verdaccio. Why not Verdaccio? The idea is to write it from scratch, avoiding all architectural problems of old codebase.
 
 ### Status
-**Alpha**. Everything ~~might~~ **will** be changed.
+**Beta**
 
 ### Goals
 - High extensibility
@@ -20,7 +20,7 @@ Emeralt is the NPM registry with focus on high extensibility, simplicity and cle
 - Developer-frendly
 
 ### Contributions
-Wanted! See Issues and Contribution Guidelines. Feel free to contact me at `stackdumper@gmail.com`
+Wanted! See Issues. Feel free to contact me at `stackdumper@gmail.com`
 
 ---
 
@@ -39,6 +39,7 @@ Wanted! See Issues and Contribution Guidelines. Feel free to contact me at `stac
 
 - [`@emeralt/database-inmemory`](./packages/emeralt-database-inmemory)
 - [`@emeralt/database-redis`](./packages/emeralt-database-redis)
+- [`@emeralt/database-mongodb`](./packages/emeralt-database-mongodb)
 - [`@emeralt/database-cloud-firestore`](./packages/emeralt-database-cloud-firestore)
 
 ##### <sup>Storage plugins</sup>
