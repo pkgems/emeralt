@@ -6,13 +6,13 @@ Emeralt storage plugin to store package tarballs in memory
 Using npm:
 
 ```sh
-npm install --save-dev @emeralt/storage-inmemory
+npm install @emeralt/storage-inmemory
 ```
 
 or using yarn:
 
 ```sh
-yarn add --dev @emeralt/storage-inmemory
+yarn add @emeralt/storage-inmemory
 ```
 
 ## Usage

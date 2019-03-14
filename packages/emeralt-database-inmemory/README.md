@@ -6,13 +6,13 @@ Emeralt database plugin to store packages in memory
 Using npm:
 
 ```sh
-npm install --save-dev @emeralt/database-inmemory
+npm install @emeralt/database-inmemory
 ```
 
 or using yarn:
 
 ```sh
-yarn add --dev @emeralt/database-inmemory
+yarn add @emeralt/database-inmemory
 ```
 
 ## Usage

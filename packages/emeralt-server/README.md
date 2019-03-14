@@ -8,13 +8,13 @@ Emeralt Node.js HTTP server module
 Using npm:
 
 ```sh
-npm install --save-dev @emeralt/server
+npm install @emeralt/server
 ```
 
 or using yarn:
 
 ```sh
-yarn add --dev @emeralt/server
+yarn add @emeralt/server
 ```
 
 ---

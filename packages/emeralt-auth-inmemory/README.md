@@ -6,13 +6,13 @@ Emeralt auth plugin to store users in memory
 Using npm:
 
 ```sh
-npm install --save-dev @emeralt/auth-inmemory
+npm install @emeralt/auth-inmemory
 ```
 
 or using yarn:
 
 ```sh
-yarn add --dev @emeralt/auth-inmemory
+yarn add @emeralt/auth-inmemory
 ```
 
 ## Usage

@@ -6,13 +6,13 @@ Emeralt storage plugin to store package tarballs in local filesystem
 Using npm:
 
 ```sh
-npm install --save-dev @emeralt/storage-localfs
+npm install @emeralt/storage-localfs
 ```
 
 or using yarn:
 
 ```sh
-yarn add --dev @emeralt/storage-localfs
+yarn add @emeralt/storage-localfs
 ```
 
 ## Usage

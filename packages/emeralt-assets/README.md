@@ -6,13 +6,13 @@ Emeralt logos and other assets
 Using npm:
 
 ```sh
-npm install --save-dev @emeralt/assets
+npm install @emeralt/assets
 ```
 
 or using yarn:
 
 ```sh
-yarn add --dev @emeralt/assets
+yarn add @emeralt/assets
 ```
 
 ## Logos

@@ -8,7 +8,12 @@ import { MongoClient, Db, Collection, IndexOptions } from 'mongodb'
 import deepmerge from 'deepmerge'
 
 type Options = {
+  // mongodb connection URI
   uri?: string
+
+  // indexing configuration
+  // by default, indexing is enabled (indexing property is undefined)
+  // but it can be disabled explicitly by setting indexing to false
   indexing?:
     | {
         metadatas: boolean
@@ -20,10 +25,6 @@ type Options = {
 
 export const defaultOptions: Options = {
   uri: 'mongodb://localhost:27017/emeralt-test',
-
-  // indexing configuration
-  // by default, indexing is enabled (indexing property is undefined)
-  // but it can be enabled explicitly by setting indexing to false
   indexing: {
     metadatas: true,
     versions: true,
