@@ -1,0 +1,1 @@
+{"version":3,"file":"server.d.ts","sourceRoot":"","sources":["../../../../packages/emeralt-server/src/server.ts"],"names":[],"mappings":";AACA,OAAO,IAAI,MAAM,MAAM,CAAA;AAGvB,OAAO,EACL,oBAAoB,EACpB,4BAA4B,EAC7B,MAAM,gBAAgB,CAAA;AAMvB,aAAK,aAAa,GAAG,IAAI,CAAC,MAAM,GAAG;IACjC,OAAO,EAAE,4BAA4B,CAAA;CACtC,CAAA;AAmBD,eAAO,MAAM,mBAAmB,uFAmD/B,CAAA;AAED,eAAO,MAAM,mBAAmB,0DAa/B,CAAA"}

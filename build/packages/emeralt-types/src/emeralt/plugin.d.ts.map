@@ -1,0 +1,1 @@
+{"version":3,"file":"plugin.d.ts","sourceRoot":"","sources":["../../../../../packages/emeralt-types/src/emeralt/plugin.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,YAAY,CAAA;AAE5C,oBAAY,QAAQ,GAAG;IACrB,EAAE,EAAE,OAAO,CAAA;IACX,OAAO,CAAC,EAAE,MAAM,CAAA;IAChB,KAAK,CAAC,EAAE,KAAK,CAAA;CACd,CAAA;AAED,MAAM,WAAW,cAAc;IAC7B,OAAO,IAAI,eAAe,CAAC,QAAQ,CAAC,CAAA;CACrC"}

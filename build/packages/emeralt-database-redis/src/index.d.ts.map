@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../../packages/emeralt-database-redis/src/index.ts"],"names":[],"mappings":"AAAA,OAAO,EACL,gBAAgB,EAIjB,MAAM,gBAAgB,CAAA;AACvB,OAAc,EAAmB,YAAY,EAAE,MAAM,SAAS,CAAA;AAE9D,aAAK,OAAO,GAAG;IAEb,KAAK,CAAC,EAAE,YAAY,CAAA;IAIpB,MAAM,CAAC,EAAE,MAAM,CAAA;CAChB,CAAA;AAuFD,eAAO,MAAM,oBAAoB,EAAE,gBAAgB,CAAC,OAAO,CAEd,CAAA"}
