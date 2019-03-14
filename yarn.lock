@@ -3489,11 +3489,6 @@ filename-regex@^2.0.0:
   resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
   integrity sha1-wcS5vuPglyXdsQa3XB4wH+LxiyY=
 
-filesize@^3.5.11:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/filesize/-/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
-  integrity sha512-7KjR1vv6qnicaPMi1iiTcI85CyYwRO/PSFCu6SvqL8jN2Wjt/NIYQTFtFs7fSDCYOstUkEWIQGFUg5YZQfjlcg==
-
 fill-range@^2.1.0:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-2.2.4.tgz#eb1e773abb056dcd8df2bfdf6af59b8b3a936565"
@@ -3748,17 +3743,17 @@ gcs-resumable-upload@^0.14.1:
     stream-events "^1.0.4"
 
 gemcart@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/gemcart/-/gemcart-1.0.0.tgz#c2b11791359b5e79e7134a89a315f2021f247762"
-  integrity sha512-tQ6ic+3+jornMbjp2fE7mQRwl242Hyc2YW4GoW6d+wbaj0Ha8grmgGN4mU1Jah33kc7BBDqYejVP/xf6qjDKQQ==
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/gemcart/-/gemcart-1.1.0.tgz#a94689bbd0064522d61df94bc205fd9e7afb0360"
+  integrity sha512-72kch5jFngDB/VwDJ2qGvbXVgz9H0TuO3kFoyMReZkdtXThjnOLI3v/jIjNH2B9fRZyr/PzIcRz9Ps7YJkHXBw==
   dependencies:
     chalk "^2.4.2"
     commander "^2.19.0"
     rollup "^1.2.1"
     rollup-plugin-bundle-size "^1.0.3"
     rollup-plugin-commonjs "^9.2.0"
+    rollup-plugin-json "^3.1.0"
     rollup-plugin-node-resolve "^4.0.0"
-    rollup-plugin-sizes "^0.4.2"
     rollup-plugin-typescript2 "^0.19.2"
 
 genfun@^5.0.0:
@@ -5273,11 +5268,6 @@ lodash.flattendeep@^4.4.0:
   resolved "https://registry.yarnpkg.com/lodash.flattendeep/-/lodash.flattendeep-4.4.0.tgz#fb030917f86a3134e5bc9bec0d69e0013ddfedb2"
   integrity sha1-+wMJF/hqMTTlvJvsDWngAT3f7bI=
 
-lodash.foreach@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.foreach/-/lodash.foreach-4.5.0.tgz#1a6a35eace401280c7f06dddec35165ab27e3e53"
-  integrity sha1-Gmo16s5AEoDH8G3d7DUWWrJ+PlM=
-
 lodash.get@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
@@ -5342,11 +5332,6 @@ lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
   integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
-
-lodash.sumby@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.sumby/-/lodash.sumby-4.6.0.tgz#7d87737ddb216da2f7e5e7cd2dd9c403a7887346"
-  integrity sha1-fYdzfdshbaL35efNLdnEA6eIc0Y=
 
 lodash.template@^4.0.2:
   version "4.4.0"
@@ -5777,11 +5762,6 @@ modify-values@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
-
-module-details-from-path@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/module-details-from-path/-/module-details-from-path-1.0.3.tgz#114c949673e2a8a35e9d35788527aa37b679da2b"
-  integrity sha1-EUyUlnPiqKNenTV4hSeqN7Z52is=
 
 moment@^2.15.2:
   version "2.24.0"
@@ -7296,6 +7276,13 @@ rollup-plugin-commonjs@^9.2.0:
     resolve "^1.8.1"
     rollup-pluginutils "^2.3.3"
 
+rollup-plugin-json@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-json/-/rollup-plugin-json-3.1.0.tgz#7c1daf60c46bc21021ea016bd00863561a03321b"
+  integrity sha512-BlYk5VspvGpjz7lAwArVzBXR60JK+4EKtPkCHouAWg39obk9S61hZYJDBfMK+oitPdoe11i69TlxKlMQNFC/Uw==
+  dependencies:
+    rollup-pluginutils "^2.3.1"
+
 rollup-plugin-node-resolve@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/rollup-plugin-node-resolve/-/rollup-plugin-node-resolve-4.0.1.tgz#f95765d174e5daeef9ea6268566141f53aa9d422"
@@ -7304,16 +7291,6 @@ rollup-plugin-node-resolve@^4.0.0:
     builtin-modules "^3.0.0"
     is-module "^1.0.0"
     resolve "^1.10.0"
-
-rollup-plugin-sizes@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-sizes/-/rollup-plugin-sizes-0.4.2.tgz#1d97ecda2667a43afbb19d801e2476f80f67d12f"
-  integrity sha512-6VsnWb4aBPcW++3IBMNPo4NLSheoaXh+itXk1OcaolLhYemoQFb7A9hVNocwa0j2BctdmPNFcP7UJ3g///VVaA==
-  dependencies:
-    filesize "^3.5.11"
-    lodash.foreach "^4.5.0"
-    lodash.sumby "^4.6.0"
-    module-details-from-path "^1.0.3"
 
 rollup-plugin-typescript2@^0.19.2:
   version "0.19.2"
@@ -7333,7 +7310,7 @@ rollup-pluginutils@2.3.3:
     estree-walker "^0.5.2"
     micromatch "^2.3.11"
 
-rollup-pluginutils@^2.3.3:
+rollup-pluginutils@^2.3.1, rollup-pluginutils@^2.3.3:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.4.1.tgz#de43ab54965bbf47843599a7f3adceb723de38db"
   integrity sha512-wesMQ9/172IJDIW/lYWm0vW0LiKe5Ekjws481R7z9WTRtmO59cqyM/2uUlxvf6yzm/fElFmHUobeQOYz46dZJw==
