@@ -3757,10 +3757,10 @@ gcs-resumable-upload@^1.0.0:
     pumpify "^1.5.1"
     stream-events "^1.0.4"
 
-gemcart@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gemcart/-/gemcart-1.1.0.tgz#a94689bbd0064522d61df94bc205fd9e7afb0360"
-  integrity sha512-72kch5jFngDB/VwDJ2qGvbXVgz9H0TuO3kFoyMReZkdtXThjnOLI3v/jIjNH2B9fRZyr/PzIcRz9Ps7YJkHXBw==
+gemcart@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/gemcart/-/gemcart-1.1.1.tgz#c1ba86075e932f466f7357bafd227ba2c2590786"
+  integrity sha512-EZMeoVTrQ94ZLllZHw2YE5uesvWjWynPrylAGX7eP6H/Fvt4Cd2MIyPLCYqyzTo1yEwmK8jnH2w9e/2xN5UWCw==
   dependencies:
     chalk "^2.4.2"
     commander "^2.19.0"
