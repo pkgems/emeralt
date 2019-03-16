@@ -2,15 +2,20 @@ os: linux
 
 git:
   depth: 3
-    
+
 env:
   global:
-    COVERALLS_PARALLEL=true
+    - COVERALLS_PARALLEL=true
+    - CACHE_NAME=GLOBAL
+
 notifications:
   webhooks:
     - https://coveralls.io/webhook
 
 language: node_js
+node_js:
+  - "8"
+  - "10"
 
 cache:
   yarn: true
@@ -26,7 +31,6 @@ jobs:
         - tar -cvzf ~/.cache/emeralt/build.tar.gz packages/*/build
 
     - stage: test
-      node_js: "10"
       services:
         - redis-server
         - mongodb
