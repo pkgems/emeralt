@@ -35,3 +35,11 @@ jobs:
         - tar -xzvf ~/.cache/emeralt/build.tar.gz
       script:
         - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
+
+    - stage: publish
+      on:
+        tags: true
+      before_script:
+        - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
+      script:
+        - lerna publish from-git -y
