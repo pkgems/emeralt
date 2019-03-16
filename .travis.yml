@@ -30,7 +30,7 @@ jobs:
       node_js: "10"
       script:
         - yarn build
-      after_success:
+      after_script:
         - tar -cvzf ~/.emeralt-build/build.tar.gz packages/*/build
         - ls -lh ~/.emeralt-build
 
@@ -40,7 +40,7 @@ jobs:
         - "8"
         - "10"
         - "node"
-      before_install:
+      before_script:
         - tar -xzvf ~/.emeralt-build/build.tar.gz
         - ls packages/emeralt-server
       script:
