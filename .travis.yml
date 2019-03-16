@@ -2,12 +2,13 @@ os: linux
 
 git:
   depth: 3
-    
+
 notifications:
   webhooks:
     - https://coveralls.io/webhook
 
 language: node_js
+node_js: "10"
 
 cache:
   yarn: true
@@ -17,19 +18,16 @@ cache:
 jobs:
   include:
     - stage: build
-      node_js: "10"
       script:
         - yarn build
         - tar -cvzf ~/.cache/emeralt/build.tar.gz packages/*/build
 
     - stage: test
-      node_js: "10"
       services:
         - redis-server
         - mongodb
       env:
-        global:
-          COVERALLS_PARALLEL=true
+        global: COVERALLS_PARALLEL=true
       script:
         - ls -lh ~/.cache
         - ls -lh ~/.cache/emeralt
