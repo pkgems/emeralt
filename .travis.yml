@@ -1,32 +1,44 @@
+os: linux
+
 git:
   depth: 3
-  
-os:
-  - linux
 
 env:
   global:
-    COVERALLS_PARALLEL=true
-    
+    - COVERALLS_PARALLEL=true
+
 notifications:
   webhooks:
     - https://coveralls.io/webhook
 
-services:
-  - redis-server
-  - mongodb
-
 language: node_js
-node_js:
-  # - "6"
-  - "8"
-  - "10"
-  - "node"
+node_js: "10"
 
-cache: yarn
+cache:
+  yarn: true
+  directories:
+    - ~/.cache/emeralt
 
-before_script:
-  - yarn build
-script:
-  - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
-  - yarn nyc report --reporter=text-lcov | yarn coveralls
+jobs:
+  include:
+    - stage: build
+      script:
+        - yarn build
+      after_script:
+        - tar -cvzf ~/.cache/emeralt/build.tar.gz packages/*/build
+
+    - stage: test
+      services:
+        - redis-server
+        - mongodb
+      before_script:
+        - tar -xzvf ~/.cache/emeralt/build.tar.gz
+      script:
+        - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
+
+    - stage: publish
+      if: tag IS present
+      before_script:
+        - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
+      script:
+        - lerna publish from-git -y
