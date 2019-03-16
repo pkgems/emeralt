@@ -30,9 +30,7 @@ jobs:
       node_js: "10"
       script:
         - yarn build
-        - rm ~/.cache/emeralt/build.tar.gz
         - tar -cvzf ~/.cache/emeralt/build.tar.gz packages/*/build
-        - ls -lh ~/.cache/emeralt
 
     - stage: test
       node_js:
@@ -41,10 +39,7 @@ jobs:
         - "10"
         - "node"
       script:
-        - ls -lh ~/.cache/emeralt
         - tar -xzvf ~/.cache/emeralt/build.tar.gz
-        - ls packages/emeralt-server
-        - rm -rf ~/.cache/emeralt
         - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
 
 
