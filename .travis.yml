@@ -30,6 +30,11 @@ jobs:
       script:
         - yarn build
     - stage: test
+      node_js:
+        # - "6"
+        - "8"
+        - "10"
+        - "node"
       script:
         - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
 
