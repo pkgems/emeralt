@@ -21,7 +21,7 @@ language: node_js
 cache:
   yarn: true
   directories:
-    - ~/.emeralt-build/build.tar.gz
+    - ~/.emeralt-build
 
 jobs:
   include:
