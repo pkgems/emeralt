@@ -15,6 +15,7 @@ export const emeraltServerDefaultConfig: TEmeraltServerConfig = {
     package: {
       get: true,
       publish: true,
+      tarball: true,
     },
 
     distTags: {
