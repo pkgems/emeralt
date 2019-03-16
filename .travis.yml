@@ -12,36 +12,26 @@ notifications:
     - https://coveralls.io/webhook
 
 language: node_js
+node_js: "10"
 
 cache:
   yarn: true
   directories:
     - ~/.cache/emeralt
 
-test_stage: &test_stage
-  stage: test
-  env:
-    - CACHE_NAME=GLOBAL
-  services:
-    - redis-server
-    - mongodb
-  script:
-    - ls -lh ~/.cache
-    - ls -lh ~/.cache/emeralt
-    - tar -xzvf ~/.cache/emeralt/build.tar.gz
-    - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
-
 jobs:
   include:
     - stage: build
-      env:
-        - CACHE_NAME=GLOBAL
-      node_js: "10"
       script:
         - yarn build
+      after_script:
         - tar -cvzf ~/.cache/emeralt/build.tar.gz packages/*/build
 
-    - <<: *test_stage
-      node_js: "8"
-    - <<: *test_stage
-      node_js: "10"
+    - stage: test
+      services:
+        - redis-server
+        - mongodb
+      before_script:
+        - tar -xzvf ~/.cache/emeralt/build.tar.gz
+      script:
+        - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
