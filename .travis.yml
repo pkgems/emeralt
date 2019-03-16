@@ -31,6 +31,7 @@ jobs:
       script:
         - yarn build
       after_script:
+        - rm ~/.emeralt-build/build.tar.gz
         - tar -cvzf ~/.emeralt-build/build.tar.gz packages/*/build
         - ls -lh ~/.emeralt-build
 
@@ -43,6 +44,7 @@ jobs:
       before_script:
         - tar -xzvf ~/.emeralt-build/build.tar.gz
         - ls packages/emeralt-server
+        - rm ~/.emeralt-build/build.tar.gz
       script:
         - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
 
