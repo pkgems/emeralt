@@ -6,7 +6,6 @@ git:
 env:
   global:
     - COVERALLS_PARALLEL=true
-    - CACHE_NAME=GLOBAL
 
 notifications:
   webhooks:
@@ -21,6 +20,8 @@ cache:
 
 test_stage: &test_stage
   stage: test
+  env:
+    - CACHE_NAME=GLOBAL
   services:
     - redis-server
     - mongodb
