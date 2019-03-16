@@ -17,16 +17,49 @@ services:
   - mongodb
 
 language: node_js
-node_js:
-  # - "6"
-  - "8"
-  - "10"
-  - "node"
 
-cache: yarn
+cache:
+  yarn: true
+  directories:
+    - ~/build
 
-before_script:
-  - yarn build
-script:
-  - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
-  - yarn nyc report --reporter=text-lcov | yarn coveralls
+jobs:
+  include:
+    - stage: build
+      node_js: "10"
+      script:
+        - yarn build
+    - stage: test
+      script:
+        - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
+
+
+
+# before_script:
+#   - yarn build
+# script:
+#   - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
+#   - yarn nyc report --reporter=text-lcov | yarn coveralls
+
+
+    # - stage: test
+    #   script:
+
+    # - stage: phase1
+    #   install:
+    #   - mv ~/mycache ~/mycache-discard
+    #   - mkdir ~/mycache
+    #   - echo "$TRAVIS_BUILD_ID"
+    #   - echo "$TRAVIS_BUILD_ID" > ~/mycache/travis_build_id
+    #   - echo "build stuff" > ~/mycache/artifact.bin
+    #   script:
+    #   - true
+    # - stage: phase2
+    #   install:
+    #   - if test "$TRAVIS_BUILD_ID" != `cat ~/mycache/travis_build_id`; then travis_terminate 1; fi
+    #   - rm -f ~/mycache/travis_build_id
+    #   - echo "Do something with ~/mycache/artifact.bin, e.g. publish it to gh-pages"
+    #   - mv ~/mycache ~/mycache-discard
+    #   - mkdir ~/mycache # clear the cache
+    #   script:
+    #   - true
