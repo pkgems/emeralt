@@ -17,6 +17,7 @@ services:
   - mongodb
 
 language: node_js
+node_js: "10"
 
 cache:
   yarn: true
@@ -25,20 +26,15 @@ cache:
 
 jobs:
   include:
-
     - stage: build
-      node_js: "10"
       script:
         - yarn build
         - tar -cvzf ~/.cache/emeralt/build.tar.gz packages/*/build
 
     - stage: test
-      node_js:
-        # - "6"
-        - "8"
-        - "10"
-        - "node"
       script:
+        - ls -lh ~/.cache
+        - ls -lh ~/.cache/emeralt
         - tar -xzvf ~/.cache/emeralt/build.tar.gz
         - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
 
