@@ -6,6 +6,7 @@ git:
 env:
   global:
     - COVERALLS_PARALLEL=true
+    - CACHE_NAME=GLOBAL
 
 notifications:
   webhooks:
