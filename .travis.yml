@@ -6,7 +6,6 @@ git:
 env:
   global:
     - COVERALLS_PARALLEL=true
-    - CACHE_NAME=GLOBAL
 
 notifications:
   webhooks:
@@ -19,6 +18,17 @@ cache:
   directories:
     - ~/.cache/emeralt
 
+test_stage: &test_stage
+  stage: test
+  services:
+    - redis-server
+    - mongodb
+  script:
+    - ls -lh ~/.cache
+    - ls -lh ~/.cache/emeralt
+    - tar -xzvf ~/.cache/emeralt/build.tar.gz
+    - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
+
 jobs:
   include:
     - stage: build
@@ -27,15 +37,5 @@ jobs:
         - yarn build
         - tar -cvzf ~/.cache/emeralt/build.tar.gz packages/*/build
 
-    - stage: test
-      node_js:
-        - "8"
-        - "10"
-      services:
-        - redis-server
-        - mongodb
-      script:
-        - ls -lh ~/.cache
-        - ls -lh ~/.cache/emeralt
-        - tar -xzvf ~/.cache/emeralt/build.tar.gz
-        - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
+    - <<: *test_stage
+      node_js: "10"
