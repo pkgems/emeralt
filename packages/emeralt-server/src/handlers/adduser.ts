@@ -1,23 +1,32 @@
 import { TEmeraltHandlerParams } from '@emeralt/types'
-import { endpoints } from '@/constants'
 import { Router } from 'express'
 import jwt from 'jsonwebtoken'
+
+import { endpoints } from '@/constants'
 import { useIf } from '@/utils'
 
-export const adduserHandler = ({ auth, config }: TEmeraltHandlerParams) =>
+export const adduserHandler = ({
+  config,
+  middlewares,
+  auth,
+}: TEmeraltHandlerParams) =>
   useIf(
     config.endpoints.adduser,
-    Router().put(endpoints.adduser, async (req, res, next) => {
-      const { name, password }: TRegistryAuthenticateRequestBody = req.body
+    Router().put(
+      endpoints.adduser,
+      middlewares.json,
+      async (req, res, next) => {
+        const { name, password }: TRegistryAuthenticateRequestBody = req.body
 
-      const valid = await auth.comparePassword(name, password)
+        const valid = await auth.comparePassword(name, password)
 
-      return res.status(valid ? 201 : 401).json({
-        ok: valid,
-        id: name,
-        token: valid ? jwt.sign({ name }, 'secret') : null,
-      })
-    }),
+        return res.status(valid ? 201 : 401).json({
+          ok: valid,
+          id: name,
+          token: valid ? jwt.sign({ name }, 'secret') : null,
+        })
+      },
+    ),
   )
 
 type TRegistryAuthenticateRequestBody = {

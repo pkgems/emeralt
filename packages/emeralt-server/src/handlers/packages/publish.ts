@@ -1,9 +1,9 @@
 import { TEmeraltHandlerParams, TMetadata } from '@emeralt/types'
-import { extractPackageData, useIf } from '@/utils'
-import { endpoints } from '@/constants'
-
 import { Router } from 'express'
 import ssri from 'ssri'
+
+import { extractPackageData, useIf } from '@/utils'
+import { endpoints } from '@/constants'
 
 export const publishPackageHandler = ({
   config,
@@ -17,6 +17,7 @@ export const publishPackageHandler = ({
     Router().put(
       endpoints.package.publish,
       middlewares.verifyToken,
+      middlewares.json,
       async (req, res) => {
         const { name: username } = req.context.decodedToken
 

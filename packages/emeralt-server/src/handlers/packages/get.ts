@@ -1,8 +1,9 @@
 import { TEmeraltHandlerParams } from '@emeralt/types'
-import { endpoints } from '@/constants'
-import { useIf } from '@/utils'
 import { Router } from 'express'
 import { resolve } from 'url'
+
+import { endpoints } from '@/constants'
+import { useIf } from '@/utils'
 
 export const getPackageHandler = ({
   config,

@@ -17,6 +17,11 @@ export const emeraltServerDefaultConfig: TEmeraltServerConfig = {
       publish: true,
     },
 
+    distTags: {
+      get: true,
+      create: true,
+    },
+
     sys: {
       healthz: true,
     },

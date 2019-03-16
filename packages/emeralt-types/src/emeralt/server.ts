@@ -20,6 +20,12 @@ export type TEmeraltServerConfig = {
     package?: {
       get?: boolean
       publish?: boolean
+      tarball?: boolean
+    }
+
+    distTags?: {
+      get?: boolean
+      create?: boolean
     }
 
     sys?: {

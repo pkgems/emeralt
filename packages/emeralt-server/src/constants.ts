@@ -6,8 +6,13 @@ export const endpoints = {
 
   package: {
     get: '/:package_name',
-    getTarball: '/-/tarball/:name/:version',
+    getTarball: '/-/tarball/:package_name/:version',
     publish: '/:package_name',
+  },
+
+  distTags: {
+    get: '/-/package/:package_name/dist-tags',
+    create: '/-/package/:package_name/dist-tags/:dist_tag',
   },
 
   sys: {
