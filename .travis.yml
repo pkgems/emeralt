@@ -34,6 +34,8 @@ test_stage: &test_stage
 jobs:
   include:
     - stage: build
+      env:
+        - CACHE_NAME=GLOBAL
       node_js: "10"
       script:
         - yarn build
@@ -43,4 +45,3 @@ jobs:
       node_js: "8"
     - <<: *test_stage
       node_js: "10"
-
