@@ -38,4 +38,7 @@ jobs:
         - tar -cvzf ~/.cache/emeralt/build.tar.gz packages/*/build
 
     - <<: *test_stage
+      node_js: "8"
+    - <<: *test_stage
       node_js: "10"
+
