@@ -24,7 +24,6 @@ jobs:
     - stage: build
       script:
         - yarn build
-      after_script:
         - tar -cvzf ~/.cache/emeralt/build.tar.gz packages/*/build
 
     - stage: test
