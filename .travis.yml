@@ -21,7 +21,7 @@ language: node_js
 cache:
   yarn: true
   directories:
-    - ~/.emeralt-build.tar.gz
+    - ~/.emeralt-build/build.tar.gz
 
 jobs:
   include:
@@ -31,8 +31,8 @@ jobs:
       script:
         - yarn build
       after_success:
-        - tar -cvzf ~/.emeralt-build.tar.gz packages/*/build
-        - ls -lh ~/.emeralt-build.tar.gz
+        - tar -cvzf ~/.emeralt-build/build.tar.gz packages/*/build
+        - ls -lh ~/.emeralt-build
 
     - stage: test
       node_js:
@@ -41,7 +41,7 @@ jobs:
         - "10"
         - "node"
       before_install:
-        - tar -xzvf ~/.emeralt-build.tar.gz
+        - tar -xzvf ~/.emeralt-build/build.tar.gz
         - ls packages/emeralt-server
       script:
         - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
