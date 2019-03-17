@@ -13,6 +13,7 @@ export const endpoints = {
   distTags: {
     get: '/-/package/:package_name/dist-tags',
     create: '/-/package/:package_name/dist-tags/:dist_tag',
+    delete: '/-/package/:package_name/dist-tags/:dist_tag',
   },
 
   sys: {

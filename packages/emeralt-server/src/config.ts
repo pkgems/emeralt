@@ -21,6 +21,7 @@ export const emeraltServerDefaultConfig: TEmeraltServerConfig = {
     distTags: {
       get: true,
       create: true,
+      delete: true,
     },
 
     sys: {

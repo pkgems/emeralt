@@ -11,17 +11,13 @@ export const getDistTagsHandler = ({
 }: TEmeraltHandlerParams) =>
   useIf(
     config.endpoints.distTags.get,
-    Router().get(
-      endpoints.distTags.get,
-      middlewares.verifyToken,
-      async (req, res) => {
-        const metadata = await database.getMetadata(req.params.package_name)
+    Router().get(endpoints.distTags.get, async (req, res) => {
+      const metadata = await database.getMetadata(req.params.package_name)
 
-        if (metadata) {
-          return res.status(200).json(metadata['dist-tags'])
-        } else {
-          return res.status(404).json({ ok: false })
-        }
-      },
-    ),
+      if (metadata) {
+        return res.status(200).json(metadata['dist-tags'])
+      } else {
+        return res.status(404).json({ ok: false })
+      }
+    }),
   )
