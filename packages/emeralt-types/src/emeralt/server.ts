@@ -26,6 +26,7 @@ export type TEmeraltServerConfig = {
     distTags?: {
       get?: boolean
       create?: boolean
+      delete?: boolean
     }
 
     sys?: {
