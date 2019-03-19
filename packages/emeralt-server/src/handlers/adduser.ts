@@ -8,6 +8,7 @@ import { useIf } from '@/utils'
 export const adduserHandler = ({
   config,
   middlewares,
+  services,
   auth,
 }: TEmeraltHandlerParams) =>
   useIf(
@@ -16,14 +17,17 @@ export const adduserHandler = ({
       endpoints.adduser,
       middlewares.json,
       async (req, res, next) => {
-        const { name, password }: TRegistryAuthenticateRequestBody = req.body
+        const {
+          name: username,
+          password,
+        }: TRegistryAuthenticateRequestBody = req.body
 
-        const valid = await auth.comparePassword(name, password)
+        const valid = await auth.comparePassword(username, password)
 
         return res.status(valid ? 201 : 401).json({
           ok: valid,
-          id: name,
-          token: valid ? jwt.sign({ name }, 'secret') : null,
+          id: username,
+          token: valid ? services.jwt.sign({ username }) : null,
         })
       },
     ),

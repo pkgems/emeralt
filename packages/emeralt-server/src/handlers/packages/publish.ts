@@ -19,13 +19,13 @@ export const publishPackageHandler = ({
       middlewares.verifyToken,
       middlewares.json,
       async (req, res) => {
-        const { name: username } = req.context.decodedToken
-
-        const { metadata, version, tarball } = extractPackageData(
-          req.body as TMetadata,
-        )
+        const { username } = req.context.decodedToken
 
         try {
+          const { metadata, version, tarball } = extractPackageData(
+            req.body as TMetadata,
+          )
+
           if (!metadata || !version || !tarball) {
             throw new Error('Missing package data')
           }

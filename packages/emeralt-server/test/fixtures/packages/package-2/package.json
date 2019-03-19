@@ -1,9 +1,0 @@
-{
-  "name": "@test/package-2",
-  "version": "2.0.0",
-  "description": "",
-  "main": "index.js",
-  "keywords": [],
-  "author": "emeralt@emeralt.emeralt",
-  "license": "MIT"
-}

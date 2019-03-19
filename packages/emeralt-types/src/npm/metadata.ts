@@ -3,10 +3,10 @@ import { TVersion } from './version'
 
 export type TMetadata = {
   name: string
-  author: Person
   version: string
-
-  main: string
+  
+  author?: Person
+  main?: string
 
   // all versions
   versions?: {
@@ -41,7 +41,7 @@ export type TMetadata = {
     }
   }
 
-  _owner: string // username (emeralt)
+  _owner?: string // username (emeralt)
 
   [key: string]: any
 }

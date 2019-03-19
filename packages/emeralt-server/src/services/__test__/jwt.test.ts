@@ -2,7 +2,7 @@ import test from 'ava'
 import { jwtService } from '../jwt'
 
 test('jwt', (t) => {
-  const name = 'tester'
+  const username = 'tester'
   // @ts-ignore
   const jwt = jwtService({
     config: {
@@ -12,7 +12,7 @@ test('jwt', (t) => {
     },
   })
 
-  const token = jwt.sign({ name })
+  const token = jwt.sign({ username })
 
-  t.deepEqual(jwt.verify(token).name, name)
+  t.deepEqual(jwt.verify(token).username, username)
 })

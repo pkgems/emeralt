@@ -6,7 +6,7 @@ import { CEmeraltDatabase } from './database'
 import { CEmeraltStorage } from './storage'
 
 export type TEmeraltServerConfig = {
-  logLevel?: 'combined' | 'common' | 'dev' | 'short' | 'tiny' | 'silent'
+  logLevel?: 'silent' | 'dev' | 'production'
   jwt?: {
     secret?: string
   }
@@ -61,7 +61,7 @@ export type TEmeraltHandlerParams = TEmeraltServerParamsInternal & {
 }
 
 export type TDecodedToken = {
-  name: string
+  username: string
   iat?: number
   exp?: number
 }
