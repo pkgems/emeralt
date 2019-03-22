@@ -19,7 +19,8 @@
     "test": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test lerna exec yarn test --sort",
     "test:coverage": "cross-env LERNA_TEST_RUN=1 NODE_ENV=test nyc lerna exec yarn test --sort",
     "format": "npx prettier --ignore-path .gitignore --write './!(node_modules|build)/**/*.{ts,tsx,js,jsx}'",
-    "clean": "git clean -dfX"
+    "clean": "git clean -dfX",
+    "version": "conventional-changelog -p jscs -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
   },
   "dependencies": {
     "cross-env": "5.2.0",
