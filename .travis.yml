@@ -34,6 +34,7 @@ jobs:
         - tar -xzvf ~/.cache/emeralt/build.tar.gz
       script:
         - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
+        - yarn nyc report --reporter=text-lcov | yarn coveralls
 
     - stage: publish
       if: tag IS present
