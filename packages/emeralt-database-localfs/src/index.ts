@@ -6,7 +6,6 @@ import {
 } from '@emeralt/types'
 import fs from 'fs-extra'
 import { join } from 'path'
-import { isNull } from 'util'
 
 interface Options {
   path?: string
@@ -43,8 +42,8 @@ class CEmeraltDatabaseLocalFS implements CEmeraltDatabase {
 
   constructor(private options: Options) {
     this.paths = {
-      metadatas: join(process.cwd(), options.path, 'metadatas'),
-      versions: join(process.cwd(), options.path, 'versions'),
+      metadatas: join(options.path, 'metadatas'),
+      versions: join(options.path, 'versions'),
     }
   }
 
@@ -107,14 +106,14 @@ class CEmeraltDatabaseLocalFS implements CEmeraltDatabase {
   }
 }
 
-export const EmeraltDatabaseInMemory: IEmeraltDatabase<Options> = (
+export const EmeraltDatabaseLocalFS: IEmeraltDatabase<Options> = (
   userOptions,
 ) => async () => {
   const options = Object.assign({}, defaultOptions, userOptions)
 
-  await fs.ensureDir(join(process.cwd(), options.path))
-  await fs.ensureDir(join(process.cwd(), options.path, 'metadatas'))
-  await fs.ensureDir(join(process.cwd(), options.path, 'versions'))
+  await fs.ensureDir(join(options.path))
+  await fs.ensureDir(join(options.path, 'metadatas'))
+  await fs.ensureDir(join(options.path, 'versions'))
 
   return new CEmeraltDatabaseLocalFS(options)
 }

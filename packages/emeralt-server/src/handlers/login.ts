@@ -1,7 +1,8 @@
 import { TEmeraltHandlerParams } from '@emeralt/types'
+import { Router } from 'express'
+
 import { endpoints } from '@/constants'
 import { useIf } from '@/utils'
-import { Router } from 'express'
 
 export const loginHandler = ({ config }: TEmeraltHandlerParams) =>
   useIf(

@@ -12,13 +12,7 @@ const extractMetadata = (pkg: TMetadata) => {
 
 /* remove first of versions array with modified tarball url */
 const extractVersion = (pkg: TMetadata) => {
-  const version = Object.values(pkg.versions).shift()
-
-  const encodedName = encodeURIComponent(version.name)
-  const encodedVersion = encodeURIComponent(version.version)
-
-  // TODO: get address from config
-  // version.dist.tarball = `http://localhost:8080/-/tarball/${encodedName}/${encodedVersion}`
+  const version = Object.values(pkg.versions)[0]
 
   return version
 }

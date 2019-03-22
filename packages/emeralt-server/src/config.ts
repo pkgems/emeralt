@@ -1,7 +1,13 @@
 import { TEmeraltServerConfig } from '@emeralt/types'
 
+const getLogLevel = () => {
+  if (process.env.NODE_ENV === 'test') return 'silent'
+  if (process.env.NODE_ENV === 'production') return 'production'
+  else return 'dev'
+}
+
 export const emeraltServerDefaultConfig: TEmeraltServerConfig = {
-  logLevel: 'dev',
+  logLevel: getLogLevel(),
   jwt: {
     secret: 'secret',
   },
@@ -15,6 +21,13 @@ export const emeraltServerDefaultConfig: TEmeraltServerConfig = {
     package: {
       get: true,
       publish: true,
+      tarball: true,
+    },
+
+    distTags: {
+      get: true,
+      create: true,
+      delete: true,
     },
 
     sys: {
