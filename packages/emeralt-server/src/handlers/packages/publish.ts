@@ -4,6 +4,19 @@ import ssri from 'ssri'
 
 import { extractPackageData, useIf } from '@/utils'
 import { endpoints } from '@/constants'
+import { PassThrough, Writable } from 'stream'
+
+const writeBufferToWritable = (writable: Writable, buffer: Buffer) =>
+  new Promise((resolve, reject) => {
+    writable.on('finish', resolve).on('error', reject)
+
+    const rs = new PassThrough()
+
+    rs.pipe(writable)
+    rs.push(buffer)
+    rs.push(null)
+    rs.end()
+  })
 
 export const publishPackageHandler = ({
   config,
@@ -51,7 +64,10 @@ export const publishPackageHandler = ({
           await database.putVersion(metadata.name, version.version, version)
 
           // upload tarball
-          await storage.putTarball(metadata.name, version.version, tarball.data)
+          await writeBufferToWritable(
+            await storage.createWriteStream(metadata.name, version.version),
+            tarball.data,
+          )
 
           return res.status(200).json({})
         } catch (error) {

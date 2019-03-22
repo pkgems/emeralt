@@ -1,16 +1,30 @@
 import { IEmeraltStorage } from '@emeralt/types'
 
+import { WriteStream, ReadStream } from 'fs'
+import { PassThrough } from 'stream'
+
 import { test } from './utils'
-import { Readable } from 'stream'
 
-const readableToBuffer = (readable: Readable) =>
-  new Promise<Buffer>((resolve, reject) => {
-    const bufs = []
+const writeToStream = (data: string, stream: WriteStream) =>
+  new Promise((resolve, reject) => {
+    stream.on('finish', resolve).on('error', reject)
 
-    readable
-      .on('data', (d) => bufs.push(d))
-      .on('end', () => resolve(Buffer.concat(bufs)))
-      .on('error', reject)
+    const buf = Buffer.from(data)
+
+    stream.write(buf)
+    stream.end()
+  })
+
+const readFromStream = (stream: ReadStream) =>
+  new Promise((resolve, reject) => {
+    let bufs = []
+
+    stream.pipe(
+      new PassThrough()
+        .on('data', (buf) => bufs.push(buf))
+        .on('end', () => resolve(Buffer.concat(bufs).toString()))
+        .on('error', reject),
+    )
   })
 
 test<IEmeraltStorage>('storage', async (t, createStorage) => {
@@ -21,16 +35,12 @@ test<IEmeraltStorage>('storage', async (t, createStorage) => {
   t.log('healthz')
   t.deepEqual(await storage.healthz(), { ok: true })
 
-  t.log('putTarball')
-  await storage.putTarball('test', '1.0.0', Buffer.from(data))
+  t.log('createWriteStream')
+  await writeToStream(data, await storage.createWriteStream('test', '1.0.0'))
 
-  t.log('getTarball')
-  const readable = await storage.getTarball('test', '1.0.0')
-  t.true(readable instanceof Readable)
-
-  const newData = await readableToBuffer(
-    await storage.getTarball('test', '1.0.0'),
-  ).then((t) => t.toString())
-
-  t.is(newData, data)
+  t.log('createReadableStream')
+  t.is(
+    await readFromStream(await storage.createReadStream('test', '1.0.0')),
+    data,
+  )
 })
