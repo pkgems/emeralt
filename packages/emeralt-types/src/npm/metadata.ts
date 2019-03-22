@@ -4,7 +4,7 @@ import { TVersion } from './version'
 export type TMetadata = {
   name: string
   version: string
-  
+
   author?: Person
   main?: string
 

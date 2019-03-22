@@ -22,6 +22,10 @@ export const createTestFixtures = (): {
     version: `1.0.0`,
     author: 'stackdumper',
 
+    'dist-tags': {
+      latest: '1.0.0',
+    },
+
     versions: {
       '1.0.0': {
         name: `@test/package-${i}`,
