@@ -9,5 +9,7 @@ const test = createTest({
 })
 
 test('disable endpoint', async (t) => {
-  await t.throwsAsync(t.context.http.get('/-/ping'))
+  const res = await t.context.http.get('/-/ping')
+
+  t.is(res.status, 404)
 })
