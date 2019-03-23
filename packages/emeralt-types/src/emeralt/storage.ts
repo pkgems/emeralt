@@ -1,19 +1,15 @@
-import { OptionalPromise } from '../helpers'
 import { TEmeraltServerConfig } from './server'
 import { CEmeraltDatabase } from './database'
-import { Readable } from 'stream'
 import { CEmeraltPlugin } from './plugin'
+import { OptionalPromise } from '../helpers'
+import { Readable, Writable } from 'stream'
 
 export interface CEmeraltStorage extends CEmeraltPlugin {
   /* get raw data */
-  getTarball(name: string, version: string): OptionalPromise<Readable>
+  createReadStream(name: string, version: string): OptionalPromise<Readable>
 
   /* put raw data */
-  putTarball(
-    name: string,
-    version: string,
-    tarball: Buffer,
-  ): OptionalPromise<any>
+  createWriteStream(name: string, version: string): OptionalPromise<Writable>
 
   /** drop all data (used for test purposes) */
   dropData(): OptionalPromise<any>

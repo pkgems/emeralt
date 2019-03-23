@@ -17,6 +17,7 @@ test<IEmeraltDatabase>('metadata', async (t, dbc) => {
 
   t.log('put metadata')
   await db.putMetadata(metadata.name, metadata)
+  await new Promise((r) => setTimeout(r, 1000)) // changes may take time to propogate in some dbs
 
   t.log('with metadata')
   t.deepEqual(await db.hasMetadata(metadata.name), true)
@@ -37,6 +38,7 @@ test<IEmeraltDatabase>('versions', async (t, dbc) => {
 
   t.log('put version')
   await db.putVersion(metadata.name, version.version, version)
+  await new Promise((r) => setTimeout(r, 1000)) // changes may take time to propogate in some dbs
 
   t.log('with version')
   t.deepEqual(await db.hasVersion(metadata.name, version.version), true)

@@ -13,7 +13,7 @@ export const getPackageTarballHandler = ({
     Router().get(endpoints.package.getTarball, async (req, res) => {
       const { package_name, version } = req.params
 
-      const rs = await storage.getTarball(package_name, version)
+      const rs = await storage.createReadStream(package_name, version)
 
       if (rs) {
         res.header('content-encoding', 'application/octet-stream')

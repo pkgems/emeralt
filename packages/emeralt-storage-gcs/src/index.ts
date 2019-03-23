@@ -2,6 +2,7 @@ import { IEmeraltStorage, CEmeraltStorage } from '@emeralt/types'
 import { join } from 'path'
 import { Storage, StorageOptions, Bucket } from '@google-cloud/storage'
 import { Readable } from 'stream'
+import { WriteStream } from 'fs'
 
 type Options = {
   storage: StorageOptions
@@ -26,30 +27,20 @@ class CEmeraltStorageGCS implements CEmeraltStorage {
     this.prefix = path.prefix
   }
 
-  public async getTarball(name, version) {
+  public async createReadStream(name, version) {
     const file = this.bucket.file(join(this.prefix, name, version))
 
     if (await file.exists()) {
-      return new Readable().wrap(file.createReadStream())
+      return file.createReadStream()
     } else {
       return undefined
     }
   }
 
-  public async putTarball(name, version, tarball) {
-    return new Promise(async (rs, rj) => {
-      const file = this.bucket.file(join(this.prefix, name, version))
+  public async createWriteStream(name, version) {
+    const file = this.bucket.file(join(this.prefix, name, version))
 
-      const ws = file
-        .createWriteStream()
-        .on('finish', rs)
-        .on('close', rs)
-        .on('error', rj)
-
-      ws.write(tarball, 'base64', () => {
-        ws.end()
-      })
-    })
+    return file.createWriteStream()
   }
 
   public async dropData() {

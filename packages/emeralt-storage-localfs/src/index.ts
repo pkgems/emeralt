@@ -4,7 +4,7 @@ import {
   remove,
   createReadStream,
   mkdirp,
-  writeFile,
+  createWriteStream,
 } from 'fs-extra'
 import { resolve } from 'path'
 
@@ -16,19 +16,19 @@ export const EmeraltStorageLocalFS: IEmeraltStorage<Options> = ({
   path = 'node_modules/.data',
 }) => () => {
   return {
-    getTarball: async (name, version) => {
+    createReadStream: async (name, version) => {
       const file = resolve(path, name, version)
 
       if (await pathExists(file)) return createReadStream(file)
       else return undefined
     },
 
-    putTarball: async (name, version, tarball) => {
+    createWriteStream: async (name, version) => {
       const dir = resolve(path, name)
       const file = resolve(dir, version)
 
       await mkdirp(dir)
-      await writeFile(file, tarball)
+      return createWriteStream(file)
     },
 
     dropData: () => {
