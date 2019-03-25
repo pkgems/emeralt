@@ -37,7 +37,8 @@ test.serial('publish existing', async (t) => {
   t.is(res.status, 400)
 })
 
-test.serial('publish new version', async (t) => {
+test.serial('publish new version using basic auth', async (t) => {
+  const user = t.context.fixtures.users[0]
   const token = t.context.fixtures.tokens[0]
   const pkg = t.context.fixtures.packages[0]
 
@@ -49,7 +50,12 @@ test.serial('publish new version', async (t) => {
 
   const res = await t.context.http
     .put(`/${encodeURIComponent(pkg.name)}`)
-    .set('authorization', `Bearer ${token}`)
+    .set(
+      'authorization',
+      `Basic ${Buffer.from(user.username + ':' + user.password).toString(
+        'base64',
+      )}`,
+    )
     .send(pkg)
 
   t.deepEqual(res.status, 200)

@@ -9,9 +9,7 @@ const authBasic = async (token: string, { auth }: TEmeraltMiddlewareParams) => {
   const valid = await auth.comparePassword(username, password)
 
   if (valid) {
-    return {
-      name: username,
-    }
+    return { username }
   } else {
     throw new Error('Invalid username or password')
   }
