@@ -1,9 +1,23 @@
-# Version [](https://github.com/emeralt/emeralt/compare/v0.8.0...v) (2019-03-22)
+# Version [](https://github.com/emeralt/emeralt/compare/v0.8.0...v) (2019-03-26)
 
 
 ### chore
 
-* update lerna config, enable conventional changelog ([c3bcc86](https://github.com/emeralt/emeralt/commit/c3bcc86)) ( stackdumper)
+* bump @types/node from 11.11.5 to 11.11.6 (#115) ([77041ba](https://github.com/emeralt/emeralt/commit/77041ba)), closes [#115](https://github.com/emeralt/emeralt/issues/115) (dependabot[bot])
+* bump @types/node from 11.11.6 to 11.11.7 (#119) ([f3d9b32](https://github.com/emeralt/emeralt/commit/f3d9b32)), closes [#119](https://github.com/emeralt/emeralt/issues/119) (dependabot[bot])
+* bump @types/ramda from 0.26.4 to 0.26.5 (#117) ([fe83fe6](https://github.com/emeralt/emeralt/commit/fe83fe6)), closes [#117](https://github.com/emeralt/emeralt/issues/117) (dependabot[bot])
+* bump ava from 1.3.1 to 1.4.0 (#116) ([8c44380](https://github.com/emeralt/emeralt/commit/8c44380)), closes [#116](https://github.com/emeralt/emeralt/issues/116) (dependabot[bot])
+* bump ioredis from 4.6.2 to 4.9.0 (#118) ([fe1ef1b](https://github.com/emeralt/emeralt/commit/fe1ef1b)), closes [#118](https://github.com/emeralt/emeralt/issues/118) (dependabot[bot])
+* bump mongodb from 3.2.1 to 3.2.2 (#114) ([328e761](https://github.com/emeralt/emeralt/commit/328e761)), closes [#114](https://github.com/emeralt/emeralt/issues/114) (dependabot[bot])
+* update lerna config, enable conventional changelog ([4775c9e](https://github.com/emeralt/emeralt/commit/4775c9e)) ( stackdumper)
+
+### refactor
+
+* remake storage plugins to use streams (#113) ([d8df81a](https://github.com/emeralt/emeralt/commit/d8df81a)), closes [#113](https://github.com/emeralt/emeralt/issues/113) (Ilya Atamas)
+
+### test
+
+* extend tests for cli and auth-inmemory ([3591693](https://github.com/emeralt/emeralt/commit/3591693)) ( Ilya Atamas)
 
 
 
