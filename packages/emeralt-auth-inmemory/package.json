@@ -15,7 +15,7 @@
     "access": "public"
   },
   "scripts": {
-    "test": "ava ../../test/auth.test.ts",
+    "test": "ava ../../test/auth.test.ts && ava ./test/*.test.ts",
     "build": "gemcart build"
   },
   "devDependencies": {
