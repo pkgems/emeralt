@@ -10,7 +10,8 @@
     "**/*.test.ts",
     "packages/emeralt-types",
     "packages/emeralt-storage-gcs",
-    "packages/emeralt-database-cloud-firestore"
+    "packages/emeralt-database-cloud-firestore",
+    "packages/emeralt-database-cloud-datastore"
   ],
   "reporters": [
     "text-lcov"
