@@ -33,7 +33,7 @@ jobs:
       before_script:
         - tar -xzvf ~/.cache/emeralt/build.tar.gz
       script:
-        - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/storage-gcs
+        - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/database-cloud-datastore --ignore @emeralt/storage-gcs
         - yarn nyc report --reporter=text-lcov | yarn coveralls
 
     - stage: publish
