@@ -1,11 +1,13 @@
 import { IEmeraltAuth, IEmeraltDatabase, IEmeraltStorage } from '@emeralt/types'
 
 export type TEmeraltServerConfig = {
-  logLevel?: 'silent' | 'dev' | 'production'
+  url?: string
+  logLevel?: 'silent' | 'development' | 'production'
   jwt?: {
     secret?: string
+    expiresIn?: string | number
   }
-  url?: string
+  initialHealthcheck?: boolean
   endpoints?: {
     ping?: boolean
     search?: boolean

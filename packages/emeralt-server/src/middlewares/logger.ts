@@ -4,7 +4,7 @@ import { TEmeraltMiddlewareParams } from '@/types'
 
 export const loggerMiddleware = (params: TEmeraltMiddlewareParams) => {
   switch (params.config.logLevel) {
-    case 'dev':
+    case 'development':
       return morgan('dev')
 
     case 'production':

@@ -3,15 +3,17 @@ import { TEmeraltServerConfig } from '@emeralt/types'
 const getLogLevel = () => {
   if (process.env.NODE_ENV === 'test') return 'silent'
   if (process.env.NODE_ENV === 'production') return 'production'
-  else return 'dev'
+  else return 'development'
 }
 
 export const emeraltServerDefaultConfig: TEmeraltServerConfig = {
+  url: 'http://localhost:8080',
   logLevel: getLogLevel(),
   jwt: {
     secret: 'secret',
+    expiresIn: '7d',
   },
-  url: 'http://localhost:8080',
+  initialHealthcheck: true,
   endpoints: {
     ping: true,
     search: true,

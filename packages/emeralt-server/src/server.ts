@@ -17,6 +17,7 @@ type EmeraltServer = http.Server & {
 const initializeInternal = async (
   params: TEmeraltServerParams,
 ): Promise<TEmeraltServerParamsInternal> => {
+  const config = merge(emeraltServerDefaultConfig, params.config || {})
   const database = await params.database(params.config)
   const auth = await params.auth(params.config, database)
   const storage = await params.storage(params.config, database)
@@ -25,6 +26,7 @@ const initializeInternal = async (
   return {
     ...params,
 
+    config,
     database,
     auth,
     storage,
@@ -32,27 +34,26 @@ const initializeInternal = async (
 }
 
 export const createEmeraltRouter = async (params: TEmeraltServerParams) => {
-  // merge with default config
-  params.config = merge(emeraltServerDefaultConfig, params.config || {})
-
-  // initialize plugins
+  // initialize plugins and config
   const internal = await initializeInternal(params)
 
-  // check every plugin is health. If no, throw an error
-  const health = await Promise.all([
-    internal.auth.healthz(),
-    internal.database.healthz(),
-    internal.storage.healthz(),
-  ])
+  if (internal.config.initialHealthcheck) {
+    // check every plugin is health. If no, throw an error
+    const health = await Promise.all([
+      internal.auth.healthz(),
+      internal.database.healthz(),
+      internal.storage.healthz(),
+    ])
 
-  if (!health.every((s) => s.ok)) {
-    throw new Error(
-      `Some plugins are unhealthy, ${{
-        auth: health[0],
-        database: health[1],
-        storage: health[2],
-      }}`,
-    )
+    if (!health.every((s) => s.ok)) {
+      throw new Error(
+        `Some plugins are unhealthy, ${{
+          auth: health[0],
+          database: health[1],
+          storage: health[2],
+        }}`,
+      )
+    }
   }
 
   const services = createServices(internal)
@@ -63,10 +64,8 @@ export const createEmeraltRouter = async (params: TEmeraltServerParams) => {
     .Router()
     // middlewares
     .use(middlewares.logger)
-    // .use(middlewares.json)
     .use(middlewares.compression)
     .use(middlewares.context)
-
     // handlers
     .use(handlers.ping)
     .use(handlers.login)

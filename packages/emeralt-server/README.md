@@ -50,13 +50,25 @@ createEmeraltServer({
 
 ```ts
 type TEmeraltServerConfig = {
-  // default: "dev"
-  logLevel?: 'combined' | 'common' | 'dev' | 'short' | 'tiny' | 'silent'
+  // server url, used as tarballs url
+  url: string
+
+  // default: "development"
+  logLevel?: 'silent' | 'development' | 'production'
+
+  // jsonwebtoken options
   jwt?: {
-    // secret to sign JWT tokens with
     // default: "secret"
     secret?: string
+
+    // default: "7d"
+    expiresIn?: string | number
   }
+
+  // execute healtcheck in initialization
+  // default: true
+  initialHealthcheck?: boolean
+
   // enable specific endpoint
   // default: all true
   endpoints?: {
@@ -64,12 +76,15 @@ type TEmeraltServerConfig = {
     search?: boolean
     login?: boolean
     adduser?: boolean
-
     package?: {
       get?: boolean
       publish?: boolean
     }
-
+    distTags?: {
+      get?: boolean
+      create?: boolean
+      delete?: boolean
+    }
     sys?: {
       healthz: boolean
     }

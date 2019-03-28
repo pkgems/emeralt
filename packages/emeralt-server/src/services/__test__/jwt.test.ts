@@ -8,6 +8,7 @@ test('jwt', (t) => {
     config: {
       jwt: {
         secret: 'secret',
+        expiresIn: 3600,
       },
     },
   })
