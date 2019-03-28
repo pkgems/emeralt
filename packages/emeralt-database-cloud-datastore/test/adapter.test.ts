@@ -57,7 +57,7 @@ test.serial('exists nested', async (t) => {
     await adapter.exists(['packages', 'test', 'versions', '1.0.0']),
     true,
   )
-  
+
   t.deepEqual(
     await adapter.exists(['packages', 'test', 'versions', '2.0.0']),
     false,

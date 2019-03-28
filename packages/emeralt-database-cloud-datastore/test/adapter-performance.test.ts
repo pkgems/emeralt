@@ -18,7 +18,7 @@ test.serial('performance', async (t) => {
 
     t.log(title, (Date.now() - start) / iterations)
   }
-  
+
   const iterations = 100
 
   await test('set', (i) => adapter.set(['packages', 'test'], pkg), iterations)
