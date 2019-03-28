@@ -527,6 +527,25 @@
     pify "^4.0.0"
     retry-request "^4.0.0"
 
+"@google-cloud/datastore@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.npmjs.org/@google-cloud/datastore/-/datastore-3.1.2.tgz#57d2279de866b1f3fcc0840ef80d2425e33ba4b6"
+  integrity sha512-tMYkhXfBXU+H0FV3BpRNK1Ncy8+2DjOSfEMpJ46l5yfp1++RGpIuFWTq4RPl2/Yh26vOh8DbJpMKHYW2t++Aqg==
+  dependencies:
+    "@google-cloud/projectify" "^0.3.2"
+    "@google-cloud/promisify" "^0.4.0"
+    "@types/duplexify" "^3.6.0"
+    arrify "^1.0.1"
+    concat-stream "^2.0.0"
+    extend "^3.0.1"
+    google-auth-library "^3.0.0"
+    google-gax "^0.25.0"
+    is "^3.2.1"
+    lodash.merge "^4.6.1"
+    split-array-stream "^2.0.0"
+    stream-events "^1.0.4"
+    through2 "^3.0.0"
+
 "@google-cloud/firestore@^1.0.1":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@google-cloud/firestore/-/firestore-1.2.0.tgz#ac81f84f7e55c5a25956011ebab628e1bbf4b2b0"
@@ -1372,7 +1391,7 @@
   resolved "https://registry.yarnpkg.com/@types/cookiejar/-/cookiejar-2.1.1.tgz#90b68446364baf9efd8e8349bb36bd3852b75b80"
   integrity sha512-aRnpPa7ysx3aNW60hTiCtLHlQaIFsXFCgQlpakNgDNVFzbtusSY8PwjAQgRWfSk0ekNoBjO51eQRB6upA9uuyw==
 
-"@types/duplexify@^3.5.0":
+"@types/duplexify@^3.5.0", "@types/duplexify@^3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@types/duplexify/-/duplexify-3.6.0.tgz#dfc82b64bd3a2168f5bd26444af165bf0237dcd8"
   integrity sha512-5zOA53RUlzN74bvrSGwjudssD9F3a797sDZQkiYpUOxW+WHaXTCPz4/d5Dgi6FKnOqZ2CpaTo0DhgIfsXAOE/A==
@@ -4809,6 +4828,11 @@ is-windows@^1.0.0, is-windows@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/is-windows/-/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
   integrity sha512-eXK1UInq2bPmjyX6e3VHIzMLobc4J94i4AWn+Hpq3OU5KkrRC96OAcR3PRJ/pGu6m8TRnBHP9dkXQVsT/COVIA==
+
+is@^3.2.1:
+  version "3.3.0"
+  resolved "https://registry.npmjs.org/is/-/is-3.3.0.tgz#61cff6dd3c4193db94a3d62582072b44e5645d79"
+  integrity sha512-nW24QBoPcFGGHJGUwnfpI7Yc5CdqWNdsyHQszVE/z2pKHXzh7FZ5GWhJqSyaQ9wMkQnsTx+kAI8bHlCX4tKdbg==
 
 isarray@0.0.1:
   version "0.0.1"

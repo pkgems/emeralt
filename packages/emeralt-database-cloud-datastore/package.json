@@ -1,0 +1,27 @@
+{
+  "name": "@emeralt/database-cloud-datastore",
+  "version": "0.9.0",
+  "author": "stackdumper <stackdumper@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emeralt/emeralt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emeralt/emeralt/issues"
+  },
+  "license": "MIT",
+  "main": "./build/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "ava test/adapter.test.ts && ava ../../test/database.test.ts",
+    "build": "gemcart build"
+  },
+  "devDependencies": {
+    "@emeralt/types": "^0.9.0"
+  },
+  "dependencies": {
+    "@google-cloud/datastore": "^3.1.2"
+  }
+}
