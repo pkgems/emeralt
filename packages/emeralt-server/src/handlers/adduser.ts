@@ -1,7 +1,6 @@
-import { TEmeraltHandlerParams } from '@emeralt/types'
 import { Router } from 'express'
-import jwt from 'jsonwebtoken'
 
+import { TEmeraltHandlerParams } from '@/types'
 import { endpoints } from '@/constants'
 import { useIf } from '@/utils'
 

@@ -1,7 +1,7 @@
-import { TEmeraltMiddlewareParams } from '@emeralt/types'
 import { json, text } from 'body-parser'
 import compression from 'compression'
 
+import { TEmeraltMiddlewareParams } from '@/types'
 import { loggerMiddleware } from './logger'
 import { verifyTokenMiddleware } from './verify-token'
 import { contextMiddleware } from './context'

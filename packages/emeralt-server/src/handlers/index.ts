@@ -1,4 +1,4 @@
-import { TEmeraltHandlerParams } from '@emeralt/types'
+import { TEmeraltHandlerParams } from '@/types'
 
 // handlers
 import { pingHandler } from './ping'

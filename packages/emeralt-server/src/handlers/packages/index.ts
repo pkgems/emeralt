@@ -1,5 +1,5 @@
-import { TEmeraltHandlerParams } from '@emeralt/types'
 import { Router } from 'express'
+import { TEmeraltHandlerParams } from '@/types'
 
 // handlers
 import { getPackageHandler } from './get'

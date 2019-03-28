@@ -1,7 +1,7 @@
-import { TEmeraltHandlerParams } from '@emeralt/types'
-
-import { endpoints } from '@/constants'
 import { Router } from 'express'
+
+import { TEmeraltHandlerParams } from '@/types'
+import { endpoints } from '@/constants'
 import { useIf } from '@/utils'
 
 export const getPackageTarballHandler = ({

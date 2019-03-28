@@ -1,4 +1,4 @@
-import { TEmeraltMiddlewareParams } from '@emeralt/types'
+import { TEmeraltMiddlewareParams } from '@/types'
 
 const authBasic = async (token: string, { auth }: TEmeraltMiddlewareParams) => {
   // token = username:password | base64

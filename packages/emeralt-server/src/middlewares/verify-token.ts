@@ -1,5 +1,4 @@
-import { TEmeraltMiddlewareParams } from '@emeralt/types'
-
+import { TEmeraltMiddlewareParams } from '@/types'
 import { decodeAuthToken } from '@/utils'
 
 export const verifyTokenMiddleware = (params: TEmeraltMiddlewareParams) => (

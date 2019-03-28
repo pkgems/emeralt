@@ -2,11 +2,6 @@ export {
   // server
   TEmeraltServerConfig,
   TEmeraltServerParams,
-  TEmeraltServiceParams,
-  TEmeraltMiddlewareParams,
-  TEmeraltHandlerParams,
-  TDecodedToken,
-  TEmeraltServerParamsInternal,
   // auth
   TEmeraltAuthAction,
   CEmeraltAuth,

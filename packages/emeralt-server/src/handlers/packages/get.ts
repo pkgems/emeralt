@@ -1,7 +1,7 @@
-import { TEmeraltHandlerParams } from '@emeralt/types'
 import { Router } from 'express'
 import { resolve } from 'url'
 
+import { TEmeraltHandlerParams } from '@/types'
 import { endpoints } from '@/constants'
 import { useIf } from '@/utils'
 

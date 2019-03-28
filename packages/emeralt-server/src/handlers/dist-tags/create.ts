@@ -1,4 +1,5 @@
-import { TEmeraltHandlerParams } from '@emeralt/types'
+import { TEmeraltHandlerParams } from '@/types'
+
 import { Router } from 'express'
 
 import { endpoints } from '@/constants'

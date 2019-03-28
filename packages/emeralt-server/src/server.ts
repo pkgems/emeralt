@@ -2,14 +2,13 @@ import express from 'express'
 import http from 'http'
 import merge from 'deepmerge'
 
-import {
-  TEmeraltServerParams,
-  TEmeraltServerParamsInternal,
-} from '@emeralt/types'
+import { TEmeraltServerParams } from '@emeralt/types'
 import { createServices } from '@/services'
 import { createMiddlewares } from '@/middlewares'
 import { createHandlers } from '@/handlers'
+
 import { emeraltServerDefaultConfig } from './config'
+import { TEmeraltServerParamsInternal } from './types'
 
 type EmeraltServer = http.Server & {
   emeralt: TEmeraltServerParamsInternal

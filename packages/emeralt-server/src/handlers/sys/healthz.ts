@@ -1,6 +1,6 @@
-import { TEmeraltHandlerParams } from '@emeralt/types'
 import { Router } from 'express'
 
+import { TEmeraltHandlerParams } from '@/types'
 import { endpoints } from '@/constants'
 
 export const sysHealthzHandler = ({

@@ -1,5 +1,5 @@
-import { TEmeraltMiddlewareParams } from '@emeralt/types'
 import { Handler } from 'express'
+import { TEmeraltMiddlewareParams } from '@/types'
 
 export const contextMiddleware = (
   params: TEmeraltMiddlewareParams,

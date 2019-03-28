@@ -1,4 +1,4 @@
-import { TEmeraltServiceParams, TDecodedToken } from '@emeralt/types'
+import { TEmeraltServiceParams, TDecodedToken } from '@/types'
 import jwt from 'jsonwebtoken'
 
 export const jwtService = (params: TEmeraltServiceParams) => {

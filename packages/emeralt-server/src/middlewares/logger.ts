@@ -1,6 +1,6 @@
-import { TEmeraltMiddlewareParams } from '@emeralt/types'
 import morgan from 'morgan'
 import pino from 'express-pino-logger'
+import { TEmeraltMiddlewareParams } from '@/types'
 
 export const loggerMiddleware = (params: TEmeraltMiddlewareParams) => {
   switch (params.config.logLevel) {
