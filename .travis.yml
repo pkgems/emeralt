@@ -39,6 +39,7 @@ jobs:
     - stage: publish
       if: tag IS present
       before_script:
+        - tar -xzvf ~/.cache/emeralt/build.tar.gz
         - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
       script:
         - lerna publish from-git -y
