@@ -5,12 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.10.0](https://github.com/emeralt/emeralt/compare/v0.9.0...v0.10.0) (2019-04-02)
 
-**Note:** Version bump only for package @emeralt/storage-gcs
 
+### Features
 
-
-
-
-# [0.9.0](https://github.com/emeralt/emeralt/compare/v0.8.0...v0.9.0) (2019-03-26)
-
-**Note:** Version bump only for package @emeralt/storage-gcs
+* add @emeralt/database-cloud-datastore ([#125](https://github.com/emeralt/emeralt/issues/125)) ([7866ee3](https://github.com/emeralt/emeralt/commit/7866ee3))

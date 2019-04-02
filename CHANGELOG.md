@@ -1,3 +1,44 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.10.0](https://github.com/emeralt/emeralt/compare/v0.9.0...v0.10.0) (2019-04-02)
+
+
+### Features
+
+* **server:** make initial healthcheck optional, update readme ([91de6db](https://github.com/emeralt/emeralt/commit/91de6db))
+* add @emeralt/database-cloud-datastore ([#125](https://github.com/emeralt/emeralt/issues/125)) ([7866ee3](https://github.com/emeralt/emeralt/commit/7866ee3))
+
+
+
+
+
+# Version [](https://github.com/emeralt/emeralt/compare/v0.9.0...v) (2019-04-02)
+
+
+### chore
+
+* bump @types/node from 11.11.7 to 11.12.0 (#122) ([70076ee](https://github.com/emeralt/emeralt/commit/70076ee)), closes [#122](https://github.com/emeralt/emeralt/issues/122) (dependabot[bot])
+* bump @types/node from 11.12.0 to 11.12.2 (#126) ([67b1ae3](https://github.com/emeralt/emeralt/commit/67b1ae3)), closes [#126](https://github.com/emeralt/emeralt/issues/126) (dependabot[bot])
+* bump @types/node from 11.12.2 to 11.13.0 (#128) ([d4b96d4](https://github.com/emeralt/emeralt/commit/d4b96d4)), closes [#128](https://github.com/emeralt/emeralt/issues/128) (dependabot[bot])
+* bump ava from 1.4.0 to 1.4.1 (#123) ([fb7954f](https://github.com/emeralt/emeralt/commit/fb7954f)), closes [#123](https://github.com/emeralt/emeralt/issues/123) (dependabot[bot])
+* bump typescript from 3.3.4000 to 3.4.1 (#127) ([bc143b6](https://github.com/emeralt/emeralt/commit/bc143b6)), closes [#127](https://github.com/emeralt/emeralt/issues/127) (dependabot[bot])
+* move changelog script to preversion hook ([1402a42](https://github.com/emeralt/emeralt/commit/1402a42)) ( Ilya Atamas)
+* move server types from @emeralt/types to @emeralt/server ([4a9db21](https://github.com/emeralt/emeralt/commit/4a9db21)) ( Ilya Atamas)
+* update changelog ([0a49e42](https://github.com/emeralt/emeralt/commit/0a49e42)) (Ilya Atamas)
+
+### ci
+
+* exclude datastore from coverage ([418942d](https://github.com/emeralt/emeralt/commit/418942d)) ( Ilya Atamas)
+
+### feat
+
+* add @emeralt/database-cloud-datastore (#125) ([7866ee3](https://github.com/emeralt/emeralt/commit/7866ee3)), closes [#125](https://github.com/emeralt/emeralt/issues/125) (Ilya Atamas)
+
+
+
 # Version [0.9.0](https://github.com/emeralt/emeralt/compare/v0.8.0...v0.9.0) (2019-03-26)
 
 
@@ -467,7 +508,3 @@
 
 
 ## Version 0.0.2 (2018-12-22)
-
-
-
-
