@@ -41,6 +41,7 @@ Wanted! See Issues. Feel free to contact me at `stackdumper@gmail.com`
 - [`@emeralt/database-redis`](./packages/emeralt-database-redis)
 - [`@emeralt/database-mongodb`](./packages/emeralt-database-mongodb)
 - [`@emeralt/database-cloud-firestore`](./packages/emeralt-database-cloud-firestore)
+- [`@emeralt/database-cloud-datastore`](./packages/emeralt-database-cloud-datastore)
 
 ##### <sup>Storage plugins</sup>
 
