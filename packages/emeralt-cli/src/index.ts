@@ -18,7 +18,7 @@ createEmeraltServer({
   storage: EmeraltStorageLocalFS({
     path: resolve(homedir(), '.emeralt'),
   }),
-}).then((server) => {
+}).then(({ server }) => {
   server.listen(8080, () => {
     console.log(chalk.bold.greenBright('Emeralt is listening at 8080...'))
     console.log('Default user:')

@@ -22,4 +22,4 @@ export const createTestServer = (
     }),
     database: EmeraltDatabaseInMemory({}),
     storage: EmeraltStorageInMemory({}),
-  }).then((t) => t.listen())
+  }).then((t) => t.server.listen())

@@ -14,7 +14,7 @@ type EmeraltServer = http.Server & {
   emeralt: TEmeraltServerParamsInternal
 }
 
-const initializeInternal = async (
+const initializePlugins = async (
   params: TEmeraltServerParams,
 ): Promise<TEmeraltServerParamsInternal> => {
   const config = merge(emeraltServerDefaultConfig, params.config || {})
@@ -35,14 +35,14 @@ const initializeInternal = async (
 
 export const createEmeraltRouter = async (params: TEmeraltServerParams) => {
   // initialize plugins and config
-  const internal = await initializeInternal(params)
+  const plugins = await initializePlugins(params)
 
-  if (internal.config.initialHealthcheck) {
+  if (plugins.config.initialHealthcheck) {
     // check every plugin is health. If no, throw an error
     const health = await Promise.all([
-      internal.auth.healthz(),
-      internal.database.healthz(),
-      internal.storage.healthz(),
+      plugins.auth.healthz(),
+      plugins.database.healthz(),
+      plugins.storage.healthz(),
     ])
 
     if (!health.every((s) => s.ok)) {
@@ -56,9 +56,9 @@ export const createEmeraltRouter = async (params: TEmeraltServerParams) => {
     }
   }
 
-  const services = createServices(internal)
-  const middlewares = createMiddlewares({ ...internal, services })
-  const handlers = createHandlers({ ...internal, services, middlewares })
+  const services = createServices(plugins)
+  const middlewares = createMiddlewares({ ...plugins, services })
+  const handlers = createHandlers({ ...plugins, services, middlewares })
 
   const router = express
     .Router()
@@ -79,23 +79,23 @@ export const createEmeraltRouter = async (params: TEmeraltServerParams) => {
   // used to dynamically change the config
   // @ts-ignore
   router._setConfig = (key, value) => {
-    internal.config[key] = value
+    plugins.config[key] = value
   }
 
-  return router
+  return { router, plugins }
 }
 
 export const createEmeraltServer = async (params: TEmeraltServerParams) => {
-  const router = await createEmeraltRouter(params)
-  const server = express()
+  const { router, plugins } = await createEmeraltRouter(params)
+  const app = express()
     .set('etag', false)
     .use(router)
 
-  const httpServer = http.createServer(server) as EmeraltServer
+  const server = http.createServer(app) as EmeraltServer
 
   // ↑ HACK FOR TESTS ↑
   // @ts-ignore
-  httpServer._setConfig = router._setConfig
+  server._setConfig = router._setConfig
 
-  return httpServer
+  return { server, plugins }
 }
