@@ -1,11 +1,17 @@
-# Change Log
+# Version [](https://github.com/emeralt/emeralt/compare/v0.11.0...v) (2019-04-06)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.11.0](https://github.com/emeralt/emeralt/compare/v0.10.0...v0.11.0) (2019-04-02)
+### chore
 
-**Note:** Version bump only for package emeralt
+* bump @google-cloud/storage from 2.4.3 to 2.5.0 (#131) ([d21380b](https://github.com/emeralt/emeralt/commit/d21380b)), closes [#131](https://github.com/emeralt/emeralt/issues/131) (dependabot[bot])
+* bump @types/node-fetch from 2.1.7 to 2.3.0 (#130) ([77af32d](https://github.com/emeralt/emeralt/commit/77af32d)), closes [#130](https://github.com/emeralt/emeralt/issues/130) (dependabot[bot])
+* bump @types/ramda from 0.26.5 to 0.26.6 (#129) ([38c1c37](https://github.com/emeralt/emeralt/commit/38c1c37)), closes [#129](https://github.com/emeralt/emeralt/issues/129) (dependabot[bot])
+* move changelog hook to version ([5708e10](https://github.com/emeralt/emeralt/commit/5708e10)) ( Ilya Atamas)
+
+
+
+# Version [0.11.0](https://github.com/emeralt/emeralt/compare/v0.10.0...v0.11.0) (2019-04-02)
+
 
 ### ci
 
@@ -510,3 +516,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 ## Version 0.0.2 (2018-12-22)
+
+
+
+
