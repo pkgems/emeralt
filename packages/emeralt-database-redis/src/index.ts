@@ -24,77 +24,73 @@ class CEmeraltDatabaseRedis implements CEmeraltDatabase {
     this.redis = new Redis(redis)
   }
 
-  private parseHscan = (scan: string[], substr: number) =>
-    scan.reduce((acc, cur, index) => {
-      if (index % 2 === 0) {
-        return {
-          ...acc,
-          [cur.substring(substr)]: JSON.parse(scan[index + 1]),
-        }
-      }
-
-      return acc
-    }, {})
-
   public async getMetadatas() {
     const [_, vals]: [number, string[]] = await this.redis.hscan(
       this.prefix,
       0,
       'MATCH',
-      'metadata-*',
+      '*-metadata',
     )
 
-    return this.parseHscan(vals, 9)
+    return vals.reduce((acc, cur, index) => {
+      if (index % 2 === 0) {
+        return {
+          ...acc,
+          [cur.substring(0, cur.length - 9)]: JSON.parse(vals[index + 1]),
+        }
+      }
+
+      return acc
+    }, {})
   }
 
   public hasMetadata(name: string) {
     return this.redis
-      .hexists(this.prefix, `metadata-${name}`)
+      .hexists(this.prefix, `${name}-metadata`)
       .then((r) => Boolean(r))
   }
 
   public getMetadata(name: string) {
     return this.redis
-      .hget(this.prefix, `metadata-${name}`)
+      .hget(this.prefix, `${name}-metadata`)
       .then((r) => JSON.parse(r))
   }
 
   public putMetadata(name: string, data: TMetadata) {
     return this.redis.hset(
       this.prefix,
-      `metadata-${name}`,
+      `${name}-metadata`,
       JSON.stringify(data),
     )
   }
 
   public async getVersions(name: string) {
-    const [_, vals] = await this.redis.hscan(
-      this.prefix,
-      0,
-      'MATCH',
-      'version-*',
-    )
-
-    return this.parseHscan(vals, name.length + 9)
-  }
-
-  public hasVersion(name: string, version: string) {
     return this.redis
-      .hexists(this.prefix, `version-${name}-${version}`)
-      .then((r) => Boolean(r))
+      .hget(this.prefix, `${name}-versions`)
+      .then((r) => (r ? JSON.parse(r) : {}))
   }
 
-  public getVersion(name: string, version: string) {
-    return this.redis
-      .hget(this.prefix, `version-${name}-${version}`)
-      .then((r) => JSON.parse(r))
+  public async hasVersion(name: string, version: string) {
+    const versions = await this.getVersions(name)
+
+    return Boolean(versions[version])
   }
 
-  public putVersion(name: string, version: string, data: TVersion) {
-    return void this.redis.hset(
+  public async getVersion(name: string, version: string) {
+    const versions = await this.getVersions(name)
+
+    return versions[version]
+  }
+
+  public async putVersion(name: string, version: string, data: TVersion) {
+    const versions = await this.getVersions(name)
+
+    versions[version] = data
+
+    return this.redis.hset(
       this.prefix,
-      `version-${name}-${version}`,
-      JSON.stringify(data),
+      `${name}-versions`,
+      JSON.stringify(versions),
     )
   }
 
