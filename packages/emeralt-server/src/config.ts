@@ -14,6 +14,7 @@ export const emeraltServerDefaultConfig: TEmeraltServerConfig = {
     expiresIn: '7d',
   },
   initialHealthcheck: true,
+  upstream: false,
   endpoints: {
     ping: true,
     search: true,
@@ -34,6 +35,7 @@ export const emeraltServerDefaultConfig: TEmeraltServerConfig = {
 
     sys: {
       healthz: true,
+      dropdata: true,
     },
   },
 }

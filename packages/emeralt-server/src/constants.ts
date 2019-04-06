@@ -18,5 +18,6 @@ export const endpoints = {
 
   sys: {
     healthz: '/-/sys/healthz',
+    dropdata: '/-/sys/dropdata',
   },
 }

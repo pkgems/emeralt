@@ -1,9 +1,7 @@
 # @emeralt/server
 Emeralt Node.js HTTP server module
 
----
-
-### Install
+## Install
 
 Using npm:
 
@@ -17,9 +15,7 @@ or using yarn:
 yarn add @emeralt/server
 ```
 
----
-
-### Example
+## Example
 
 ```ts
 // import server 
@@ -38,7 +34,7 @@ createEmeraltServer({
   auth: EmeraltAuthInMemory(),
   database: EmeraltDatabaseInMemory(),
   storage: EmeraltStorageInMemory(),
-}).then((server) => {
+}).then(({ server, plugins }) => {
   // listen on 8080
   server.listen(8080, () => {
     console.log('Listening on 8080')
@@ -55,6 +51,9 @@ type TEmeraltServerConfig = {
 
   // default: "development"
   logLevel?: 'silent' | 'development' | 'production'
+
+  // redirect 404, eg. http://registry.npmjs.org
+  upstream?: false
 
   // jsonwebtoken options
   jwt?: {
@@ -91,36 +90,22 @@ type TEmeraltServerConfig = {
   }
 }
 ```
----
 
-### Healthcheck
+## Sys endpoints
+Additionally, server exposes a number of system endpoints used to manage server itself.
 
-Additionally, server exposes a healthcheck endpoint, which verifies that every plugin is healthy and able to serve the needs.
 
-##### Endpoint
+#### Healthcheck
+
 `GET /-/sys/health`
 
-##### Response status
-`200` if ok, `503` otherwise.
+Healthcheck verifies that every plugin is healthy and able to serve the server needs. Returns 200 if everything is OK, 503 else
 
-##### Response body:
-```ts
-type Response = {
-  ok: boolean // true if every plugin is healthy
-  healthz: {
-    auth: THealthz,
-    database: THealthz,
-    storage: THealthz,
-  }
-}
+#### Drop data
 
-type THealthz = {
-  ok: boolean
-  message?: string
-  error?: Error
-} 
-```
+`PATCH /-/sys/dropdata`
 
----
+Dropdata drops all registry data. Requires authentication.
+
 
 ### [Architecture](./docs/architecture.md)

@@ -1,6 +1,6 @@
 import { Unpack, TEmeraltServerConfig } from '@emeralt/types'
 
-import { TestInterface } from 'ava'
+import ava, { TestInterface } from 'ava'
 import supertest from 'supertest'
 
 import { createTestServer } from './server'
@@ -11,7 +11,7 @@ interface Options {
 }
 
 export const createTest = (options: Options = {}) => {
-  const test = require('ava') as TestInterface<{
+  const test = ava as TestInterface<{
     server: Unpack<ReturnType<typeof createTestServer>>
     fixtures: ReturnType<typeof createTestFixtures>
     http: ReturnType<typeof supertest>

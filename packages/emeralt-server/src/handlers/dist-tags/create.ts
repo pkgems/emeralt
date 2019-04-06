@@ -22,7 +22,7 @@ export const createDistTagHandler = ({
         const metadata = await database.getMetadata(package_name)
 
         if (!metadata) {
-          return res.status(400).json({ ok: false })
+          return res.status(404).json({ ok: false })
         }
 
         if (!metadata['dist-tags']) {

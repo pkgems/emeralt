@@ -16,10 +16,13 @@ export const getPackageHandler = ({
 
       // retrieve metadata from database
       const metadata = await database.getMetadata(package_name)
-
       if (!metadata) {
-        // package not found - redirect to upstream (optional) (plugin) (dependencies)
-        return res.redirect(`http://registry.npmjs.org/${package_name}`)
+        // package not found - redirect to upstream (optional)
+        if (config.upstream) {
+          return res.redirect(`${config.upstream}/${package_name}`)
+        } else {
+          return res.sendStatus(404)
+        }
       }
 
       // retrieve all package versions

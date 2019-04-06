@@ -33,3 +33,9 @@ test.serial('get', async (t) => {
   t.deepEqual(res.status, 200)
   t.snapshot(res.body)
 })
+
+test.serial('get nonexistent', async (t) => {
+  const res = await t.context.http.get(`/react`)
+
+  t.deepEqual(res.status, 404)
+})

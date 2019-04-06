@@ -3,7 +3,7 @@ import { TEmeraltServerConfig } from './server'
 import { CEmeraltDatabase } from './database'
 import { CEmeraltPlugin } from './plugin'
 
-export type TEmeraltAuthAction = 'publish' | 'get'
+export type TEmeraltAuthAction = 'publish' | 'get' | 'dropdata'
 
 export type BaseUser = {
   username: string
@@ -21,7 +21,7 @@ export interface CEmeraltAuth<User extends BaseUser = BaseUser>
   canUser(
     username: string,
     action: TEmeraltAuthAction,
-    packagename: string,
+    packagename?: string,
   ): OptionalPromise<boolean>
 }
 

@@ -8,6 +8,7 @@ export type TEmeraltServerConfig = {
     expiresIn?: string | number
   }
   initialHealthcheck?: boolean
+  upstream?: string | boolean
   endpoints?: {
     ping?: boolean
     search?: boolean
@@ -28,6 +29,7 @@ export type TEmeraltServerConfig = {
 
     sys?: {
       healthz?: boolean
+      dropdata?: boolean
     }
   }
 }

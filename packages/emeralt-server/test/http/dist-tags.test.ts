@@ -20,27 +20,44 @@ test.serial('create', async (t) => {
 
   const res = await t.context.http
     .put(`/-/package/${encodeURIComponent(pkg.name)}/dist-tags/test`)
+    .set('authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
     .send('1.0.0-rc.1')
-    .set('authorization', `Bearer ${token}`)
 
   t.deepEqual(res.status, 200)
   t.deepEqual(res.body, { ok: true })
 })
 
-test.serial('get', async (t) => {
+test.serial('create nonexistent', async (t) => {
   const token = t.context.fixtures.tokens[0]
-  const pkg = t.context.fixtures.packages[0]
 
   const res = await t.context.http
-    .get(`/-/package/${encodeURIComponent(pkg.name)}/dist-tags`)
+    .put(`/-/package/nonexistent/dist-tags/test`)
     .set('authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+    .send('1.0.0-rc.1')
+
+  t.deepEqual(res.status, 404)
+})
+
+test.serial('get', async (t) => {
+  const pkg = t.context.fixtures.packages[0]
+
+  const res = await t.context.http.get(
+    `/-/package/${encodeURIComponent(pkg.name)}/dist-tags`,
+  )
 
   t.deepEqual(res.status, 200)
   t.deepEqual(res.body, {
     latest: '1.0.0',
     test: '1.0.0-rc.1',
   })
+})
+
+test.serial('get nonexistent', async (t) => {
+  const res = await t.context.http.get(`/-/package/nonexistent/dist-tags`)
+
+  t.deepEqual(res.status, 404)
 })
 
 test.serial('delete', async (t) => {
@@ -62,4 +79,14 @@ test.serial('delete', async (t) => {
   t.deepEqual(body, {
     latest: '1.0.0',
   })
+})
+
+test.serial('delete nonexistent', async (t) => {
+  const token = t.context.fixtures.tokens[0]
+
+  const res = await t.context.http
+    .delete(`/-/package/nonexistent/dist-tags/test`)
+    .set('authorization', `Bearer ${token}`)
+
+  t.deepEqual(res.status, 404)
 })

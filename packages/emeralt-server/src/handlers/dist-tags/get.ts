@@ -6,7 +6,6 @@ import { useIf } from '@/utils'
 
 export const getDistTagsHandler = ({
   config,
-  middlewares,
   database,
 }: TEmeraltHandlerParams) =>
   useIf(

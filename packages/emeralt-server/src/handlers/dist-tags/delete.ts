@@ -19,6 +19,10 @@ export const deleteDistTagHandler = ({
 
         const metadata = await database.getMetadata(package_name)
 
+        if (!metadata) {
+          return res.status(404).json({ ok: false })
+        }
+
         delete metadata['dist-tags'][dist_tag]
 
         await database.putMetadata(package_name, metadata)
