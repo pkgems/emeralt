@@ -1,4 +1,4 @@
-# Version [](https://github.com/emeralt/emeralt/compare/v0.11.0...v) (2019-04-06)
+# Version [0.12.0](https://github.com/emeralt/emeralt/compare/v0.11.0...v0.12.0) (2019-04-06)
 
 
 ### chore

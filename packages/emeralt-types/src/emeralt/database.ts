@@ -4,9 +4,11 @@ import { TMetadata, TVersion } from '../npm'
 import { CEmeraltPlugin } from './plugin'
 
 export interface CEmeraltDatabase extends CEmeraltPlugin {
+  // NOT USED
   /** list existing packages */
   getMetadatas(): OptionalPromise<Record<string, TMetadata>>
 
+  // NOT USED
   /** check if metadata exists */
   hasMetadata(name: string): OptionalPromise<boolean>
 
@@ -22,6 +24,7 @@ export interface CEmeraltDatabase extends CEmeraltPlugin {
   /** check if version exists */
   hasVersion(name: string, version: string): OptionalPromise<boolean>
 
+  // NOT USED
   /** get single version of specific package */
   getVersion(name: string, version: string): OptionalPromise<TVersion>
 
