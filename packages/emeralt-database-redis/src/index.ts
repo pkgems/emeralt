@@ -16,73 +16,90 @@ type Options = {
 }
 
 class CEmeraltDatabaseRedis implements CEmeraltDatabase {
-  redis: TRedis
+  private prefix: string
+  private redis: TRedis
 
-  constructor(private options: Options) {
-    this.redis = new Redis(this.options.redis)
+  constructor({ redis, prefix = 'emeralt' }: Options) {
+    this.prefix = prefix
+    this.redis = new Redis(redis)
   }
 
-  private parseRecord = (rec: Record<string, string>) => {
-    return Object.keys(rec).reduce((acc, key) => {
-      return {
-        ...acc,
-        [key]: JSON.parse(rec[key]),
+  private parseHscan = (scan: string[], substr: number) =>
+    scan.reduce((acc, cur, index) => {
+      if (index % 2 === 0) {
+        return {
+          ...acc,
+          [cur.substring(substr)]: JSON.parse(scan[index + 1]),
+        }
       }
+
+      return acc
     }, {})
-  }
 
-  private getPath(str: string) {
-    return `${this.options.prefix}${str}`
-  }
+  public async getMetadatas() {
+    const [_, vals]: [number, string[]] = await this.redis.hscan(
+      this.prefix,
+      0,
+      'MATCH',
+      'metadata-*',
+    )
 
-  public getMetadatas() {
-    return this.redis.hgetall(this.getPath('packages')).then(this.parseRecord)
+    return this.parseHscan(vals, 9)
   }
 
   public hasMetadata(name: string) {
     return this.redis
-      .hexists(this.getPath('packages'), name)
+      .hexists(this.prefix, `metadata-${name}`)
       .then((r) => Boolean(r))
   }
 
   public getMetadata(name: string) {
     return this.redis
-      .hget(this.getPath('packages'), name)
+      .hget(this.prefix, `metadata-${name}`)
       .then((r) => JSON.parse(r))
   }
 
   public putMetadata(name: string, data: TMetadata) {
-    return this.redis.hset(this.getPath('packages'), name, JSON.stringify(data))
+    return this.redis.hset(
+      this.prefix,
+      `metadata-${name}`,
+      JSON.stringify(data),
+    )
   }
 
-  public getVersions(name: string) {
-    return this.redis
-      .hgetall(this.getPath(`versions-${name}`))
-      .then(this.parseRecord)
+  public async getVersions(name: string) {
+    const [_, vals] = await this.redis.hscan(
+      this.prefix,
+      0,
+      'MATCH',
+      'version-*',
+    )
+
+    return this.parseHscan(vals, name.length + 9)
   }
 
   public hasVersion(name: string, version: string) {
     return this.redis
-      .hexists(this.getPath(`versions-${name}`), version)
+      .hexists(this.prefix, `version-${name}-${version}`)
       .then((r) => Boolean(r))
   }
 
   public getVersion(name: string, version: string) {
     return this.redis
-      .hget(this.getPath(`versions-${name}`), version)
+      .hget(this.prefix, `version-${name}-${version}`)
       .then((r) => JSON.parse(r))
   }
 
   public putVersion(name: string, version: string, data: TVersion) {
     return void this.redis.hset(
-      this.getPath(`versions-${name}`),
-      version,
+      this.prefix,
+      `version-${name}-${version}`,
       JSON.stringify(data),
     )
   }
 
   public dropData() {
-    return this.redis.flushdb()
+    return this.redis.del(this.prefix)
   }
 
   public async healthz() {
