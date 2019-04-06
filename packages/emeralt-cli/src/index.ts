@@ -8,9 +8,13 @@ import { EmeraltStorageLocalFS } from '@emeralt/storage-localfs'
 
 createEmeraltServer({
   auth: EmeraltAuthInMemory({
-    users: {
-      emeralt: 'emeralt',
-    },
+    users: [
+      {
+        username: 'emeralt',
+        password: 'emeralt',
+        admin: true,
+      },
+    ],
   }),
   database: EmeraltDatabaseLocalFS({
     path: resolve(homedir(), '.emeralt'),

@@ -3,6 +3,7 @@ import {
   TEmeraltAuthAction,
   CEmeraltDatabase,
   IEmeraltAuth,
+  BaseUser,
 } from '@emeralt/types'
 
 const base64 = {
@@ -10,32 +11,38 @@ const base64 = {
   decode: (str) => Buffer.from(str, 'base64').toString('ascii'),
 }
 
-class CEmeraltAuthInMemory implements CEmeraltAuth {
-  private users: Map<string, string>
+export interface User extends BaseUser {
+  admin?: boolean
+}
 
-  constructor(
-    private db: CEmeraltDatabase,
-    users: Record<string, string> = {},
-  ) {
-    this.users = new Map()
+class CEmeraltAuthInMemory implements CEmeraltAuth<User> {
+  private users: Map<string, User>
 
-    for (const username in users) {
-      this.users.set(username, base64.encode(users[username]))
+  constructor(private db: CEmeraltDatabase, users: User[] = []) {
+    this.users = new Map<string, User>()
+
+    for (const user of users) {
+      this.putUser(user)
     }
   }
 
-  public hasUser(username) {
+  public hasUser(username: string) {
     return this.users.has(username)
   }
 
-  public putUser(username: string, password: string) {
-    this.users.set(username, base64.encode(password))
+  public putUser(user: User) {
+    this.users.set(user.username, {
+      ...user,
+      password: base64.encode(user.password),
+    })
   }
 
   public comparePassword(username: string, password: string) {
-    const hash = this.users.get(username)
+    const user = this.users.get(username)
 
-    return Boolean(hash && password && base64.decode(hash) === password)
+    return Boolean(
+      user && password && base64.decode(user.password) === password,
+    )
   }
 
   public async canUser(
@@ -63,5 +70,5 @@ class CEmeraltAuthInMemory implements CEmeraltAuth {
 }
 
 export const EmeraltAuthInMemory: IEmeraltAuth<{
-  users: Record<string, string>
+  users: User[]
 }> = ({ users }) => (_, db) => new CEmeraltAuthInMemory(db, users)

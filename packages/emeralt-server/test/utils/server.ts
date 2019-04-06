@@ -14,12 +14,7 @@ export const createTestServer = (
 ) =>
   createEmeraltServer({
     config: deepmerge(emeraltServerDefaultConfig, config || {}),
-    auth: EmeraltAuthInMemory({
-      users: users.reduce(
-        (acc, cur) => Object.assign({}, acc, { [cur.username]: cur.password }),
-        {},
-      ),
-    }),
+    auth: EmeraltAuthInMemory({ users: users }),
     database: EmeraltDatabaseInMemory({}),
     storage: EmeraltStorageInMemory({}),
   }).then((t) => t.server.listen())

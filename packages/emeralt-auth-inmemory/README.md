@@ -19,8 +19,10 @@ yarn add @emeralt/auth-inmemory
 
 ```ts
 new EmeraltAuthInMemory({
-  users: {
-    username: 'password',
-  }
+  users: [{
+    username: 'emeralt',
+    password: 'emeralt',
+    admin: true,
+  }]
 })
 ```

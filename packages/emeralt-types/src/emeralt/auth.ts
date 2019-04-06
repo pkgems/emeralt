@@ -5,8 +5,14 @@ import { CEmeraltPlugin } from './plugin'
 
 export type TEmeraltAuthAction = 'publish' | 'get'
 
-export interface CEmeraltAuth extends CEmeraltPlugin {
-  putUser(username: string, password: string): OptionalPromise<any>
+export type BaseUser = {
+  username: string
+  password: string
+}
+
+export interface CEmeraltAuth<User extends BaseUser = BaseUser>
+  extends CEmeraltPlugin {
+  putUser(user: User): OptionalPromise<any>
 
   hasUser(username: string): OptionalPromise<boolean>
 
@@ -17,13 +23,10 @@ export interface CEmeraltAuth extends CEmeraltPlugin {
     action: TEmeraltAuthAction,
     packagename: string,
   ): OptionalPromise<boolean>
-
-  /** drop all data (used for test purposes) */
-  dropData(): OptionalPromise<any>
 }
 
-export interface IEmeraltAuth<C = {}> {
-  (pluginConfig: C): (
+export interface IEmeraltAuth<Config = {}> {
+  (pluginConfig: Config): (
     serverConfig: TEmeraltServerConfig,
     database: CEmeraltDatabase,
   ) => OptionalPromise<CEmeraltAuth>

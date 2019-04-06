@@ -16,7 +16,7 @@ test<IEmeraltAuth>('users', async (t, authc) => {
   await t.false(await auth.comparePassword(user.username, '123123'))
 
   t.log('add user')
-  await auth.putUser(user.username, user.password)
+  await auth.putUser(user)
 
   t.log('with user')
   await t.true(await auth.hasUser(user.username))

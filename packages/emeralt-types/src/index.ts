@@ -6,6 +6,7 @@ export {
   TEmeraltAuthAction,
   CEmeraltAuth,
   IEmeraltAuth,
+  BaseUser,
   // database
   CEmeraltDatabase,
   IEmeraltDatabase,
