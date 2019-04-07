@@ -1,4 +1,9 @@
-# Version [](https://github.com/emeralt/emeralt/compare/v0.12.0...v) (2019-04-06)
+# Version [](https://github.com/emeralt/emeralt/compare/v0.12.1...v) (2019-04-07)
+
+
+
+
+## Version [0.12.1](https://github.com/emeralt/emeralt/compare/v0.12.0...v0.12.1) (2019-04-06)
 
 
 

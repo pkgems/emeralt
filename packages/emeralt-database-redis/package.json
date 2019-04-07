@@ -1,6 +1,6 @@
 {
   "name": "@emeralt/database-redis",
-  "version": "0.12.1",
+  "version": "0.13.0",
   "author": "stackdumper <stackdumper@gmail.com>",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "ioredis": "^4.6.2"
   },
   "devDependencies": {
-    "@emeralt/types": "^0.12.1",
+    "@emeralt/types": "^0.13.0",
     "@types/ioredis": "^4.0.6"
   }
 }
