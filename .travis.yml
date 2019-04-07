@@ -36,6 +36,16 @@ jobs:
         - yarn test:coverage --ignore @emeralt/database-cloud-firestore --ignore @emeralt/database-cloud-datastore --ignore @emeralt/storage-gcs
         - yarn nyc report --reporter=text-lcov | yarn coveralls
 
+    - stage: test-publish
+      before_script:
+        - tar -xzvf ~/.cache/emeralt/build.tar.gz
+        - emreg login -e $EMREG_EMAIL -p $EMREG_PASS
+        - emreg create -c @emeralt
+      script:
+        - lerna publish from-git -y
+      after_script:
+        - ID=$(emreg list); emreg delete $ID
+
     - stage: publish
       if: tag IS present
       before_script:
