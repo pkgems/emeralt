@@ -42,7 +42,7 @@ jobs:
         - emreg login -e $EMREG_EMAIL -p $EMREG_PASS
         - emreg create -c @emeralt
       script:
-        - lerna publish --force-publish="*" --skip-git -y
+        - lerna publish --force-publish="*" --skip-git --canary -y
       after_script:
         - ID=$(emreg list); emreg delete $ID
 
