@@ -510,10 +510,10 @@
   dependencies:
     arrify "^1.0.1"
 
-"@emeralt-registry/cli@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.npmjs.org/@emeralt-registry/cli/-/cli-0.0.3.tgz#b6ddcfbdda2a4f8dbfa02c436e3a810318a3430d"
-  integrity sha512-SSuMdUsQ0hHeq0LUNaJEpi30SNBqWRngL11QifdOGtSDBmMW5QL4TonR5+uCazKiwaHEFGqzIr0i0wZCl+9F4w==
+"@emeralt-registry/cli@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@emeralt-registry/cli/-/cli-0.0.4.tgz#da22b095aaab5491f610e00eb37fda42a67b4ad5"
+  integrity sha512-RDCdhyEJgOkdpAxjMLOM5gGNWy5W2VyNUsfdgR7TYGwopkV5Gw3spKSIkRrXAPAYOjyzC0Xpx18ZG/ueiVbJew==
   dependencies:
     commander "^2.20.0"
     fs-extra "^7.0.1"
@@ -2504,12 +2504,7 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@^2.19.0:
-  version "2.19.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
-  integrity sha512-6tvAOO+D6OENvRAh524Dh9jcfKTYDQAqvqezbCW82xj5X0pSrcpxtvRKHLG0yBY6SD7PSDrJaj+0AiOcKVd1Xg==
-
-commander@^2.20.0:
+commander@^2.19.0, commander@^2.20.0:
   version "2.20.0"
   resolved "https://registry.npmjs.org/commander/-/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
   integrity sha512-7j2y+40w61zy6YC2iRNpUe/NwhNyoXrYpHMrSunaMG64nRnaf96zO/KMQR4OyN/UnE5KLyEBnKHd4aG3rskjpQ==
