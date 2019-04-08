@@ -44,7 +44,7 @@ jobs:
       script:
         - lerna exec "npm publish -y"
       after_script:
-        - ID=$(emreg list); emreg delete $ID
+        - emreg delete-all
 
     - stage: publish
       if: tag IS present
