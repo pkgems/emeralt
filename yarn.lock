@@ -510,10 +510,10 @@
   dependencies:
     arrify "^1.0.1"
 
-"@emeralt-registry/cli@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.npmjs.org/@emeralt-registry/cli/-/cli-0.0.6.tgz#551fe58a3764f7669bc21d27d20887af8b11e2f1"
-  integrity sha512-g1J44zEqnFOfotSKM91tK/20Ee1HxtLr2vQBteM+pXjhL4V7NkaM+gwAtO5gFVxa3cE2KSIms4bGpkD3Ezh3gA==
+"@emeralt-registry/cli@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.npmjs.org/@emeralt-registry/cli/-/cli-0.0.9.tgz#13ad2bd826f1770fd690f6f2e787a6ff277c8a72"
+  integrity sha512-v4NM8yNVvdMB9OVOWIe99v6VvzTl8oU/GHYD+x9onQSWHjfU03JpVrWBBIr/astC7HMO5cSMpj969O4Lg0Ua0w==
   dependencies:
     commander "^2.20.0"
     fs-extra "^7.0.1"

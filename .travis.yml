@@ -40,11 +40,11 @@ jobs:
       before_script:
         - tar -xzvf ~/.cache/emeralt/build.tar.gz
         - emreg login -e $EMREG_EMAIL -p $EMREG_PASS
-        - emreg create -c @emeralt
+        - emreg create $TRAVIS_BUILD_ID -c @emeralt
       script:
         - lerna exec "npm publish -y"
       after_script:
-        - emreg delete-all
+        - emreg delete $TRAVIS_BUILD_ID
 
     - stage: publish
       if: tag IS present
