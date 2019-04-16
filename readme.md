@@ -1,8 +1,7 @@
 ![logo](./packages/emeralt-assets/png/full-logo-3-medium.png)
 
-[![Build Status](https://travis-ci.com/emeralt/emeralt.svg?branch=master)](https://travis-ci.com/emeralt/emeralt) 
-[![Coverage Status](https://coveralls.io/repos/github/emeralt/emeralt/badge.svg?branch=master)](https://coveralls.io/github/emeralt/emeralt?branch=master)
-![Open Issues](https://img.shields.io/github/issues-raw/emeralt/emeralt.svg)
+![Travis (.com) branch](https://img.shields.io/travis/com/emeralt/emeralt/master.svg?style=for-the-badge)
+![Coveralls github branch](https://img.shields.io/coveralls/github/emeralt/emeralt/master.svg?style=for-the-badge)
 
 ---
 
